@@ -1,0 +1,146 @@
+.header {
+  min-height: 93px;
+  width: 100%;
+}
+.nav {
+  background: linear-gradient( rgba(66, 78, 92, 0.8), transparent);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+  border-top: 12px solid rgb(125, 178, 206);
+  height: 93px;
+  transition: all 0.3s linear 0s;
+  width: 100%;
+  z-index: 999;
+  box-shadow: 0, 2px 6px rgba(0, 0, 0, 0.05);
+  position:fixed;
+  top: 0;
+
+}
+nav {
+  max-width: 1185px;
+  margin: 0 auto;
+}
+
+.home-link {
+  grid-column-start: 2;
+  grid-row-start: 1;
+  align-self: center;
+}
+
+.home-nav {
+  display: grid;
+  grid-template-columns: 10px 1fr 1fr 10px;
+
+
+  .logo {
+    width: 161px;
+    height: 57px;
+    margin-top: 5px;
+  }
+}
+
+.nav-links {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  grid-column-start: 3;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    line-height: 80px;
+    transition: all 0.3s linear 0s;
+
+    &:hover a {
+      color: #7db2ce;
+      cursor: pointer;
+    }
+  }
+  a {
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 400px;
+    color: rgb(255, 255, 255);
+
+    &:link {
+      color: rgb(255, 255, 255);
+      background-color: transparent;
+    }
+    &:visited {
+      color: rgb(255, 255, 255);
+      background-color: transparent;
+    }
+    &:hover {
+      color: #7db2ce;
+      background-color: transparent;
+    }
+
+    &:selected {
+      color: #7db2ce;
+      background-color: transparent;
+    }
+    &:active {
+      background-color: transparent;
+    }
+    &:focus {
+      background-color: transparent;
+    }
+  }
+}
+
+.selected::after {
+  width: 0;
+  height: 0;
+  border-left: 24px solid transparent;
+  border-right: 24px solid transparent;
+  border-top: 18px solid #7db2ce;
+  content: '';
+  position: absolute;
+  transform: translate(-25px, -65px);
+  transition: all 0.3s linear 0s;
+}
+
+.sticky {
+  background: linear-gradient( rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85));
+  height: 63px;
+  position: fixed;
+  transition: all 0.3s linear 0s;
+
+  .home-nav {
+    height: 63px;
+  }
+
+  li {
+    line-height: 50px;
+  }
+
+  .logo {
+    height: 40px;
+    width: auto;
+  }
+}
+
+.sticky a, .home-nav.sticky .nav-links a {
+  &:link {
+    color: #000000;
+  }
+
+  &:visited {
+    color: #000000;
+  }
+
+  &:selected {
+    color: #7db2ce;
+  }
+
+}
+
+@media (min-width: 1185px) {
+  .home-nav {
+    grid-template-columns: 10px auto 600px 10px;
+  }
+}
+
