@@ -1,69 +1,78 @@
-.header {
-  min-height: 93px;
-  width: 100%;
-}
-.nav {
+.navbox {
   background: linear-gradient( rgba(66, 78, 92, 0.8), transparent);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+  border-bottom: 1px solid rgba(255, 255, 255, .6);
   border-top: 12px solid rgb(125, 178, 206);
   height: 93px;
   transition: all 0.3s linear 0s;
   width: 100%;
   z-index: 999;
-  box-shadow: 0, 2px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, .1);
   position:fixed;
   top: 0;
-
 }
+
 nav {
+  display: grid;
+  grid-template-columns: 10px 1fr 1fr 10px;
   max-width: 1185px;
   margin: 0 auto;
+  height: 93px;
+  transition: all 0.3s linear 0s;
 }
 
 .home-link {
   grid-column-start: 2;
   grid-row-start: 1;
   align-self: center;
+  transition: all 0.3s linear 0s;
 }
 
-.home-nav {
-  display: grid;
-  grid-template-columns: 10px 1fr 1fr 10px;
-
-
-  .logo {
-    width: 161px;
-    height: 57px;
-    margin-top: 5px;
-  }
+.logo {
+  width: 161px;
+  height: 57px;
+  margin-top: 5px;
+  transition: all 0.3s linear 0s;
 }
+
+
 
 .nav-links {
   align-items: center;
-  display: flex;
-  justify-content: space-between;
-  text-align: center;
   grid-column-start: 3;
   list-style: none;
   margin: 0;
   padding: 0;
+  justify-items: center;
+  align-items: center;
+  transition: all 0.3s linear 0s;
+  display: flex;
 
   li {
-    line-height: 80px;
     transition: all 0.3s linear 0s;
+    height: 100%;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
 
     &:hover a {
       color: #7db2ce;
       cursor: pointer;
+      transition: all 0.3s linear 0s;
     }
   }
+
   a {
     text-decoration: none;
-    display: block;
-    padding: 10px;
+    padding: 30px 10px;
     font-size: 14px;
     font-weight: 400px;
     color: rgb(255, 255, 255);
+    transition: all 0.3s linear 0s;
+    display: block;
+    width: 100%;
+    text-align: center;
 
     &:link {
       color: rgb(255, 255, 255);
@@ -80,7 +89,6 @@ nav {
 
     &:selected {
       color: #7db2ce;
-      background-color: transparent;
     }
     &:active {
       background-color: transparent;
@@ -91,16 +99,19 @@ nav {
   }
 }
 
-.selected::after {
+a.selected::after {
   width: 0;
   height: 0;
   border-left: 24px solid transparent;
   border-right: 24px solid transparent;
-  border-top: 18px solid #7db2ce;
-  content: '';
+  border-top: 20px solid #7db2ce;
+  content: ' ';
   position: absolute;
-  transform: translate(-25px, -65px);
+  left: 50% - 20px;
+  top: -5px;
   transition: all 0.3s linear 0s;
+
+
 }
 
 .sticky {
@@ -109,31 +120,40 @@ nav {
   position: fixed;
   transition: all 0.3s linear 0s;
 
-  .home-nav {
+  nav {
     height: 63px;
-  }
-
-  li {
-    line-height: 50px;
+    transition: all 0.3s linear 0s;
   }
 
   .logo {
     height: 40px;
     width: auto;
+    transition: all 0.3s linear 0s;
   }
+
+  li {
+    height: 100%;
+    line-height: 50px;
+    transition: all 0.3s linear 0s;
+  }
+
 }
 
 .sticky a, .home-nav.sticky .nav-links a {
   &:link {
     color: #000000;
+    transition: all 0.3s linear 0s;
+    padding: 7px;
   }
 
   &:visited {
     color: #000000;
+    transition: all 0.3s linear 0s;
   }
 
   &:selected {
     color: #7db2ce;
+    transition: all 0.3s linear 0s;
   }
 
 }
