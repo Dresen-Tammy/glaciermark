@@ -1,0 +1,23 @@
+
+  <div class="nav"
+    [ngClass]="{'sticky': sticky}"
+  >
+    <nav
+    [class]="className"
+    id="navbar"
+  >
+    <a routerLink="/home" class="home-link">
+      <img class="logo" [src]="'../../assets/images/' + logoSrc + '.png'" alt="glacier logo" />
+    </a>
+    <ul class="nav-links">
+      <li *ngFor="let link of navigation; let i = index">
+        <a
+        routerLink="{{ link.link }}"
+        routerLinkActive="selected"
+        >{{ link.title}}
+      </a>
+    </li>
+  </ul>
+  </nav>
+</div>
+
