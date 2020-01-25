@@ -59,13 +59,21 @@ export class NavbarComponent implements OnInit {
 
   private setSticky(): void {
     if (window.pageYOffset > 5) {
-      this.sticky = true;
-      this.logoSrc = 'glacierLogo';
+      this.stickyTrue();
     } else {
-      this.sticky = false;
-      if (this.className === 'home-nav') {
-        this.logoSrc = 'glacier-marketing';
-      }
+      this.stickyFalse();
+    }
+  }
+
+  private stickyTrue(): void {
+    this.sticky = true;
+    this.logoSrc = 'glacierLogo';
+  }
+
+  private stickyFalse(): void {
+    this.sticky = false;
+    if (this.className === 'home-nav') {
+      this.logoSrc = 'glacier-marketing';
     }
   }
 
