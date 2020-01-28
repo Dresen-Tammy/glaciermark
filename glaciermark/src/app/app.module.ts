@@ -1,3 +1,4 @@
+import { ProjectModule } from './project/project.module';
 import { PortfolioModule } from './portfolio/portfolio.module';
 import { ContactModule } from './contact/contact.module';
 import { ServicesModule } from './services/services.module';
@@ -9,14 +10,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NavbarComponent,
-    AboutComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -24,6 +23,7 @@ import { AboutComponent } from './about/about.component';
     ServicesModule,
     ContactModule,
     PortfolioModule,
+    ProjectModule,
     AppRoutingModule
   ],
   providers: [],
