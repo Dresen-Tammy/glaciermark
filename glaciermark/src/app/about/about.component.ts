@@ -1,3 +1,4 @@
+import { SeoService } from './../seo/seo.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
-  constructor() { }
+  constructor(private seo: SeoService) {
+    this.seo.update({
+      title: 'About - Glaciermark.com',
+      description: 'Meet Glacier Marketing\'s team and see what we can do for you.',
+      url: 'https://glaciermark.com/about'
+    });
 
-  ngOnInit() {
+    this.seo.updateStructuredData(
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        url: 'https://glaciermark.com',
+        name: 'Glacier Marketing',
+        contactPoint: {
+          '@type': 'ContactPoint',
+          website: 'https://glaciermark.com',
+          contactType: 'Consulting'
+        }
+      }
+    );
+  }
+
+
+  public ngOnInit() {
   }
 
 }

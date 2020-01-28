@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SeoServiceService } from './seo-service.service';
+import { LinkService } from './link.service';
 
-describe('SeoServiceService', () => {
-  let service: SeoServiceService;
+describe('LinkService', () => {
+  let service: LinkService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(SeoServiceService);
+    service = TestBed.inject(LinkService);
   });
 
   it('should be created', () => {
