@@ -14,7 +14,7 @@ export class SeoService {
   private baseMeta: SeoConfig;
   private metaUpdate: SeoConfig;
 
-  constructor(
+  public constructor(
     private meta: Meta,
     private title: Title,
     @Inject(DOCUMENT) private readonly document: any /* Document */,
@@ -28,7 +28,7 @@ export class SeoService {
     };
   }
 
-  update(seoConfig?: SeoConfig) {
+  public update(seoConfig?: SeoConfig) {
 
     this.metaUpdate = {
       ...this.baseMeta,
@@ -103,7 +103,7 @@ export class SeoService {
     this.updateMeta(seo);
   }
 
-  updateMeta(seoModel: SeoModel) {
+  public updateMeta(seoModel: SeoModel) {
     Object.keys(seoModel).forEach(key => {
       const metaVal: any = seoModel[key];
 
@@ -129,7 +129,7 @@ export class SeoService {
     });
   }
 
-  updateStructuredData(data) {
+  public updateStructuredData(data) {
     const exists = this.document.querySelector('#ld-json-script');
     if (exists) {
       exists.remove();

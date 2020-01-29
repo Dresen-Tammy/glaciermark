@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
-  constructor(private seo: SeoService) {
+  public constructor(private seo: SeoService) {
     this.seo.update({
       title: 'About - Glaciermark.com',
       description: 'Meet Glacier Marketing\'s team and see what we can do for you.',

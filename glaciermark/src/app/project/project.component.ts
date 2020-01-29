@@ -22,7 +22,8 @@ export class ProjectComponent implements OnInit {
       url: 'https://glaciermark.com/portfolio'
     });
   }
-  ngOnInit() {
+
+  public ngOnInit() {
   }
 
 }

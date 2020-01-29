@@ -12,6 +12,7 @@ const contactRoute: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(contactRoute)
-  ]
+  ],
+  exports: [RouterModule]
 })
 export class ContactModule { }

@@ -14,15 +14,12 @@ export class LinkService implements OnDestroy {
 
   private routeListener: Subscription;
 
-  constructor(
-    @Inject(DOCUMENT) private readonly document: any/* Document */,
+  public constructor(
+    @Inject(DOCUMENT) private readonly document: any,
     private readonly router: Router,
   ) { }
 
-  /**
-   * Create or update a link tag
-   * @param  LinkDefinition tag
-   */
+  // Create/update a link tag param LinkDefinition tag
   public updateTag(tag: LinkDefinition): void {
     const selector = this._parseSelector(tag);
     const linkElement = this.document.head.querySelector(selector) as HTMLLinkElement
@@ -35,9 +32,8 @@ export class LinkService implements OnDestroy {
     }
   }
 
-  /**
-   * Remove a link tag from DOM
-   */
+
+  // Remove link tag from DOM
   public removeTag(tag: LinkDefinition): void {
     const selector = this._parseSelector(tag);
     const linkElement = this.document.head.querySelector(selector) as HTMLLinkElement;
@@ -47,36 +43,28 @@ export class LinkService implements OnDestroy {
     }
   }
 
-  /**
-   * Get link tag
-   * @return HTMLLinkElement
-   */
+
+  // Get link tag, return HTMLLinkElement
   public getTag(tag: LinkDefinition): HTMLLinkElement {
     const selector = this._parseSelector(tag);
-
     return this.document.head.querySelector(selector);
   }
 
-  /**
-   * Get all link tags
-   * @return NodeListOf<HTMLLinkElement>
-   */
+
+  // Get all link tags, return NodeListOf<HTMLLinkElement>
   public getTags(): NodeListOf<HTMLLinkElement> {
     return this.document.head.querySelectorAll('link');
   }
 
-  /**
-   * Parse tag to create a selector
-   * @return string} selector to use in querySelector
-   */
+
+  // Parse tag to create selector, return string selector to use in querySelector
   private _parseSelector(tag: LinkDefinition): string {
     const attr: string = tag.rel ? 'rel' : 'hreflang';
     return `link[${attr}="${tag[attr]}"]`;
   }
 
-  /**
-   * Start listening on NavigationEnd router events
-   */
+
+  // Start listening on NavigationEnd router events
   public startRouteListener(): void {
     this.routeListener = this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
@@ -102,10 +90,8 @@ export class LinkService implements OnDestroy {
     );
   }
 
-  /**
-   * Destroy route listener when service is destroyed
-   */
-  ngOnDestroy(): void {
+  // Destroy route listener when service is destroyed
+  public ngOnDestroy(): void {
     if (this.routeListener) {
       this.routeListener.unsubscribe();
     }
