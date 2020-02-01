@@ -12,6 +12,7 @@ const aboutRoute: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(aboutRoute)
-  ]
+  ],
+  exports: [RouterModule]
 })
 export class AboutModule { }

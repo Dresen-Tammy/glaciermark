@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 
 const portfolioRoute: Routes = [
-  {path: 'portfolio', component: PortfolioComponent}
-]
+  { path: 'portfolio', component: PortfolioComponent }
+];
 
 
 @NgModule({
@@ -13,6 +13,7 @@ const portfolioRoute: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(portfolioRoute)
-  ]
+  ],
+  exports: [RouterModule]
 })
 export class PortfolioModule { }
