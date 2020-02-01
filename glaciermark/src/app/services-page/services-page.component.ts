@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { SeoService } from '../seo/seo.service';
+import { SeoService } from '../services/seo/seo.service';
 
 @Component({
   selector: 'app-services',
-  templateUrl: './services.component.html',
-  styleUrls: ['./services.component.less']
+  templateUrl: './services-page.component.html',
+  styleUrls: ['./services-page.component.less']
 })
-export class ServicesComponent implements OnInit {
+export class ServicesPageComponent implements OnInit {
 
   public constructor(private seo: SeoService) {
     this.seo.update({

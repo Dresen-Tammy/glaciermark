@@ -1,7 +1,7 @@
 import { ProjectModule } from './project/project.module';
 import { PortfolioModule } from './portfolio/portfolio.module';
 import { ContactModule } from './contact/contact.module';
-import { ServicesModule } from './services/services.module';
+import { ServicesPageModule } from './services-page/services-page.module';
 import { AboutModule } from './about/about.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -20,7 +20,7 @@ import { NavbarComponent } from './navbar/navbar.component';
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AboutModule,
-    ServicesModule,
+    ServicesPageModule,
     ContactModule,
     PortfolioModule,
     ProjectModule,

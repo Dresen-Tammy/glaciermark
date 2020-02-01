@@ -1,6 +1,6 @@
-import { SeoService } from './seo/seo.service';
+import { SeoService } from './services/seo/seo.service';
 import { Component } from '@angular/core';
-import { SeoConfig } from './seo/seo.interface';
+import { SeoConfig } from './services/seo/seo.interface';
 
 @Component({
   selector: 'app-root',
