@@ -1,0 +1,11 @@
+<section>
+  <app-services-header
+    [offering]='offering.offeringHeader'>
+  </app-services-header>
+  <main class="tile-section">
+    <app-services-tile
+      *ngFor="let item of offering.offeringTiles"
+      [offering]="item"
+    ></app-services-tile>
+  </main>
+</section>

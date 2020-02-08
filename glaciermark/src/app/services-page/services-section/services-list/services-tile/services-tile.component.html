@@ -1,0 +1,15 @@
+<section>
+  <img
+    [src]="'../../../assets/images/offering/' + offering.src + '-150x150.jpg'"
+    [srcset]="'../../../../../assets/images/offering/' + offering.src + '-300x300.jpg 300w, ../../../../../assets/images/offering/' + offering.src + '-150x150.jpg 150w, ../../../../../assets/images/offering/' + offering.src + '-768x768.jpg 768w, ../../../../../assets/images/offering/' + offering.src + '-570x570.jpg 570w'"
+    [alt]="offering.header"
+    sizes="(max-width: 300px) 100vw, 300px"
+  />
+  <h3>{{offering.header}}</h3>
+  <p>{{offering.text}}</p>
+  <p *ngIf="offering.text2">{{offering.text2}}</p>
+  <p *ngIf="offering.text2">{{offering.text3}}</p>
+  <ng-container *ngIf="offering.text3">
+    <p><span *ngFor="let item of offering.text3" >{{item}}</span></p>
+  </ng-container>
+</section>

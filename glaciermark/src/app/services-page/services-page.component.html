@@ -1,1 +1,9 @@
-<p>services works!</p>
+<div class="sub-page">
+  <div class="services">
+    <app-services-section
+      *ngFor="let offering of offerings"
+      [offering]="offering"
+    ></app-services-section>
+  </div>
+</div>
+
