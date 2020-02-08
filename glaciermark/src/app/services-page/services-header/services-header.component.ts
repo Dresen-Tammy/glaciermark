@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { OfferingHeader } from '../../../models/offering-header';
 
 @Component({
   selector: 'app-services-header',
@@ -7,7 +6,12 @@ import { OfferingHeader } from '../../../models/offering-header';
   styleUrls: ['./services-header.component.less']
 })
 export class ServicesHeaderComponent implements OnInit {
-  @Input() public offering: OfferingHeader;
+  @Input() public title: string;
+  @Input() public text: string;
+  @Input() public src: string;
+  @Input() public anchor: string;
+  @Input() public background: string;
+  @Input() public imgWidth: string;
   constructor() { }
 
   ngOnInit(): void {

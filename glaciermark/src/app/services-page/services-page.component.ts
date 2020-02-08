@@ -1,5 +1,3 @@
-import { OfferingService } from './../services/offering/offering.service';
-import { OfferingSection } from './../models/offering-section';
 import { Component, OnInit } from '@angular/core';
 import { SeoService } from '../services/seo/seo.service';
 
@@ -11,13 +9,11 @@ import { SeoService } from '../services/seo/seo.service';
 })
 export class ServicesPageComponent implements OnInit {
 
-  public offerings: OfferingSection[];
   public className: string = 'sub-action';
   public buttonUrl: string = '/contact';
 
   public constructor(
     private seo: SeoService,
-    private offering: OfferingService
   ) {
     this.seo.update({
       title: 'Print Design, Digital Design, Marketing, Branding, Consulting by Glacier Marketing Idaho Falls',
@@ -28,7 +24,6 @@ export class ServicesPageComponent implements OnInit {
   }
 
   public ngOnInit() {
-    this.offerings = this.offering.getOfferings();
   }
 
 }
