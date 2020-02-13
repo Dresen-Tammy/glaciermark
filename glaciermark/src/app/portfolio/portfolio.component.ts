@@ -1,5 +1,7 @@
+import { DataService } from './../services/data/data.service';
 import { Component, OnInit } from '@angular/core';
 import { SeoService } from '../services/seo/seo.service';
+
 
 @Component({
   selector: 'app-portfolio',
@@ -8,7 +10,12 @@ import { SeoService } from '../services/seo/seo.service';
 })
 export class PortfolioComponent implements OnInit {
 
-  public constructor(private seo: SeoService) {
+  public projects: any = [];
+
+  public constructor(
+    private seo: SeoService,
+    public dataService: DataService
+    ) {
     this.seo.update({
       title: 'Print Design, Digital Design, Marketing, Branding, Consulting by Glacier Marketing Idaho Falls',
       // tslint:disable-next-line: max-line-length
@@ -18,6 +25,14 @@ export class PortfolioComponent implements OnInit {
   }
 
   public ngOnInit() {
+
+  }
+
+  public loadProjects() {
+    return this.dataService.getProject().subscribe((data: {}) => {
+      this.projects = data;
+      console.log(this.projects);
+    });
   }
 
 }
