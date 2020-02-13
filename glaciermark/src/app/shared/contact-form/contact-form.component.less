@@ -1,0 +1,131 @@
+
+form {
+  padding: 15px;
+}
+
+label {
+  color: #ffffff;
+  display: block;
+  font-size: 14px;
+  margin-top: 10px;
+  display: block;
+}
+
+.response {
+  color: #ffffff;
+  font-size: 16px;
+}
+
+input, textarea {
+  background-color: #ffffff;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 25px;
+  margin-top: 5px;
+  padding: 10px 20px;
+  color: #1a1c27;
+  font-size: 14px;
+  border: 1px solid #fff;
+  border-radius: 4px;
+}
+
+textarea {
+  height: 150px;
+}
+
+button {
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 12px;
+  margin-top: 15px;
+  width: 120px;
+  background-color: rgba(125, 178, 206, 0.7);
+  &:hover {
+    background-color: #7db2ce;
+    color: #ffffff;
+    background-color: rgba(37, 46, 75, .7);
+  }
+
+}
+
+.invalid {
+  border: 1px solid #a1b1bc;
+  color: #a1b1bc;
+  background-color: transparent;
+  &:hover {
+    border: 1px solid #a1b1bc;
+    color: #a1b1bc;
+    background-color: transparent;
+  }
+}
+.invalid-feedback {
+  color: #b11313;
+  margin-top: -10px;
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 14px;
+  display: block;
+}
+
+.contact-grid {
+
+
+  margin: 20px;
+
+  & .left {
+    padding: 30px;
+    background-color: rgba(125, 178, 206, 0.7);
+
+
+    & address, a, p, h1 {
+      color: #ffffff;
+      font-style: normal;
+      font-weight: 300px;
+      padding-bottom: 20px;
+      text-decoration: none;
+    }
+
+    & h1 {
+      font-size: 30px;
+    }
+
+    & p {
+      font-size: 14px;
+    }
+  }
+
+  & .right {
+    padding: 30px;
+    background-color: rgba(125, 178, 206, 0.7);
+  }
+}
+
+@media (min-width: 800px) {
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .left {
+    grid-column-start: 1;
+    margin: 20px;
+    margin-left: 40px;
+  }
+  .right {
+    grid-column-start: 2;
+    margin: 20px;
+    margin-right: 40px;
+  }
+}
+
+@media (min-width: 1020px) {
+  .contact-grid {
+    grid-template-columns: 470px 470px;
+  }
+
+}
+
+

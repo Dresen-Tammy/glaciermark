@@ -1,0 +1,82 @@
+<div class="contact-grid">
+  <div class="left">
+    <h1>glacier marketing</h1>
+    <p>We would love to talk to you about your next project. Reach out and we will get you started.</p>
+    <address>PO Box 2647, Idaho Falls, ID 83404</address>
+    <p>
+      <a href="tel://2085579114" target="_blank">Phone: 208.557.9114</a>
+    </p>
+  </div>
+  <div class="right">
+    <form
+      novalidate
+      (ngSubmit)="onSubmit()"
+      [formGroup]="contactForm"
+    >
+      <label for="name">Your Name</label>
+      <input
+        id="name"
+        type="text"
+        required
+        min-length="3"
+        formControlName="name"
+        (blur)="inputChange($event)"
+        />
+        <span class="invalid-feedback">
+          <span *ngIf="contactForm.get('name').errors && nameTouched">
+            Please enter your name.
+          </span>
+        </span>
+        <label for="email">Your Email</label>
+        <input
+          id="email"
+          type="email"
+          required
+          formControlName="email"
+          (blur)="inputChange($event)"
+        />
+        <span class="invalid-feedback">
+          <span *ngIf="contactForm.get('email').errors && emailTouched">
+            Please enter a valid email address.
+          </span>
+        </span>
+        <label for="subject">Subject</label>
+        <input
+          id="subject"
+          type="text"
+          required
+          min-length="3"
+          formControlName="subject"
+          (blur)="inputChange($event)"
+        />
+        <span class="invalid-feedback">
+          <span *ngIf="contactForm.get('subject').errors && subjectTouched">
+            Please enter a subject.
+          </span>
+        </span>
+        <label for="message">Message</label>
+        <textarea
+          id="message"
+          formControlName="message"
+          (blur)="inputChange($event)"
+          required
+        >
+        </textarea>
+        <span class="invalid-feedback">
+          <span *ngIf="contactForm.get('message').errors && messageTouched">
+            Please enter your message.
+          </span>
+        </span>
+        <button
+          class="button"
+          type="submit"
+          [ngClass]="{'invalid': !contactForm.valid}"
+          [disabled]="!contactForm.valid"
+        >
+          SEND
+        </button>
+        <p *ngIf="response" class="response">{{response}}</p>
+    </form>
+  </div>
+</div>
+

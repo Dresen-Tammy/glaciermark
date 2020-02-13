@@ -8,7 +8,10 @@ import { SeoService } from '../services/seo/seo.service';
 })
 export class ContactComponent implements OnInit {
 
-  public constructor(private seo: SeoService) {
+
+  public constructor(
+    private seo: SeoService
+  ) {
     this.seo.update({
       title: 'East Idaho Design &amp; Marketing Firm - Glacier Marketing',
       // tslint:disable-next-line: max-line-length
@@ -17,7 +20,6 @@ export class ContactComponent implements OnInit {
     });
   }
 
-  public ngOnInit() {
-  }
+  public ngOnInit(): void {  }
 
 }
