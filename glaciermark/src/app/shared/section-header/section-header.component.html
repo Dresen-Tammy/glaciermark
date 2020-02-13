@@ -1,0 +1,14 @@
+<header>
+  <img
+    *ngIf="src"
+    [src]="src"
+    [ngStyle]="{width: iconWidth}"
+    class="icon-centered"
+    [alt]="alt"
+  />
+  <h2 *ngIf="header"
+    [ngClass]="headerColor">{{ header }}</h2>
+  <p [ngClass]="paragraphColor">
+    <ng-content></ng-content>
+  </p>
+</header>

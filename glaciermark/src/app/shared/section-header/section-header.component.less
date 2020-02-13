@@ -1,0 +1,86 @@
+header {
+  justify-items: center;
+  display: grid;
+  grid-template-columns: 20px 1fr 20px;
+}
+
+.hero-section-header {
+  grid-column-start: 2;
+}
+.icon-centered {
+  margin: 0 auto;
+  display: block;
+  grid-column-start: 2;
+  margin-top: 35px;
+}
+
+h2 {
+  font-size: 35px;
+  text-align: center;
+  font-style: normal;
+  grid-column-start: 2;
+  margin-top: 24px;
+}
+
+p {
+  margin: 50px auto 35px auto;
+  font-size: 16px;
+  padding: 20px;
+  text-align: center;
+  grid-column-start: 2;
+}
+
+.paragraph-white {
+  border: 1px solid #ffffff;
+  color: #ffffff;
+}
+
+.paragraph-white-black {
+  background-color: rgba(11, 74, 94, 0.4);
+  .paragraph-white
+}
+
+.paragraph-dark-blue {
+  border: 1px solid #252d3d;
+  color: #252d3d;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.paragraph-light-blue {
+  border: 1px solid #7db2ce;
+  color: #7db2ce;
+}
+
+.paragraph-white19 {
+  font-size: 19px;
+  max-width: 990px;
+  .paragraph-white
+}
+
+.dark-blue {
+  color: #252d3d;
+}
+
+.white {
+  color: #ffffff;
+}
+
+@media (min-width: 400px) {
+  h2 {
+    font-size: 45px;
+  }
+}
+@media (min-width: 800px) {
+  header {
+    grid-template-columns: 60px 1fr 60px;
+  }
+}
+
+@media (min-width: 900px) {
+  header {
+    grid-template-columns: 1fr 800px 1fr;
+  }
+}
+
+
+
