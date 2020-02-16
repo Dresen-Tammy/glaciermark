@@ -13,6 +13,10 @@ import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AnimateComponent } from './animate/animate.component';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { InformationComponent } from './home/information/information.component';
 
 @NgModule({
   declarations: [
@@ -20,17 +24,21 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     NavbarComponent,
     FooterComponent,
+    AnimateComponent,
+    InformationComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AboutModule,
-    ServicesPageModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
     ContactModule,
+    HttpClientModule,
     PortfolioModule,
     ProjectModule,
-    AppRoutingModule,
+    ScrollingModule,
     SharedModule,
-    HttpClientModule
+    ServicesPageModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

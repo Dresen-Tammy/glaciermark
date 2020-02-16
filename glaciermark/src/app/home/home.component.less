@@ -30,6 +30,12 @@
   .contact-section {
     background-image: url(../../assets/images/penguinCrowd_1300w.jpg);
   }
+  .information-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 10px 30px;
+
+  }
 }
 
 @media (min-width: 1020px) {
@@ -39,6 +45,10 @@
 
   app-contact-form {
     margin: 0 auto;
+  }
+  .information-grid {
+    max-width: 930px;
+    margin: 10px auto;
   }
 }
 
