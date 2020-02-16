@@ -7,3 +7,11 @@ export const riseAnimation =
     transition('rise <=> fall', animate('500ms {{ delay }} {{ timing }}'),
     { params: {delay: '0ms', timing: 'linear'}})
   ]);
+
+export const slideUpAnimation =
+trigger('slideUpAnimation', [
+  state('up', style({ transform: 'translateY(0)'})),
+  state('down', style({ transform: 'translateY(150px)'})),
+  transition('up <=> down', animate('600ms {{ delay }} {{ timing }}'),
+  { params: {delay: '0ms', timing: 'linear'}})
+]);

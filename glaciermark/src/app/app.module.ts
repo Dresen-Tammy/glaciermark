@@ -15,6 +15,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InformationComponent } from './home/information/information.component';
+import { ColorTilesComponent } from './home/color-tiles/color-tiles.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { InformationComponent } from './home/information/information.component';
     HomeComponent,
     NavbarComponent,
     FooterComponent,
-    InformationComponent
+    InformationComponent,
+    ColorTilesComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
