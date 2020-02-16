@@ -13,8 +13,6 @@ import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
-import { AnimateComponent } from './animate/animate.component';
-import { ScrollingModule } from '@angular/cdk/scrolling';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InformationComponent } from './home/information/information.component';
 
@@ -24,7 +22,6 @@ import { InformationComponent } from './home/information/information.component';
     HomeComponent,
     NavbarComponent,
     FooterComponent,
-    AnimateComponent,
     InformationComponent
   ],
   imports: [
@@ -36,7 +33,6 @@ import { InformationComponent } from './home/information/information.component';
     HttpClientModule,
     PortfolioModule,
     ProjectModule,
-    ScrollingModule,
     SharedModule,
     ServicesPageModule,
   ],

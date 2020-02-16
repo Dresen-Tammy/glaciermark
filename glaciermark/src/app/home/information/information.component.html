@@ -1,8 +1,5 @@
 <section
-  [wmAnimate]="animation"
-  [speed]="speed"
-  aos
-  once
+  [@riseAnimation]="{value:riseValue, params:{delay: delay}}"
   >
   <header>
     <img
