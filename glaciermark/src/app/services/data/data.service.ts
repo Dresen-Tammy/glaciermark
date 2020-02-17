@@ -5,8 +5,6 @@ import { Observable, throwError, BehaviorSubject, Subscription, of } from 'rxjs'
 import { retry, catchError, tap, map } from 'rxjs/operators';
 import { Project } from '../../models/project';
 
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -64,22 +62,19 @@ export class DataService implements OnDestroy {
           projectsData.push(item.data);
         });
         this._projectBS.next(projectsData);
-
       })
     );
     this.allProjects$.subscribe();
     return projects;
   }
 
-
-  private errorHandl(error) {
+  private errorHandl(error): Observable<any> {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
       errorMessage = error.error.message;
     } else {
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
-    console.log(errorMessage);
     return throwError(errorMessage);
   }
 }
