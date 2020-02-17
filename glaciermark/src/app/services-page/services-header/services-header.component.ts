@@ -16,5 +16,4 @@ export class ServicesHeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }
