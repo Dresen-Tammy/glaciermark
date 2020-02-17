@@ -13,8 +13,6 @@ export class ServicesTileComponent implements OnInit {
   @Input() public text2: string;
   @Input() public set keytext(value: string) {
     this.keywords = value.split(',');
-
-
   }
 
   public keywords: string[];
@@ -23,5 +21,4 @@ export class ServicesTileComponent implements OnInit {
 
   public ngOnInit(): void {
   }
-
 }
