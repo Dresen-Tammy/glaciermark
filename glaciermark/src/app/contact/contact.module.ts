@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -11,7 +12,8 @@ const contactRoute: Routes = [
   declarations: [ContactComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild(contactRoute)
+    RouterModule.forChild(contactRoute),
+    SharedModule
   ],
   exports: [RouterModule]
 })

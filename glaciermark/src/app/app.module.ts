@@ -1,3 +1,4 @@
+import { SharedModule } from './shared/shared.module';
 import { ProjectModule } from './project/project.module';
 import { PortfolioModule } from './portfolio/portfolio.module';
 import { ContactModule } from './contact/contact.module';
@@ -26,7 +27,8 @@ import { FooterComponent } from './footer/footer.component';
     ContactModule,
     PortfolioModule,
     ProjectModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
