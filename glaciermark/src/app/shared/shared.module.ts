@@ -6,8 +6,6 @@ import { SectionHeaderComponent } from './section-header/section-header.componen
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { CallToActionComponent } from './call-to-action/call-to-action.component';
 
-
-
 @NgModule({
   declarations: [
     SectionHeaderComponent,
