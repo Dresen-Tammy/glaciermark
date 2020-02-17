@@ -1,0 +1,15 @@
+<header
+  class="header"
+  [id]="anchor"
+  [ngStyle]="{ 'background-color':background }"
+  >
+  <div class="headline">
+    <h2>{{title}} </h2>
+    <img
+      [src]="'../../../../assets/images/offering/' + src + '.png'"
+      [alt]="title"
+      [ngStyle]="{'width': imgWidth}"
+    />
+  </div>
+  <p>{{text}}</p>
+</header>

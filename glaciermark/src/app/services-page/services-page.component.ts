@@ -8,7 +8,12 @@ import { SeoService } from '../services/seo/seo.service';
 })
 export class ServicesPageComponent implements OnInit {
 
-  public constructor(private seo: SeoService) {
+  public className: string = 'sub-action';
+  public buttonUrl: string = '/contact';
+
+  public constructor(
+    private seo: SeoService,
+  ) {
     this.seo.update({
       title: 'Print Design, Digital Design, Marketing, Branding, Consulting by Glacier Marketing Idaho Falls',
       // tslint:disable-next-line: max-line-length
@@ -17,7 +22,6 @@ export class ServicesPageComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
+  public ngOnInit() {
   }
-
 }

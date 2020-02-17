@@ -1,0 +1,38 @@
+.header {
+  padding: 40px 30px 30px 30px;
+  color: #ffffff;
+}
+
+h2 {
+  font-size: 24px;
+  line-height: 36px;
+  font-weight: 300;
+}
+
+p {
+  margin-top: 30px;
+}
+
+@media (min-width: 600px) {
+  .headline {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 20px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .header {
+    display: grid;
+    grid-template-columns: auto 1100px auto;
+  }
+
+  .headline {
+    grid-column-start: 2;
+  }
+
+  p {
+    grid-column-start: 2;
+  }
+}
