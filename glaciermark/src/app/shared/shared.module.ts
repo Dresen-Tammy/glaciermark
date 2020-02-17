@@ -4,8 +4,6 @@ import { CommonModule } from '@angular/common';
 import { SectionHeaderComponent } from './section-header/section-header.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 
-
-
 @NgModule({
   declarations: [
     SectionHeaderComponent,

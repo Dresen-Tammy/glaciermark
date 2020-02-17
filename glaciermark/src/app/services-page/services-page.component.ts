@@ -25,5 +25,4 @@ export class ServicesPageComponent implements OnInit {
 
   public ngOnInit() {
   }
-
 }
