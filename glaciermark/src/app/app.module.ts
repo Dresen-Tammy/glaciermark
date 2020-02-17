@@ -29,14 +29,14 @@ import { ColorTilesComponent } from './home/color-tiles/color-tiles.component';
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AboutModule,
+    ServicesPageModule,
+    PortfolioModule,
+    ContactModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ContactModule,
     HttpClientModule,
-    PortfolioModule,
     ProjectModule,
     SharedModule,
-    ServicesPageModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

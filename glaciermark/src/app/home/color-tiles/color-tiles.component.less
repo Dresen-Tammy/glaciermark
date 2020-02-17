@@ -24,6 +24,9 @@ button {
   padding-left: 15px;
   height: 36px;
   justify-content: center;
+  &:hover {
+    background-color: #ffffff;
+  }
 }
 
 i {
@@ -33,13 +36,37 @@ i {
 
 .purple-tile {
   background-color: #6b6284;
+  button {
+    &:hover {
+      color: #6b6284;
+    }
+    &:active {
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+  }
 }
 
 .yellow-tile {
   background-color: #c38838;
+  button {
+    &:hover {
+      color:  #c38838;
+    }
+    &:active {
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+  }
 }
 .green-tile {
   background-color: #7a8b70;
+  button {
+    :hover {
+      color: #7a8b70;
+    }
+  }
+  &:active {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
 }
 
 @media (min-width: 800px) {
