@@ -12,9 +12,9 @@ export class ServicesHeaderComponent implements OnInit {
   @Input() public anchor: string;
   @Input() public background: string;
   @Input() public imgWidth: string;
-  constructor() { }
+
+  public constructor() { }
 
   ngOnInit(): void {
   }
-
 }
