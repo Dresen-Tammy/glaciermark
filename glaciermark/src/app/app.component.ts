@@ -8,6 +8,28 @@ import { SeoConfig } from './services/seo/seo.interface';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent {
+  public navigation: {} = [
+    {
+      title: 'HOME',
+      link: 'home'
+    },
+    {
+      title: 'ABOUT',
+      link: 'about'
+    },
+    {
+      title: 'SERVICES',
+      link: 'services'
+    },
+    {
+      title: 'CONTACT',
+      link: 'contact'
+    },
+    {
+      title: 'PORTFOLIO',
+      link: 'portfolio'
+    }
+  ];
 
   public constructor(
     private seo: SeoService
