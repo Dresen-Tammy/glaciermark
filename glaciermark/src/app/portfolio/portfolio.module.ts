@@ -1,3 +1,4 @@
+import { DataService } from './../services/data/data.service';
 import { SharedModule } from './../shared/shared.module';
 import { PortfolioComponent } from './portfolio.component';
 import { NgModule } from '@angular/core';
@@ -16,6 +17,7 @@ const portfolioRoute: Routes = [
     SharedModule,
     RouterModule.forChild(portfolioRoute)
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [DataService]
 })
 export class PortfolioModule { }
