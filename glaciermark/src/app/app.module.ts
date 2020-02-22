@@ -37,6 +37,7 @@ import { ColorTilesComponent } from './home/color-tiles/color-tiles.component';
     HttpClientModule,
     ProjectModule,
     SharedModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -20,6 +20,5 @@ export class ContactComponent implements OnInit {
     });
   }
 
-  public ngOnInit() {
-  }
+  public ngOnInit(): void {  }
 }
