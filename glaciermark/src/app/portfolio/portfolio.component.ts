@@ -35,11 +35,4 @@ export class PortfolioComponent implements OnInit {
     });
   }
 
-  public loadProjects() {
-    return this.dataService.getProject().subscribe((data: {}) => {
-      this.projects = data;
-      console.log(this.projects);
-    });
-  }
-
 }
