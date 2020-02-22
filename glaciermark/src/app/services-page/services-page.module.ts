@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -17,7 +18,8 @@ const servicesPageRoute: Routes = [
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(servicesPageRoute)
+    RouterModule.forChild(servicesPageRoute),
+    SharedModule
   ]
 })
 export class ServicesPageModule { }

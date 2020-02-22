@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { animate, state, style, transition, trigger } from '@angular/animations';
@@ -37,12 +37,12 @@ export class NavbarComponent implements OnInit {
       link: 'services'
     },
     {
-      title: 'CONTACT',
-      link: 'contact'
-    },
-    {
       title: 'PORTFOLIO',
       link: 'portfolio'
+    },
+    {
+      title: 'CONTACT',
+      link: 'contact'
     }
   ];
 

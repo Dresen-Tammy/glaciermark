@@ -2,6 +2,7 @@ import { DataService } from './../services/data/data.service';
 import { Component, OnInit } from '@angular/core';
 import { SeoService } from '../services/seo/seo.service';
 
+
 @Component({
   selector: 'app-portfolio',
   templateUrl: './portfolio.component.html',
@@ -24,6 +25,14 @@ export class PortfolioComponent implements OnInit {
   }
 
   public ngOnInit() {
+
+  }
+
+  public loadProjects() {
+    return this.dataService.getProject().subscribe((data: {}) => {
+      this.projects = data;
+      console.log(this.projects);
+    });
   }
 
   public loadProjects() {

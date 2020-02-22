@@ -1,3 +1,4 @@
+import { Message } from './../../models/message';
 import { ServerProject } from '../../models/server-project';
 import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -66,6 +67,14 @@ export class DataService implements OnDestroy {
     );
     this.allProjects$.subscribe();
     return projects;
+  }
+
+  public createMessage(value: Message): Observable<Message> {
+    console.log('in createMessage');
+    return this.http.post<Message>(this.baseurl + '/contact', value, this.httpOptions)
+    .pipe(
+      catchError(this.errorHandl)
+    );
   }
 
   private errorHandl(error): Observable<any> {
