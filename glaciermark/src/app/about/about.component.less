@@ -21,7 +21,7 @@
   min-width: 100%;
 }
 
-h2 {
+.hero-h2 {
   grid-column-start: 1;
   grid-row-start: 3;
   text-align: center;
@@ -33,14 +33,64 @@ h2 {
   text-shadow: 0px 0px 6px rgba(2, 30, 46, 0.7);
 }
 
-.space {
-  height: 1000px;
+.info {
+  margin: 20px;
+  h3 {
+    font-size: 30px;
+    padding-bottom: 30px;
+    line-height: 1.2em;
+  }
+  div {
+    font-size: 14px;
+    line-height: 1.7em;
+  }
+  p {
+    padding: 10px 0;
+  }
+}
+
+.team {
+  margin: 20px 20px 0 20px;
+
+}
+
+.team-h2 {
+  text-align: center;
+  font-size: 40px;
+  margin: 50px auto;
+  color: #11457a;
+}
+
+
+.team-text {
+  margin-bottom: 12px;
+}
+
+.teams-section {
+  padding-top: 1px;
+  padding-bottom: 50px;
+  background-image: url(../../assets/images/aboutUs_384w.jpg);
+  background-repeat: norepeat;
+  background-size: cover;
 }
 
 @media (min-width: 800px) {
   .hero-section {
     grid-template-rows: 90px auto auto;
   }
+  .info-section {
+    margin-bottom: 40px;
+  }
+  .info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 80px 60px 30px 60px;
+    gap: 50px;
+    h3 {
+      margin-top: 5px;
+    }
+  }
+
 }
 
 @media (min-width: 900px) {
@@ -48,8 +98,53 @@ h2 {
     height: 450px;
     overflow: hidden;
   }
-
+  .info-section {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+  .info {
+    grid-template-columns: 390px 390px;
+    margin: 80px auto 0 auto;
+    h3 {
+      font-size: 40px;
+    }
+  }
   .hero-img {
     height: auto;
+  }
+
+}
+
+@media (min-width: 1150px) {
+  .team-members {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 550px 550px 1fr;
+    column-gap: 3px;
+    row-gap: 0;
+    align-items: stretch;
+    background: #fff;
+    margin: 50px 0 0 0;
+    background: linear-gradient(180deg, #7db3ce, #7db3ce);
+    background-position: 50%;
+    background-repeat: repeat-y;
+    background-size: 3px auto;
+  }
+
+  app-team-member:nth-child(2n) {
+    padding-top: 100px;
+    margin-left: 50px;
+    margin-right: 20px;
+    grid-column-start: 3;
+  }
+
+  app-team-member:nth-child(2n -1) {
+    margin-right: 50px;
+    margin-left: 20px;
+    grid-column-start: 2;
+  }
+  .chris, .aaron {
+    margin-top: 60px;
   }
 }

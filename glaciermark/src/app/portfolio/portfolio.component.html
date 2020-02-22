@@ -16,4 +16,9 @@
     <p>There Are Projects</p>
     <p *ngFor="let project of vm.projects">Project: {{project.customerName}}</p>
   </section>
+  <app-call-to-action
+    buttonUrl="/contact"
+    className="penguin"
+  >Like what you see? Contact us today to receive a 10% discount on your first order.
+  </app-call-to-action>
 </div>

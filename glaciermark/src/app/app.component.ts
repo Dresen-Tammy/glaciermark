@@ -24,12 +24,12 @@ export class AppComponent implements OnInit {
       link: 'services'
     },
     {
-      title: 'CONTACT',
-      link: 'contact'
-    },
-    {
       title: 'PORTFOLIO',
       link: 'portfolio'
+    },
+    {
+      title: 'CONTACT',
+      link: 'contact'
     }
   ];
 
