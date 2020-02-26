@@ -16,6 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InformationComponent } from './home/information/information.component';
 import { ColorTilesComponent } from './home/color-tiles/color-tiles.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { ColorTilesComponent } from './home/color-tiles/color-tiles.component';
     HttpClientModule,
     ProjectModule,
     SharedModule,
+    MatSidenavModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

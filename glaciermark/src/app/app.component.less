@@ -1,0 +1,199 @@
+// hide full sized nav
+.header {
+  display: none;
+}
+
+// mobile top nav bar
+.mobile-nav {
+  background-color: #ffffff;
+  display: grid;
+  grid-template-columns: 15px 40px 100px auto 45px;
+  height: 50px;
+  left: 0px;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: 999;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  line-height: inherit;
+  border-top: 5px solid #7db2ce;
+  .home-link {
+    width: 100px;
+    margin-top: 4px;
+    grid-column-start: 3;
+  }
+}
+// mobile nav glacier logo
+.logo {
+  margin-top: 5px;
+  width: 80px;
+}
+// hamburger
+.menu-icon {
+  grid-column-start: 2;
+  margin: auto auto;
+  position: relative;
+  width: 45px;
+  height: 45px;
+  display: grid;
+  justify-content: left;
+  align-content: center;
+  cursor: pointer;
+  // closed hamburger
+  .close {
+    background-color: #000000;
+    display: block;
+    height: 2px;
+    position: absolute;
+    width: 24px;
+    overflow: visible;
+    transition: .15s;
+    top: 20px;
+    // closed top bar of hamburger
+    &::before {
+      background-color: #000000;
+      content: '';
+      height: 2px;
+      position: absolute;
+      transform: translate(0, -8px);
+      width: 18px;
+      animation: beforeRev .5s;
+    }
+    // closed bottom bar of hamburger
+    &::after {
+      background-color:#000000;
+      content: '';
+      height: 2px;
+      position: absolute;
+      transform: translate(0, 8px);
+      width: 12px;
+      animation: afterRev .5s;
+    }
+  }
+}
+
+// .menu-icon2 {
+//   position: absolute;
+//   background-color: #7db2ce;
+//   right: -50px;
+//   visibility: visible;
+// }
+
+.mobile-nav .menu-icon .open::before {
+  width: 24px;
+  transform: translate(0,0) rotate(0.25turn);
+  animation: before .5s;
+}
+
+.mobile-nav .menu-icon .open::after {
+  transform: translate(0,0);
+  width: 24px;
+  animation: after .5s;
+}
+
+.mobile-nav .menu-icon .open {
+  transform: rotate(-.125turn);
+  transition: .14s .35s;
+}
+
+::ng-deep .mat-drawer-backdrop.mat-drawer-shown {
+  background-color: rgba(125, 178, 206, .5) !important;
+}
+
+// @keyframes during {
+//   0% {transform: rotate(0);}
+//   33% {transform: rotate(0);}
+//   67% {transform: rotate(0);}
+//   100% {transform: rotate(-.125turn);}
+// }
+
+@keyframes before {
+  0% {width: 18px; transform: translate(0, -8px) rotate(0);  }
+  33% {width: 24px; transform: translate(0, -8px);}
+  67% {transform: translate(0, 0) rotate(0); width: 24px;}
+  100% {transform: rotate(0.25turn); width: 24px;}
+}
+@keyframes beforeRev {
+  0% {transform: rotate(0.25turn); width: 24px;}
+  33% {transform: translate(0, 0) rotate(0); width: 24px;}
+  67% {width: 24px; transform: translate(0, -8px);}
+  100% {width: 18px; transform: translate(0 -8px) rotate(0);  }
+}
+@keyframes after {
+  0% {width: 12px; transform: translate(0, 8px) rotate(0);  }
+  33% {width: 24px; transform: translate(0, 8px);}
+  67% {transform: translate(0, 0); width: 24px;}
+  100% {transform: translate(0, 0); width: 24px;}
+}
+@keyframes afterRev {
+  0% {transform: translate(0, 0); width: 24px;}
+  33% {transform: translate(0, 0); width: 24px;}
+  67% {width: 24px; transform: translate(0, 8px);}
+  100% {width: 12px; transform: translate(0, 8px) rotate(0);  }
+}
+
+@keyframes spanRev {
+  0% {transform: rotate(0.125turn);}
+  33% {transform: rotate(0);}
+  67% {transform: rotate(0;)}
+  100% {transform: rotate(0);}
+}
+
+.glacier .mat-nav-list.mat-nav-list.mat-list-base a {
+  line-height: 2em;
+  padding: 0;
+  border-top: 1px solid rgba(100, 100, 100 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  display: block;
+  margin: 0;
+  padding: 0 15px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #ffffff;
+  background-color: #222533;
+  text-decoration: none;
+  width: 100%;
+  font-family: "Open Sans", sans-serif;
+  &:hover {
+
+    background-color: #7db2ce;
+    color: #222533;
+  }
+  &:active {
+    color: #ffffff;
+  }
+}
+
+
+
+mat-sidenav-content.sidenav-content.mat-drawer-content.mat-sidenav-content.glacier-sidenav {
+  width:100%;
+  overflow-x: hidden;
+}
+
+.glacier.mat-drawer-container {
+  background: #ffffff;
+}
+
+
+// sidenav background
+.glacier .mat-drawer {
+  background-color: transparent;
+  box-shadow: none;
+  left: 0;
+  top: 40px;
+  //bottom: unset;
+  position: fixed;
+  width: 250px;
+  height: auto;
+  overflow-y: visible;
+}
+
+@media (min-width: 800px) {
+    .header {
+        display: initial;
+    }
+    .mobile-nav{
+        display: none;
+    }
+}
