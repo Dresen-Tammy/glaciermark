@@ -1,11 +1,15 @@
 <app-navbar class="header"></app-navbar>
 <div class="mobile-nav" id="mobile-navbar">
   <div
-    class="menu-icon"
+    class="menu-icon close"
+    [class.open]="opened"
     (click)="sidenav.toggle(); toggleOpen()"
-    [@menuIconAnimation]="{value: openValue}"
+    [@menuAnimation]="openValue"
+
     >
-    <span [class.open]="opened" class="close"></span>
+    <span  class="icon1" ></span>
+    <span class="icon2" ></span>
+    <span class="icon3" ></span>
   </div>
   <a routerLink="/home" class="home-link">
     <img
