@@ -113,7 +113,39 @@
   .hero-img {
     height: auto;
   }
+}
 
+@media (min-width: 1150px) {
+  .team-members {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 550px 550px 1fr;
+    column-gap: 3px;
+    row-gap: 0;
+    align-items: stretch;
+    background: #fff;
+    margin: 50px 0 0 0;
+    background: linear-gradient(180deg, #7db3ce, #7db3ce);
+    background-position: 50%;
+    background-repeat: repeat-y;
+    background-size: 3px auto;
+  }
+
+  app-team-member:nth-child(2n) {
+    padding-top: 100px;
+    margin-left: 50px;
+    margin-right: 20px;
+    grid-column-start: 3;
+  }
+
+  app-team-member:nth-child(2n -1) {
+    margin-right: 50px;
+    margin-left: 20px;
+    grid-column-start: 2;
+  }
+  .chris, .aaron {
+    margin-top: 60px;
+  }
 }
 
 @media (min-width: 1150px) {
