@@ -1,5 +1,53 @@
 <app-navbar class="header"></app-navbar>
-<main>
-  <router-outlet></router-outlet>
-</main>
+<div class="mobile-nav" id="mobile-navbar">
+  <div
+    class="menu-icon close"
+    [class.open]="opened"
+    (click)="sidenav.toggle(); toggleOpen()"
+    [@menuAnimation]="openValue"
+
+    >
+    <span  class="icon1" ></span>
+    <span class="icon2" ></span>
+    <span class="icon3" ></span>
+  </div>
+  <a routerLink="/home" class="home-link">
+    <img
+      class="logo"
+      src="../../../assets/images/glacierLogo2.png"
+      alt="glacierLogo"
+      />
+  </a>
+</div>
+<mat-sidenav-container
+  class="glacier side-drawer"
+  (backdropClick)=toggleClose()
+  >
+  <mat-sidenav
+    #sidenav
+    mode="over"
+    position="start"
+    class="sidenav">
+    <mat-nav-list class="glacier-list" disableRipple>
+      <a mat-list-item
+        *ngFor="let item of navigation"
+        (click)="sidenav.close()"
+        (mousedown)="toggleOpen()"
+        routerLinkActive
+        #routerLinkActiveInstance="routerLinkActive"
+        [attr.tabindex]="routerLinkActiveInstance.isActive ? 0 : -1"
+        [class.list-item-active]="routerLinkActiveInstance.isActive"
+        [routerLink]="[item.link]"
+        class="list-item"
+      >{{item.title}}</a>
+    </mat-nav-list>
+  </mat-sidenav>
+    <mat-sidenav-content class="sidenav-content glacier-sidenav">
+
+
+      <main>
+        <router-outlet></router-outlet>
+      </main>
+    </mat-sidenav-content>
+</mat-sidenav-container>
 <app-footer [navigation]="navigation"></app-footer>

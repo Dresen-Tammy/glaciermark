@@ -1,15 +1,19 @@
+import { menuAnimation } from './animations';
 import { DataService } from './services/data/data.service';
 import { Subscription } from 'rxjs';
 import { SeoService } from './services/seo/seo.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SeoConfig } from './services/seo/seo.interface';
+import { trigger, state, style, animate, transition, query, group, keyframes } from '@angular/animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.less']
-})
-export class AppComponent implements OnInit {
+  styleUrls: ['./app.component.less'],
+  animations: [menuAnimation]
+  })
+
+export class AppComponent implements OnInit, OnDestroy {
   public navigation: {} = [
     {
       title: 'HOME',
@@ -32,7 +36,8 @@ export class AppComponent implements OnInit {
       link: 'contact'
     }
   ];
-
+  public opened: boolean = false;
+  public openValue: string = 'close';
   private subscriptions: Subscription[];
 
   public constructor(
@@ -71,5 +76,29 @@ export class AppComponent implements OnInit {
       data.initialize().subscribe(() => {
       });
     }
+
     public ngOnInit(): void {}
+
+    public ngOnDestroy(): void {
+
+    }
+
+    public toggleOpen(): void {
+      console.log('toggleOpen triggered');
+      if (this.opened) {
+        this.opened = false;
+        this.openValue = 'close';
+      } else {
+        this.opened = true;
+        this.openValue = 'open';
+      }
+    }
+
+      public toggleClose(): void {
+        console.log('toggleClose triggered');
+        if (this.opened) {
+          this.opened = false;
+          this.openValue = 'close';
+        }
+      }
 }
