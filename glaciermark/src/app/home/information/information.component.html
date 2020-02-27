@@ -1,0 +1,16 @@
+<section
+  [@riseAnimation]="{value:riseValue, params:{delay: delay}}"
+  >
+  <header>
+    <img
+    [src]="'../../../assets/images/homeIcons/' + src + '.png'"
+    [alt]="alt"
+    />
+    <h3>{{title}}</h3>
+  </header>
+  <p class="text">{{text}}</p>
+  <button [routerLink]="buttonUrl">
+    <p>READ MORE</p>
+    <i class="material-icons">keyboard_arrow_right</i>
+  </button>
+</section>

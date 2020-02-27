@@ -28,6 +28,33 @@
   .contact-section {
     background-image: url(../../assets/images/penguinCrowd_1300w.jpg);
   }
+  .information-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 10px 30px;
+  }
+  .color-section {
+    display: flex;
+    flex-flow: row;
+  }
+  app-color-tile {
+    flex: 1;
+    width: 100%;
+  }
+}
+
+@media (min-width: 1020px) {
+  .contact-section {
+    background-image: url(../../assets/images/penguinCrowd_1500w.jpg);
+  }
+
+  app-contact-form {
+    margin: 0 auto;
+  }
+  .information-grid {
+    max-width: 930px;
+    margin: 10px auto;
+  }
 }
 
 @media (min-width: 1020px) {
@@ -39,7 +66,6 @@
     margin: 0 auto;
   }
 }
-
 
 @media (min-width: 1300px) {
   .contact-section {

@@ -13,6 +13,9 @@ import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { InformationComponent } from './home/information/information.component';
+import { ColorTilesComponent } from './home/color-tiles/color-tiles.component';
 
 @NgModule({
   declarations: [
@@ -20,15 +23,19 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     NavbarComponent,
     FooterComponent,
+    InformationComponent,
+    ColorTilesComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AboutModule,
     ServicesPageModule,
-    ContactModule,
     PortfolioModule,
-    ProjectModule,
+    ContactModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    ProjectModule,
     SharedModule,
     HttpClientModule
   ],
