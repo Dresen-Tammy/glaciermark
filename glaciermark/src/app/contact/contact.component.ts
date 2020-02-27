@@ -19,7 +19,5 @@ export class ContactComponent implements OnInit {
       url: 'https://glaciermark.com/contact'
     });
   }
-
   public ngOnInit(): void {  }
-
 }
