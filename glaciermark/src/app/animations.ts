@@ -23,42 +23,42 @@ export const menuAnimation =
     transition('open => close', [
       group([
       query('.icon1', animate('.5s', keyframes([
-        style({ width: '24px', transform: 'translate(0px, 20px) rotate(0.125turn)', offset: 0}),
-        style({ width: '24px', transform: 'translate(0px, 20px) rotate(0turn)', offset: .33}),
-        style({ width: '24px', transform: 'translate(0px, 12px) rotate(0turn)', offset: .67}),
-        style({ width: '18px', transform: 'translate(0px, 12px) rotate(0turn)', offset: 1})
+        style({ width: '24px', transform: 'translate(-18px, 0px) rotate(0.125turn)', offset: 0}),
+        style({ width: '24px', transform: 'translate(-18px, 0px) rotate(0turn)', offset: .33}),
+        style({ width: '24px', transform: 'translate(-18px, -8px) rotate(0turn)', offset: .67}),
+        style({ width: '18px', transform: 'translate(-18px, -8px) rotate(0turn)', offset: 1})
       ]))),
       query('.icon2', animate('.5s', keyframes([
-        style({transform: 'translate(0px, 20px) rotate(-.125turn)', offset: 0}, ),
-        style({transform: 'translate(0px, 20px) rotate(0turn)', offset: .33}, ),
-        style({transform: 'translate(0px, 20px) rotate(0turn)', offset: 1}, )
+        style({transform: 'translate(-3px, 0px) rotate(-.125turn)', offset: 0}, ),
+        style({transform: 'translate(-3px, 0px) rotate(0turn)', offset: .33}, ),
+        style({transform: 'translate(-3px, 0px) rotate(0turn)', offset: 1}, )
       ]))),
       query('.icon3', animate('.5s', keyframes([
-        style({ width: '24px', transform: 'translate(0px, 20px) rotate(-.125turn)', offset: 0}),
-        style({ width: '24px', transform: 'translate(0px, 20px) rotate(0turn)', offset: .33}),
-        style({ width: '24px', transform: 'translate(0px, 28px) rotate(0turn)', offset: .67}),
-        style({ width: '12px', transform: 'translate(0px, 28px) rotate(0turn)', offset: 1})
+        style({ width: '24px', transform: 'translate(-18px, 0px) rotate(-.125turn)', offset: 0}),
+        style({ width: '24px', transform: 'translate(-18px, 0px) rotate(0turn)', offset: .33}),
+        style({ width: '24px', transform: 'translate(-18px, 8px) rotate(0turn)', offset: .67}),
+        style({ width: '12px', transform: 'translate(-18px, 8px) rotate(0turn)', offset: 1})
       ]))),
     ]),
   ]),
     transition('close => open', [
       group([
         query('.icon1', animate('.5s', keyframes([
-          style({ width: '18px', transform: 'translate(0px, 12px) rotate(0turn)', offset: 0}),
-          style({ width: '24px', transform: 'translate(0px, 12px) rotate(0turn)', offset: .33}),
-          style({ width: '24px', transform: 'translate(0px, 20px) rotate(0turn)', offset: .67}),
-          style({ width: '24px', transform: 'translate(0px, 20px) rotate(0.125turn)', offset: 1})
+          style({ width: '18px', transform: 'translate(-18px, -8px) rotate(0turn)', offset: 0}),
+          style({ width: '24px', transform: 'translate(-18px, -8px) rotate(0turn)', offset: .33}),
+          style({ width: '24px', transform: 'translate(-18px, 0px) rotate(0turn)', offset: .67}),
+          style({ width: '24px', transform: 'translate(-18px, 0px) rotate(0.125turn)', offset: 1})
         ]))),
         query('.icon2', animate('.5s', keyframes([
-          style({transform: 'translate(0px, 20px) rotate(0turn)', offset: 0}, ),
-          style({transform: 'translate(0px, 20px) rotate(0turn)', offset: .67}, ),
-          style({transform: 'translate(0px, 20px) rotate(-.125turn)', offset: 1}, )
+          style({transform: 'translate(-3px, 0px) rotate(0turn)', offset: 0}, ),
+          style({transform: 'translate(-3px, 0px) rotate(0turn)', offset: .67}, ),
+          style({transform: 'translate(-3px, 0px) rotate(-.125turn)', offset: 1}, )
         ]))),
         query('.icon3', animate('.5s', keyframes([
-          style({ width: '12px', transform: 'translate(0px, 28px) rotate(0turn)', offset: 0}),
-          style({ width: '24px', transform: 'translate(0px, 28px) rotate(0turn)', offset: .33}),
-          style({ width: '24px', transform: 'translate(0px, 20px) rotate(0turn)', offset: .67}),
-          style({ width: '24px', transform: 'translate(0px, 20px) rotate(-.125turn)', offset: 1})
+          style({ width: '12px', transform: 'translate(-18px, 8px) rotate(0turn)', offset: 0}),
+          style({ width: '24px', transform: 'translate(-18px, 8px) rotate(0turn)', offset: .33}),
+          style({ width: '24px', transform: 'translate(-18px, 0px) rotate(0turn)', offset: .67}),
+          style({ width: '24px', transform: 'translate(-18px, 0px) rotate(-.125turn)', offset: 1})
         ]))),
       ])
   ])
