@@ -4,18 +4,24 @@
       class="portfolio-header"
       src="../../assets/images/about/creativity-precision.png"
       alt="creativity and precision"
-      header="creativity & precision"
+      h1Header="creativity & precision"
       headerColor="dark-blue"
       paragraphColor="paragraph-dark-blue"
       >Your brand speaks volumes in the first few seconds a customer sees it. This can be negative or positive. We have the creativity, precision, and expertise to help you make a positive, lasting impression. Please look at some of the work from our portfolio, and don't hesitate to contact us with any&nbsp;questions.
     </app-section-header>
   </section>
   <section
-    *ngIf="{projects: dataService.allProjects$ | async } as vm"
-    class="portfolio"
+    *ngIf="{projects: dataService.portfolio$ | async } as vm"
+    class="gallery-section"
     >
-    <p>There Are Projects</p>
-    <p *ngFor="let project of vm.projects">Project: {{project.customerName}}</p>
+
+    <div class="gallery" *ngIf="vm.projects.length > 1">
+      <app-gallery-item
+      *ngFor="let project of vm.projects"
+      class="container {{project.projectClass}}"
+      [project]="project"
+      ></app-gallery-item>
+    </div>
   </section>
   <app-call-to-action
     buttonUrl="/contact"

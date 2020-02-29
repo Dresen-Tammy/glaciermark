@@ -11,6 +11,7 @@ import { SeoService } from '../services/seo/seo.service';
 export class PortfolioComponent implements OnInit {
 
   public projects: any = [];
+  public gallery: string = 'placeholder';
 
   public constructor(
     private seo: SeoService,
@@ -25,7 +26,6 @@ export class PortfolioComponent implements OnInit {
   }
 
   public ngOnInit() {
-
   }
 
   public loadProjects() {

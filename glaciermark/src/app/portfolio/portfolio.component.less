@@ -6,8 +6,53 @@
   padding-top: 50px;
 }
 
+.container {
+  display: grid;
+  position: relative;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 500px) {
+  .gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
 @media (min-width: 800px) {
   .portfolio-header {
     padding-top: 100px;
+  }
+  .gallery-section {
+    padding: 30px;
+  }
+  .gallery {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (min-width: 1100px) {
+  .gallery {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  .quad-project {
+    grid-column-end: span 2;
+    grid-row-end: span 2;
+  }
+  .wide-project {
+    grid-column-end: span 2;
+  }
+  .tall-project {
+    grid-row-end: span 2;
+  }
+}
+
+@media (min-width: 1200px) {
+  .gallery-section {
+    display: grid;
+    grid-template-columns: 1fr 1200px 1fr;
+  }
+  .gallery {
+    padding: 30px 0;
+    grid-column-start: 2;
   }
 }

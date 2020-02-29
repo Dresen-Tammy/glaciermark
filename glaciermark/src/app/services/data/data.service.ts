@@ -15,8 +15,10 @@ export interface Msg {
 export class DataService implements OnDestroy {
 
   public readonly allProjects$: Observable<Array<Project>>;
+  public readonly portfolio$: Observable<Array<Project>>;
 
-  private _projectBS: BehaviorSubject<Array<Project>>;
+  private _projectsBS: BehaviorSubject<Array<Project>>;
+  private _portfolioBS: BehaviorSubject<Array<Project>>;
   private _defaultProject: Project;
   private _subscriptions: Subscription[] = [];
 
@@ -30,8 +32,16 @@ export class DataService implements OnDestroy {
 
   constructor(private http: HttpClient) {
     this._defaultProject = new Project();
-    this._projectBS = new BehaviorSubject<Array<Project>>([this._defaultProject]);
-    this.allProjects$ = this._projectBS.asObservable();
+    this._defaultProject.projectId = '-1';
+    this._defaultProject.projectClass = 'default';
+    this._defaultProject.projectType = 'default';
+    this._defaultProject.projectText = 'loading';
+    this._defaultProject.customerName = 'Please Wait';
+    this._defaultProject.src = 'default-project';
+    this._projectsBS = new BehaviorSubject<Array<Project>>([this._defaultProject]);
+    this._portfolioBS = new BehaviorSubject<Array<Project>>([this._defaultProject]);
+    this.allProjects$ = this._projectsBS.asObservable();
+    this.portfolio$ = this._portfolioBS.asObservable();
   }
   public initialize(): Observable<object> {
     return this.getProjects().pipe(
@@ -56,16 +66,20 @@ export class DataService implements OnDestroy {
   }
 
   public getProjects(): Observable<Project[]> {
-    const projectsArray: Array<Project> = [];
     const projects: Observable<Array<Project>> = this.http.get<Array<Project>>(this.baseurl + '/projects').pipe(
       retry(1),
       catchError(this.errorHandl),
       tap((project: any) => {
         const projectsData: Project[] = [];
+        const projectsArray: Project[] = [];
         project.map((item: ServerProject) => {
           projectsData.push(item.data);
+          if (item.data.portfolio) {
+            projectsArray.push(item.data);
+          }
         });
-        this._projectBS.next(projectsData);
+        this._projectsBS.next(projectsData);
+        this._portfolioBS.next(projectsArray);
       })
     );
     this.allProjects$.subscribe();

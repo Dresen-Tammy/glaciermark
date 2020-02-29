@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class SectionHeaderComponent implements OnInit {
   @Input() public src: string;
   @Input() public header: string;
+  @Input() public h1Header: string;
   @Input() public headerColor: string;
   @Input() public paragraph: string;
   @Input() public paragraphColor: string;

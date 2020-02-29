@@ -1,0 +1,21 @@
+<div class="container">
+  <img
+    [src]="'../../../assets/images/projects/'+project.src+''+imageType+'.jpg'"
+    [alt]="project.projectText" />
+  <!-- <a
+    *ngIf="project.customerName === 'Logos'"
+    [routerLink]="logos"
+    class="overlay"
+    >
+    <h2>{{project.customerName}}</h2>
+    <h3>{{project.projectText}}</h3>
+  </a>  -->
+  <a
+  *ngIf="project.customerName !== 'Logos'"
+    [routerLink]="project.customerName + '-' + project.projectId"
+    class="overlay"
+  >
+    <h2>{{project.customerName}}</h2>
+    <h3>{{project.projectText}}</h3>
+</a>
+</div>

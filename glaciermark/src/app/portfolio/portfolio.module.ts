@@ -4,6 +4,7 @@ import { PortfolioComponent } from './portfolio.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
+import { GalleryItemComponent } from './gallery-item/gallery-item.component';
 
 const portfolioRoute: Routes = [
   { path: 'portfolio', component: PortfolioComponent }
@@ -11,7 +12,7 @@ const portfolioRoute: Routes = [
 
 
 @NgModule({
-  declarations: [PortfolioComponent],
+  declarations: [PortfolioComponent, GalleryItemComponent],
   imports: [
     CommonModule,
     SharedModule,

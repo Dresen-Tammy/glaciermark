@@ -1,6 +1,29 @@
+.hero-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 50px auto auto;
+  justify-content: center;
+}
+
+.hero-section-header {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+.hero-img {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 5;
+  height: 430px;
+  min-width: 100%;
+}
+
 .services {
   width: 100%;
-  padding: 140px 30px 30px;
+  padding: 30px 30px;
 }
 
 .tile-section {
@@ -14,11 +37,25 @@
     gap: 20px;
     padding-top: 30px;
   }
+
+  .hero-section {
+    grid-template-rows: 90px auto auto;
+  }
 }
 
 @media (min-width: 800px) {
   .tile-section {
     gap: 30px;
+  }
+}
+
+@media (min-width: 900px) {
+  .hero-section {
+    height: 450px;
+    overflow: hidden;
+  }
+  .hero-img {
+    height: auto;
   }
 }
 

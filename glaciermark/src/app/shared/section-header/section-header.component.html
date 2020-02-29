@@ -6,8 +6,13 @@
     class="icon-centered"
     [alt]="alt"
   />
+  <h1
+    *ngIf="h1Header"
+    [ngClass]="headerColor">{{ h1Header }}
+  </h1>
   <h2 *ngIf="header"
-    [ngClass]="headerColor">{{ header }}</h2>
+    [ngClass]="headerColor">{{ header }}
+  </h2>
   <p [ngClass]="paragraphColor">
     <ng-content></ng-content>
   </p>

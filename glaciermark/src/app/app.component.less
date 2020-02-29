@@ -15,7 +15,7 @@
   top: 0px;
   width: 100%;
   z-index: 999;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.1);
   line-height: inherit;
   border-top: 5px solid #7db2ce;
   .home-link {
@@ -112,8 +112,25 @@ button.close {
   width: 100%;
   font-family: "Open Sans", sans-serif;
   &.list-item-active {
-    border-right: 6px solid #7db2ce;
+    border-left: 6px solid #7db2ce;
     background-color: #191b25;
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+    padding-left: 9px;
+    position: relative !important;
+    box-shadow: none;
+    margin-top: -1px;
+    &::after {
+      content: " ";
+      width: 0;
+      height: 0;
+      border-bottom: 10px solid transparent;
+      border-top: 10px solid transparent;
+      border-left: 13px solid #7db2ce;
+      position: absolute;
+      left: -3px;
+      top: 13px;
+      // transition: all 0.3s linear 0s;
+    }
   }
   &:hover {
     background-color: rgb(161, 198, 219);
@@ -123,9 +140,6 @@ button.close {
     color: #ffffff;
   }
 }
-
-
-
 
 mat-sidenav-content.sidenav-content.mat-drawer-content.mat-sidenav-content.glacier-sidenav {
   width:100%;
@@ -139,10 +153,11 @@ mat-sidenav-content.sidenav-content.mat-drawer-content.mat-sidenav-content.glaci
 
 // sidenav background
 .glacier .mat-drawer {
-  background-color: transparent;
-  box-shadow: none;
+  background-color: #191b25;
+  box-shadow: 3px 4px 6px rgba(0, 0, 0, 0.3);
   left: 0;
-  top: 40px;
+  top: 0;
+  padding-top: 40px;
   //bottom: unset;
   position: fixed;
   width: 250px;
