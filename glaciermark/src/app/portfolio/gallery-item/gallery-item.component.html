@@ -11,7 +11,6 @@
     <h3>{{project.projectText}}</h3>
   </a>  -->
   <a
-  *ngIf="project.customerName !== 'Logos'"
     [routerLink]="project.customerName + '-' + project.projectId"
     class="overlay"
   >

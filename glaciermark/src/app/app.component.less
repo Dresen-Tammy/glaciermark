@@ -24,11 +24,13 @@
     grid-column-start: 3;
   }
 }
+
 // mobile nav glacier logo
 .logo {
   margin-top: 5px;
   width: 80px;
 }
+
 // hamburger
 button.close {
   grid-column-start: 2;
@@ -36,18 +38,17 @@ button.close {
   position: relative;
   width: 45px;
   height: 45px;
-  //display: grid;
-  //justify-content: left;
-  //align-content: center;
   cursor: pointer;
   background-color: transparent;
   border: none;
-  // closed top bar of hamburger
+
   &:hover {
     .icon1, .icon2, .icon3 {
       background-color: #7db2ce;
     }
   }
+
+  // closed top bar of hamburger
   .icon1 {
     background-color: #000000;
     content: '';
@@ -56,6 +57,7 @@ button.close {
     transform: translate(-18px, -8px);
     width: 18px;
   }
+
   // closed middle bar of hamburger
   .icon2 {
     background-color: #000000;
@@ -67,6 +69,7 @@ button.close {
     overflow: visible;
     content: '';
   }
+
   // closed bottom bar of hamburger
   .icon3 {
     background-color: #000000;
@@ -87,11 +90,13 @@ button.close {
 .mobile-nav .menu-icon.open .icon2 {
   transform: translate(-3px,0px) rotate(-.125turn);
 }
+
 // open bottom bar of hamburger
 .mobile-nav .menu-icon.open .icon3 {
   transform: translate(-18px,0px) rotate(-.125turn);
   width: 24px;
 }
+
 ::ng-deep .mat-drawer-backdrop.mat-drawer-shown {
   background-color: rgba(125, 178, 206, .5) !important;
 }
@@ -111,14 +116,16 @@ button.close {
   text-decoration: none;
   width: 100%;
   font-family: "Open Sans", sans-serif;
+
   &.list-item-active {
-    border-left: 6px solid #7db2ce;
     background-color: #191b25;
     border-top: 1px solid rgba(0, 0, 0, 0.3);
     padding-left: 9px;
     position: relative !important;
     box-shadow: none;
     margin-top: -1px;
+    color: #7db2ce !important;
+
     &::after {
       content: " ";
       width: 0;
@@ -132,14 +139,17 @@ button.close {
       // transition: all 0.3s linear 0s;
     }
   }
+
   &:hover {
     background-color: rgb(161, 198, 219);
     color: #222533;
   }
+
   &:active {
     color: #ffffff;
   }
 }
+
 
 mat-sidenav-content.sidenav-content.mat-drawer-content.mat-sidenav-content.glacier-sidenav {
   width:100%;
@@ -171,6 +181,7 @@ mat-sidenav-content.sidenav-content.mat-drawer-content.mat-sidenav-content.glaci
     .header {
         display: initial;
     }
+
     .mobile-nav{
         display: none;
     }
