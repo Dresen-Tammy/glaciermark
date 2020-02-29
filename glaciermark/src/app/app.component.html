@@ -1,7 +1,10 @@
 <app-navbar class="header"></app-navbar>
 <div class="mobile-nav" id="mobile-navbar">
-  <div
+  <button
     class="menu-icon close"
+    name="Toggle Menu Button"
+    role="button"
+    aria-pressed="false"
     [class.open]="opened"
     (click)="sidenav.toggle(); toggleOpen()"
     [@menuAnimation]="openValue"
@@ -10,7 +13,7 @@
     <span  class="icon1" ></span>
     <span class="icon2" ></span>
     <span class="icon3" ></span>
-  </div>
+  </button>
   <a routerLink="/home" class="home-link">
     <img
       class="logo"

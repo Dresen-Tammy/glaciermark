@@ -1,12 +1,14 @@
 import { Message } from './../../models/message';
 import { ServerProject } from '../../models/server-project';
 import { Injectable, OnDestroy } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable, throwError, BehaviorSubject, Subscription, of } from 'rxjs';
 import { retry, catchError, tap, map } from 'rxjs/operators';
 import { Project } from '../../models/project';
 
-
+export interface Msg {
+  msg: string;
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -70,10 +72,11 @@ export class DataService implements OnDestroy {
     return projects;
   }
 
-  public createMessage(value: Message): Observable<Message> {
+  public createMessage(value: Message): Observable<HttpResponse<Msg>> {
     console.log('in createMessage');
-    return this.http.post<Message>(this.baseurl + '/contact', value, this.httpOptions)
+    return this.http.post<Msg>(this.baseurl + '/contact', value, {observe: 'response'})
     .pipe(
+      retry(1),
       catchError(this.errorHandl)
     );
   }
@@ -83,6 +86,7 @@ export class DataService implements OnDestroy {
     if (error.error instanceof ErrorEvent) {
       errorMessage = error.error.message;
     } else {
+      window.alert('There was an error. Please try again.');
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
     return throwError(errorMessage);

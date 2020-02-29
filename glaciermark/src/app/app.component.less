@@ -6,8 +6,9 @@
 // mobile top nav bar
 .mobile-nav {
   background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.9);
   display: grid;
-  grid-template-columns: 15px 40px 100px auto 45px;
+  grid-template-columns: 15px 50px 100px auto 45px;
   height: 50px;
   left: 0px;
   position: fixed;
@@ -29,23 +30,30 @@
   width: 80px;
 }
 // hamburger
-.close {
+button.close {
   grid-column-start: 2;
   margin: auto auto;
   position: relative;
   width: 45px;
   height: 45px;
-  display: grid;
-  justify-content: left;
-  align-content: center;
+  //display: grid;
+  //justify-content: left;
+  //align-content: center;
   cursor: pointer;
+  background-color: transparent;
+  border: none;
   // closed top bar of hamburger
+  &:hover {
+    .icon1, .icon2, .icon3 {
+      background-color: #7db2ce;
+    }
+  }
   .icon1 {
     background-color: #000000;
     content: '';
     height: 2px;
     position: absolute;
-    transform: translate(0, 12px);
+    transform: translate(-18px, -8px);
     width: 18px;
   }
   // closed middle bar of hamburger
@@ -54,7 +62,7 @@
     display: block;
     height: 2px;
     position: absolute;
-    transform: translate(0, 20px);
+    transform: translate(-3px, 0px);
     width: 24px;
     overflow: visible;
     content: '';
@@ -65,23 +73,23 @@
     content: '';
     height: 2px;
     position: absolute;
-    transform: translate(0, 28px);
+    transform: translate(-18px, 8px);
     width: 12px;
   }
 }
 // open top bar of hamburger
 .mobile-nav .menu-icon.open .icon1 {
-  transform: translate(0,20px) rotate(.125turn);
+  transform: translate(-18px,0px) rotate(.125turn);
   width: 24px;
 }
 
 // open middle bar of hamburger
 .mobile-nav .menu-icon.open .icon2 {
-  transform: translate(0,20px) rotate(-.125turn);
+  transform: translate(-3px,0px) rotate(-.125turn);
 }
 // open bottom bar of hamburger
 .mobile-nav .menu-icon.open .icon3 {
-  transform: translate(0,20px) rotate(-.125turn);
+  transform: translate(-18px,0px) rotate(-.125turn);
   width: 24px;
 }
 ::ng-deep .mat-drawer-backdrop.mat-drawer-shown {
@@ -108,7 +116,7 @@
     background-color: #191b25;
   }
   &:hover {
-    background-color: rgba(161, 198, 219, 1);
+    background-color: rgb(161, 198, 219);
     color: #222533;
   }
   &:active {
@@ -138,6 +146,8 @@ mat-sidenav-content.sidenav-content.mat-drawer-content.mat-sidenav-content.glaci
   //bottom: unset;
   position: fixed;
   width: 250px;
+  max-width: 50%;
+  min-width: 135px;
   height: auto;
   overflow-y: visible;
 }
