@@ -11,7 +11,7 @@
     <h3>{{project.projectText}}</h3>
   </a>  -->
   <a
-    [routerLink]="project.customerName + '-' + project.projectId"
+    [routerLink]="'/project/'+project.customerId + '-' + project.projectId"
     class="overlay"
   >
     <h2>{{project.customerName}}</h2>

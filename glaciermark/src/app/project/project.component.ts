@@ -9,14 +9,14 @@ import { SeoService } from '../services/seo/seo.service';
 })
 export class ProjectComponent implements OnInit {
 
-  public productId = this.route.snapshot.paramMap.get('id');
+  public projectId = this.route.snapshot.paramMap.get('id');
 
   constructor(
     private route: ActivatedRoute,
     private seo: SeoService
     ) {
       this.seo.update({
-      title: 'Glacier Marketing Company - Idaho Falls - Project: ' + this.productId,
+      title: 'Glacier Marketing Company - Idaho Falls - Project: ' + this.projectId,
       // tslint:disable-next-line: max-line-length
       description: 'Check out our portfolio of print design, digital &amp; website design, marketing or branding services. We have the experience to help your business with any marketing needs - all in one team! No need to parsel out your business marketing when you can get the Glacier Marketing services from one company. Call today 208-557-9114.',
       url: 'https://glaciermark.com/portfolio'

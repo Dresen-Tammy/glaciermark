@@ -4,7 +4,6 @@ import { Subscription } from 'rxjs';
 import { SeoService } from './services/seo/seo.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SeoConfig } from './services/seo/seo.interface';
-import { trigger, state, style, animate, transition, query, group, keyframes } from '@angular/animations';
 
 @Component({
   selector: 'app-root',
