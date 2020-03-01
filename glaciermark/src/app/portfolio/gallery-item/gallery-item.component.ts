@@ -27,7 +27,6 @@ export class GalleryItemComponent implements OnInit {
     this.checkWindowWidth();
   }
 
-
   public checkWindowWidth(): void {
     if (this.isBrowser) {
       const windowWidth = window.innerWidth;
