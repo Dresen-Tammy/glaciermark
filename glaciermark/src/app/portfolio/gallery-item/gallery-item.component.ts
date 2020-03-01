@@ -36,6 +36,5 @@ export class GalleryItemComponent implements OnInit {
         this.imageType = '-portfolio';
       }
     }
-    console.log(this.imageType );
   }
 }

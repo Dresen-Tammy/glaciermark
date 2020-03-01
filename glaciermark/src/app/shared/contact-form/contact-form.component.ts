@@ -44,7 +44,6 @@ export class ContactFormComponent extends BaseControlValueAccessor<string> imple
 
   public onSubmit(): void {
     const date: string = new Date().toDateString();
-    console.log('in onSubmit');
     const {name, email, subject, message}: {name: string, email: string, subject: string, message: string} = this.contactForm.value;
     const formRequest: Message = {name, date, email, subject, message};
     this.data.createMessage(formRequest)
