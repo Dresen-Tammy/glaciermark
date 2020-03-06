@@ -97,6 +97,10 @@ export class DataService implements OnDestroy {
     );
   }
 
+  public getDefaultProject(): Project {
+    return this._defaultProject;
+  }
+
   public getRoutes(): void {
     const projects: Array<Project> = this._projectsBS.getValue();
     console.log(projects);
@@ -104,7 +108,7 @@ export class DataService implements OnDestroy {
     if (projects.length > 1) {
       console.log('in if');
       projects.forEach((project) => {
-        routes += `/project/${project.customerId}-${project.projectId}\n`;
+        routes += `/project/${project.customerId}/${project.projectId}\n`;
       });
       console.log(routes);
       const file = new File([routes], '../../../../Routes.txt', {type: 'text/plain;charset=utf-8'});

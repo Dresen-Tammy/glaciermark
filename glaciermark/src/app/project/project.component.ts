@@ -1,3 +1,5 @@
+import { ProjectService } from './../services/project.service';
+import { DataService } from './../services/data/data.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { SeoService } from '../services/seo/seo.service';
@@ -9,12 +11,16 @@ import { SeoService } from '../services/seo/seo.service';
 })
 export class ProjectComponent implements OnInit {
 
-  public projectId = this.route.snapshot.paramMap.get('id');
+  public customerId = this.route.snapshot.paramMap.get('id');
+  public projectId = this.route.snapshot.paramMap.get('id2');
 
   constructor(
     private route: ActivatedRoute,
-    private seo: SeoService
+    private data: DataService,
+    private seo: SeoService,
+    public projectService: ProjectService
     ) {
+
       this.seo.update({
       title: 'Glacier Marketing Company - Idaho Falls - Project: ' + this.projectId,
       // tslint:disable-next-line: max-line-length
@@ -24,6 +30,8 @@ export class ProjectComponent implements OnInit {
   }
 
   public ngOnInit() {
+    this.projectService.setCustomerProjects(this.customerId);
+    this.projectService.setCurrentProject(this.projectId);
   }
 
 }

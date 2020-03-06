@@ -1,4 +1,47 @@
-<p>project works!</p>
+<section class="project-page">
+  <p class="space">space</p>
+  <section class="header-section">
+    <h1>Projects</h1>
+  </section>
+  <section
+    class="project-section"
+    *ngIf="{
+      customerProjects: projectService.currentCustomer$ | async,
+      project: projectService.currentProject$ | async } as vm"
+    >
+    <div class="image-group">
+      <img
+      [src]="'../../../../assets/images/projects/'+vm.project.src+'-portfolio.jpg'"
+        [alt]="vm.project.projectText"
+      />
+      <a [routerLink]=''>
+        <i class="material-icons">keyboard_arrow_left</i>
+        <i class="material-icons">keyboard_arrow_right</i>
+      </a>
+    </div>
+    <div>
+      <h2>{{vm.project.customerId}}</h2>
+      <h3>{{vm.project.projectText}}</h3>
+      <p>{{vm.project.customerSummary}}</p>
+      <button [routerLink]=''>Previous Client</button>
+      <button [routerLink]=''>Next Client</button>
+    </div>
+    <section class="thumbnail-section">
+      <h3>All Projects For {{vm.project.customerId}}</h3>
+      <a *ngFor="let proj of vm.customerProjects">
+        <img
+          class="thumbnail"
+          [src]="'../../assets/images/projects/thumbnails/'+proj.src+'-thumbnail.jpg'"
+          [alt]="proj.projectText"
+          />
+          <div class="overlay">
+            <p>{{proj.projectText}}</p>
+          </div>
+        </a>
+    </section>
+  </section>
+</section>
+
 <p>
   Product ID = {{ projectId }}
 </p>
