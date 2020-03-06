@@ -1,5 +1,4 @@
 <section class="project-page">
-  <p class="space">space</p>
   <section class="header-section">
     <h1>Projects</h1>
   </section>
@@ -11,25 +10,42 @@
     >
     <div class="image-group">
       <img
-      [src]="'../../../../assets/images/projects/'+vm.project.src+'-portfolio.jpg'"
+        class="main-image"
+        [src]="'../../../../assets/images/projects/'+vm.project.src+'-detail.jpg'"
         [alt]="vm.project.projectText"
       />
-      <a [routerLink]=''>
-        <i class="material-icons">keyboard_arrow_left</i>
-        <i class="material-icons">keyboard_arrow_right</i>
-      </a>
+        <a
+          class="left"
+          role="button"
+          name="previous project"
+          >
+          <i class="material-icons">keyboard_arrow_left</i>
+        </a>
+        <a
+          class="right"
+          role="button"
+          name="next project"
+          >
+          <i class="material-icons">keyboard_arrow_right</i>
+        </a>
     </div>
-    <div>
-      <h2>{{vm.project.customerId}}</h2>
+    <div class="project-text">
+      <h2>{{vm.project.customerName}}</h2>
       <h3>{{vm.project.projectText}}</h3>
       <p>{{vm.project.customerSummary}}</p>
-      <button [routerLink]=''>Previous Client</button>
-      <button [routerLink]=''>Next Client</button>
+    <div class="client-buttons">
+      <button [routerLink]=''>PREVIOUS CLIENT</button>
+      <button [routerLink]=''>NEXT CLIENT</button>
+    </div>
     </div>
     <section class="thumbnail-section">
       <h3>All Projects For {{vm.project.customerId}}</h3>
-      <a *ngFor="let proj of vm.customerProjects">
-        <img
+      <div class="thumbnails">
+        <a
+          (click)="switchProject(proj.projectId)"
+          *ngFor="let proj of vm.customerProjects"
+          >
+          <img
           class="thumbnail"
           [src]="'../../assets/images/projects/thumbnails/'+proj.src+'-thumbnail.jpg'"
           [alt]="proj.projectText"
@@ -38,6 +54,7 @@
             <p>{{proj.projectText}}</p>
           </div>
         </a>
+      </div>
     </section>
   </section>
 </section>

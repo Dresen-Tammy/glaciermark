@@ -50,7 +50,11 @@ export class ProjectService implements OnDestroy {
     });
   }
 
-  public setCurrentProject(projectId: string): void {
+  public setCurrentProject(projectId: string = 'none'): void {
+    if (projectId === 'none') {
+      const currentCustomer = this._currentCustomerBS.getValue();
+      projectId = currentCustomer[0].projectId;
+    }
     this.currentProjectId = projectId;
     this._currentCustomerBS.subscribe((projects: Project[]) => {
       projects.map((project: Project) => {
