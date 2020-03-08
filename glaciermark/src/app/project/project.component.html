@@ -45,16 +45,16 @@
       <h2>{{vm.customer.customerName}}</h2>
       <h3>{{vm.project.projectText}}</h3>
       <p>{{vm.customer.customerSummary}}</p>
-    <div class="client-buttons">
-      <button
-        (click)="switchCustomer(vm.pnCustomer[0])"
-        name="previous client"
-        >PREVIOUS CLIENT</button>
-      <button
-        (click)="switchCustomer(vm.pnCustomer[1])"
-        name="next Client"
-        >NEXT CLIENT</button>
-    </div>
+      <div class="client-buttons">
+        <button
+          (click)="switchCustomer(vm.pnCustomer[0])"
+          name="previous client"
+          >PREVIOUS CLIENT</button>
+        <button
+          (click)="switchCustomer(vm.pnCustomer[1])"
+          name="next Client"
+          >NEXT CLIENT</button>
+      </div>
     </div>
     <section class="thumbnail-section">
       <h3>All Projects For {{vm.customer.customerId}}</h3>
