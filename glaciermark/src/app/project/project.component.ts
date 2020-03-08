@@ -1,4 +1,3 @@
-import { ProjectService } from './../services/project.service';
 import { DataService } from './../services/data/data.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -19,7 +18,7 @@ export class ProjectComponent implements OnInit {
     private route: ActivatedRoute,
     private location: Location,
     private seo: SeoService,
-    public projectService: ProjectService
+    public data: DataService
     ) {
       this.seo.update({
       title: 'Glacier Marketing Company - Idaho Falls - Project: ' + this.projectId,
@@ -30,13 +29,21 @@ export class ProjectComponent implements OnInit {
   }
 
   public ngOnInit() {
-    this.projectService.setCustomerProjects(this.customerId);
-    this.projectService.setCurrentProject(this.projectId);
+    this.data.setCustomerProjects(this.customerId);
+    this.data.setCurrentProject(this.projectId);
   }
 
   public switchProject(newId: string): void {
     this.location.replaceState('/project/' + this.customerId + '/' + newId);
-    this.projectService.setCurrentProject(newId);
+    this.data.setCurrentProject(newId);
+    this.projectId = newId;
+  }
+
+  public switchCustomer(newId: string): void {
+    this.location.replaceState('/project/' + newId);
+    this.data.setCustomerProjects(newId);
+    this.data.setCurrentProject();
+    this.customerId = newId;
   }
 
 }

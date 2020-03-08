@@ -22,7 +22,6 @@ export class SeoService {
   ) {}
 
   initializeBaseMeta(baseMeta: SeoConfig) {
-    console.log('in intitializeBaseMeta');
     return this.baseMeta = {
       ...baseMeta
     };

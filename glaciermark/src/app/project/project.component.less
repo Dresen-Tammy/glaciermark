@@ -1,6 +1,7 @@
 .header-section {
   padding-top: 100px;
 }
+
 h1 {
   font-size: 40px;
   text-align: center;
@@ -21,10 +22,22 @@ h1 {
     width: 100%;
     max-width: 650px;
   }
+
+  video {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 4;
+    width: 100%;
+    max-width: 650px;
+  }
+
   a {
     align-self: center;
     justify-self: center;
+    cursor: pointer;
   }
+
   .left {
     grid-column-start: 1;
     grid-row-start: 2;
@@ -75,13 +88,20 @@ h1 {
     }
   }
 }
+
+video::cue {
+  background-color: darkgray;
+  color: white;
+}
+
 .thumbnail-section {
   margin: 20px;
+
   a {
-    margin: 10px auto;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
+    margin: 10px auto;
     width: 200px;
 
     img {
@@ -90,6 +110,7 @@ h1 {
       grid-row-start: 1;
       grid-row-end: 2;
     }
+
     .overlay {
       grid-column-start: 1;
       grid-column-end: 2;
@@ -97,13 +118,15 @@ h1 {
       grid-row-end: 2;
 
       p {
+        display: none;
         line-height: 133px;
         text-align: center;
-        display: none;
       }
     }
+
     &:hover .overlay {
       background-color: rgba(125, 178, 206, .8);
+
       p {
         color: #ffffff;
         display: block;
@@ -120,15 +143,16 @@ h1 {
   .project-section {
     margin: 20px 20px;
   }
+
   .thumbnail-section {
+    display: inline-block;
     margin: 20px 20px;
     width: 410px;
-    display: inline-block;
 
     .thumbnails {
       display: grid;
-      grid-template-columns: repeat( auto-fill, minmax(200px, 200px));
       grid-gap: 10px;
+      grid-template-columns: repeat( auto-fill, minmax(200px, 200px));
       margin-top: 20px;
 
     a {
@@ -141,8 +165,8 @@ h1 {
 
 @media screen and (min-width: 660px) {
   .thumbnail-section {
-    width: 650px;
     margin: 20px auto;
+    width: 650px;
 
     .thumbnails {
       grid-template-columns: repeat( auto-fill, minmax(200px, 1fr));
@@ -153,8 +177,8 @@ h1 {
 
 @media screen and (min-width: 800px) {
   .project-section {
-    max-width: 650px;
     margin: 20px auto;
+    max-width: 650px;
   }
 }
 
@@ -169,9 +193,10 @@ h1 {
     }
 
   }
+
   .thumbnail-section {
-    width: 1050px;
     margin: 20px auto;
+    width: 1050px;
 
     .thumbnails {
       grid-template-columns: repeat( auto-fill, minmax(200px, 1fr));
