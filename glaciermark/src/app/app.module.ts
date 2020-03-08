@@ -34,10 +34,10 @@ import { MatListModule } from '@angular/material/list';
     ServicesPageModule,
     PortfolioModule,
     ContactModule,
+    ProjectModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ProjectModule,
     SharedModule,
     MatSidenavModule,
     MatListModule

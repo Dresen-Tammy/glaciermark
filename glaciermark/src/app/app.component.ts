@@ -4,7 +4,6 @@ import { Subscription } from 'rxjs';
 import { SeoService } from './services/seo/seo.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SeoConfig } from './services/seo/seo.interface';
-import { trigger, state, style, animate, transition, query, group, keyframes } from '@angular/animations';
 
 @Component({
   selector: 'app-root',
@@ -71,20 +70,19 @@ export class AppComponent implements OnInit, OnDestroy {
           { rel: 'canonical', href: 'https://glaciermark.com/home'}
         ],
       };
+
       // initialize base Meta setup
       this.seo.initializeBaseMeta(config);
+
       data.initialize().subscribe(() => {
       });
     }
 
     public ngOnInit(): void {}
 
-    public ngOnDestroy(): void {
-
-    }
+    public ngOnDestroy(): void {}
 
     public toggleOpen(): void {
-      console.log('toggleOpen triggered');
       if (this.opened) {
         this.opened = false;
         this.openValue = 'close';
@@ -95,7 +93,6 @@ export class AppComponent implements OnInit, OnDestroy {
     }
 
       public toggleClose(): void {
-        console.log('toggleClose triggered');
         if (this.opened) {
           this.opened = false;
           this.openValue = 'close';
