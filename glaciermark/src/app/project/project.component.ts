@@ -62,7 +62,7 @@ export class ProjectComponent implements OnInit, OnDestroy {
     this.data.setCustomerProjects(newCustId);
     this.data.setCurrentProject(newProjId);
     this.customerId = newCustId;
-    this.projecttId = newProjId;
+    this.projectId = newProjId;
   }
 
   public updateSeo(): void {
