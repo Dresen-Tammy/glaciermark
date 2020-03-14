@@ -1,3 +1,4 @@
+import { ScrollService } from './../services/scroll/scroll.service';
 import { Component, OnInit } from '@angular/core';
 import { SeoService } from '../services/seo/seo.service';
 
@@ -14,6 +15,7 @@ export class ServicesPageComponent implements OnInit {
 
   public constructor(
     private seo: SeoService,
+    private scroll: ScrollService
   ) {
     this.seo.update({
       title: 'Print Design, Digital Design, Marketing, Branding, Consulting by Glacier Marketing Idaho Falls',
@@ -24,5 +26,6 @@ export class ServicesPageComponent implements OnInit {
   }
 
   public ngOnInit() {
+    this.scroll.scrollUp();
   }
 }

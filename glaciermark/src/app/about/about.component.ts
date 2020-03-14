@@ -1,3 +1,4 @@
+import { ScrollService } from './../services/scroll/scroll.service';
 import { SeoService } from './../services/seo/seo.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
-  public constructor(private seo: SeoService) {
+  public constructor(
+    private seo: SeoService,
+    private scroll: ScrollService
+    ) {
     this.seo.update({
       title: 'About - Glaciermark.com',
       description: 'Meet Glacier Marketing\'s team and see what we can do for you.',
@@ -32,6 +36,7 @@ export class AboutComponent implements OnInit {
 
 
   public ngOnInit() {
+    this.scroll.scrollUp();
   }
 
 }

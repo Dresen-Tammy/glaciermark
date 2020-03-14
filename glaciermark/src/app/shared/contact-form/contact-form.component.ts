@@ -1,4 +1,4 @@
-import { MessageService } from './../../services/message.service';
+import { MessageService } from '../../services/message/message.service';
 
 import { Subject } from 'rxjs';
 import { Msg } from '../../services/data/data.service';
