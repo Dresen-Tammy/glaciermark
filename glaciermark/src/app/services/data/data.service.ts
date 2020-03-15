@@ -107,7 +107,6 @@ export class DataService implements OnDestroy {
         });
         this._allCustomersBS.next(clientsData);
         this._portfolioBS.next(projectsArray);
-        // this.getRoutesFromClients();
       },
       takeUntil(this.destroy$)
       )
@@ -157,6 +156,7 @@ export class DataService implements OnDestroy {
       this.setCurrentProject();
     } else {
       this._currentProjectBS.next(projects[index]);
+      this._currentProjectId = projects[index].projectId;
     }
     this.updateSeo();
     this.updateUrl();
@@ -171,6 +171,7 @@ export class DataService implements OnDestroy {
       this.setCurrentProject('last');
     } else {
       this._currentProjectBS.next(projects[index]);
+      this._currentProjectId = projects[index].projectId;
     }
     this.updateSeo();
     this.updateUrl();
@@ -211,18 +212,6 @@ export class DataService implements OnDestroy {
       customerId = customers[index].customerId;
     }
     this.setCustomerProjects(customerId);
-  }
-
-  private getRoutesFromClients(): void {
-    let routes = ``;
-    this._allCustomersBS.getValue().forEach(client => {
-      const clientId = client.customerId;
-      client.projects.forEach(project => {
-          routes += `/project/${clientId}/${project.projectId}\n`;
-      });
-    });
-    const file = new File([routes], '../../../../Routes.txt', {type: 'text/plain;charset=utf-8'});
-    SaveAs(file);
   }
 
   private errorHandler(error): Observable<any> {
