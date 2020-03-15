@@ -1,18 +1,27 @@
 import { DataService } from './../services/data/data.service';
 import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SeoService } from '../services/seo/seo.service';
 import { Location } from '@angular/common';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { Customer } from '../models/customer'
 
 @Component({
   selector: 'app-project',
   templateUrl: './project.component.html',
   styleUrls: ['./project.component.less']
 })
-export class ProjectComponent implements OnInit {
+export class ProjectComponent implements OnInit, OnDestroy {
 
   public customerId = this.route.snapshot.paramMap.get('id');
   public projectId = this.route.snapshot.paramMap.get('id2');
+  private seoData = {
+    title: "Glacier Marketing Company - Idaho Falls",
+    description: "Check out our portfolio of print design, digital &amp; website design, marketing or branding services. We have the experience to help your business with any marketing needs - all in one team! No need to parsel out your business marketing when you can get the Glacier Marketing services from one company. Call today 208-557-9114.",
+    url: 'https://glaciermark.com/project/'
+  }
+  private destroy$: Subject<boolean> = new Subject();
 
   public constructor(
     private route: ActivatedRoute,
@@ -20,18 +29,27 @@ export class ProjectComponent implements OnInit {
     private seo: SeoService,
     public data: DataService
     ) {
-      this.seo.update({
-      title: 'Glacier Marketing Company - Idaho Falls - Project: ' + this.projectId,
-      // tslint:disable-next-line: max-line-length
-      description: 'Check out our portfolio of print design, digital &amp; website design, marketing or branding services. We have the experience to help your business with any marketing needs - all in one team! No need to parsel out your business marketing when you can get the Glacier Marketing services from one company. Call today 208-557-9114.',
-      url: 'https://glaciermark.com/portfolio'
-    });
+
+    //   this.seo.update({
+    //   title: 'Glacier Marketing Company - Idaho Falls - Client: ' + this.customerId,
+    //   // tslint:disable-next-line: max-line-length
+    //   description: 'Check out our portfolio of print design, digital &amp; website design, marketing or branding services. We have the experience to help your business with any marketing needs - all in one team! No need to parsel out your business marketing when you can get the Glacier Marketing services from one company. Call today 208-557-9114.',
+    //   url: 'https://glaciermark.com/portfolio'
+    // });
   }
 
-  public ngOnInit() {
+  public ngOnInit(): void {
     this.data.setCustomerProjects(this.customerId);
     this.data.setCurrentProject(this.projectId);
+    this.updateSeo();
   }
+
+  public ngOnDestroy(): void {
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
+  }
+
+  public
 
   public switchProject(newId: string): void {
     this.location.replaceState('/project/' + this.customerId + '/' + newId);
@@ -39,11 +57,24 @@ export class ProjectComponent implements OnInit {
     this.projectId = newId;
   }
 
-  public switchCustomer(newId: string): void {
-    this.location.replaceState('/project/' + newId);
-    this.data.setCustomerProjects(newId);
-    this.data.setCurrentProject();
-    this.customerId = newId;
+  public switchCustomer(newCustId: string, newProjId: string): void {
+    this.location.replaceState('/project/' + newCustId + '/' + newProjId);
+    this.data.setCustomerProjects(newCustId);
+    this.data.setCurrentProject(newProjId);
+    this.customerId = newCustId;
+    this.projectId = newProjId;
+  }
+
+  public updateSeo(): void {
+    this.data.currentCustomer$.subscribe(
+      (customer: Customer) => {
+        this.seoData.title = `${customer.customerName} - Glacier Marketing Company - Idaho Falls`;
+        this.seoData.description = customer.customerSummary;
+        this.seoData.url = "https://glaciermark.com/project/" + this.customerId + '/' + this.projectId;
+        this.seo.update(this.seoData);
+      },
+      takeUntil(this.destroy$)
+    );
   }
 
 }

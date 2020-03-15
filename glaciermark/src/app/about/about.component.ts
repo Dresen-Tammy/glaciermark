@@ -11,7 +11,7 @@ export class AboutComponent implements OnInit {
   public constructor(private seo: SeoService) {
     this.seo.update({
       title: 'About - Glaciermark.com',
-      description: 'Meet Glacier Marketing\'s team and see what we can do for you.',
+      description: "We are a marketing team with decades of experience from radio &amp; TV, print and media to digital and SEO website design. The Glacier team should be your top choice for all your marketing needs - we are a one stop shop marketing company. Whether you need marketing and branding strategy, website design, print and graphic design, our experts are here to help.",
       url: 'https://glaciermark.com/about'
     });
 

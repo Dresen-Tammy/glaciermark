@@ -169,8 +169,11 @@ export class DataService implements OnDestroy {
         const length = clients.length;
         const prevIndex = this.findPrevIndex(index, length);
         const nextIndex = this.findNextIndex(index, length);
-        this._prevNextCustomerBS.next([clients[prevIndex].customerId, clients[nextIndex].customerId]);
-
+        const prevCustomer = clients[prevIndex].customerId;
+        const prevProject =  clients[prevIndex].projects[0].projectId;
+        const nextCustomer = clients[nextIndex].customerId;
+        const nextProject = clients[nextIndex].projects[0].projectId;
+        this._prevNextCustomerBS.next([prevCustomer, prevProject, nextCustomer, nextProject]);
     },
     takeUntil(this.destroy$)
     );

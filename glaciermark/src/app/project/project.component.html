@@ -47,11 +47,11 @@
       <p>{{vm.customer.customerSummary}}</p>
       <div class="client-buttons">
         <button
-          (click)="switchCustomer(vm.pnCustomer[0])"
+          (click)="switchCustomer(vm.pnCustomer[0], vm.pnCustomer[1])"
           name="previous client"
           >PREVIOUS CLIENT</button>
         <button
-          (click)="switchCustomer(vm.pnCustomer[1])"
+          (click)="switchCustomer(vm.pnCustomer[2], vm.pnCustomer[3])"
           name="next Client"
           >NEXT CLIENT</button>
       </div>
