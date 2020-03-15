@@ -1,8 +1,6 @@
 import { DataService } from './../services/data/data.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { SeoService } from '../services/seo/seo.service';
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-project',
@@ -11,21 +9,14 @@ import { Location } from '@angular/common';
 })
 export class ProjectComponent implements OnInit {
 
-  public customerId = this.route.snapshot.paramMap.get('id');
-  public projectId = this.route.snapshot.paramMap.get('id2');
+  public customerId;
+  public projectId;
 
   public constructor(
     private route: ActivatedRoute,
-    private location: Location,
-    private seo: SeoService,
     public data: DataService
     ) {
-      this.seo.update({
-      title: 'Glacier Marketing Company - Idaho Falls - Project: ' + this.projectId,
-      // tslint:disable-next-line: max-line-length
-      description: 'Check out our portfolio of print design, digital &amp; website design, marketing or branding services. We have the experience to help your business with any marketing needs - all in one team! No need to parsel out your business marketing when you can get the Glacier Marketing services from one company. Call today 208-557-9114.',
-      url: 'https://glaciermark.com/portfolio'
-    });
+      this.getParams();
   }
 
   public ngOnInit() {
@@ -34,16 +25,21 @@ export class ProjectComponent implements OnInit {
   }
 
   public switchProject(newId: string): void {
-    this.location.replaceState('/project/' + this.customerId + '/' + newId);
     this.data.setCurrentProject(newId);
     this.projectId = newId;
   }
 
-  public switchCustomer(newId: string): void {
-    this.location.replaceState('/project/' + newId);
-    this.data.setCustomerProjects(newId);
-    this.data.setCurrentProject();
-    this.customerId = newId;
+  public previousProject(): void {
+    this.data.setPreviousProject();
+  }
+
+  public nextProject(): void {
+    this.data.setNextProject();
+  }
+
+  private getParams(): void {
+    this.customerId = this.route.snapshot.queryParamMap.get('customer');
+    this.projectId = this.route.snapshot.queryParamMap.get('project');
   }
 
 }
