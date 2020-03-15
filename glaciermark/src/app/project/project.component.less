@@ -1,10 +1,17 @@
 .header-section {
-  padding-top: 100px;
+  padding-top: 70px;
+  background-image: url('../../assets/images/glacierProject_500w.jpg');
+  background-size: cover;
+  background-position: center top;
+  margin-bottom: 40px;
 }
 
 h1 {
   font-size: 40px;
   text-align: center;
+  color: #ffffff;
+  padding-bottom: 30px;
+  text-shadow: 0px 0px 6px rgba(2, 10, 26, 0.8);
 }
 
 .image-group {
@@ -86,7 +93,6 @@ h1 {
       margin: 5px;
       padding: 5px 20px;
       text-decoration: none;
-
     }
   }
 }
@@ -163,6 +169,7 @@ video::cue {
     }
   }
 }
+
 @media screen and (min-width: 400px) {
   .thumbnail-section .thumbnails {
     grid-template-columns: repeat(3, 1fr);
@@ -227,5 +234,12 @@ video::cue {
       grid-template-columns: repeat( auto-fill, minmax(200px, 1fr));
       width: 100%;
     }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .header-section {
+    height: 300px;
+    padding-top: 160px;
   }
 }
