@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './project.component.html',
   styleUrls: ['./project.component.less']
 })
-export class ProjectComponent implements OnInit {
+export class ProjectComponent implements OnInit, OnDestroy {
 
   public customerId;
   public projectId;
@@ -19,10 +19,18 @@ export class ProjectComponent implements OnInit {
       this.getParams();
   }
 
-  public ngOnInit() {
+  public ngOnInit(): void {
     this.data.setCustomerProjects(this.customerId);
     this.data.setCurrentProject(this.projectId);
+    this.updateSeo();
   }
+
+  public ngOnDestroy(): void {
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
+  }
+
+  public
 
   public switchProject(newId: string): void {
     this.data.setCurrentProject(newId);

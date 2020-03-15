@@ -18,7 +18,7 @@ export class ServicesPageComponent implements OnInit {
     this.seo.update({
       title: 'Print Design, Digital Design, Marketing, Branding, Consulting by Glacier Marketing Idaho Falls',
       // tslint:disable-next-line: max-line-length
-      description: 'Successful marketing should include everything from branding to graphic design, media placement (TV, radio), social and mobile marketing, SEO/PPC and website design. Why go to three or four sources when you can have all this marketing expertise from one team - the Glacier Marketing advertising agency serving South East Idaho.',
+      description: "Today's successful marketing should include everything from branding to graphic design, media placement (TV and radio), social and mobile marketing, SEO/PPC and website design. Why go to three or four sources when you can have all this marketing expertise from one team - the Glacier Marketing advertising agency serving South East Idaho",
       url: 'https://glaciermark.com/services'
     });
   }

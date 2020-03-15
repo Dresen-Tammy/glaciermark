@@ -1,31 +1,34 @@
 <div class="sub-page">
-  <section class="portfolio-section">
-    <app-section-header
-      class="portfolio-header"
-      src="../../assets/images/about/creativity-precision.png"
-      alt="creativity and precision"
-      h1Header="creativity & precision"
-      headerColor="dark-blue"
-      paragraphColor="paragraph-dark-blue"
-      >Your brand speaks volumes in the first few seconds a customer sees it. This can be negative or positive. We have the creativity, precision, and expertise to help you make a positive, lasting impression. Please look at some of the work from our portfolio, and don't hesitate to contact us with any&nbsp;questions.
-    </app-section-header>
-  </section>
-  <section
-    *ngIf="{projects: dataService.portfolio$ | async } as vm"
-    class="gallery-section"
-    >
+  <div class="parallax">
+    <section class="portfolio-section">
+      <app-section-header
+        class="portfolio-header"
+        src="../../assets/images/about/creativity-precision.png"
+        alt="creativity and precision"
+        h1Header="creativity & precision"
+        headerColor="dark-blue"
+        paragraphColor="paragraph-dark-blue"
+        >Your brand speaks volumes in the first few seconds a customer sees it. This can be negative or positive. We have the creativity, precision, and expertise to help you make a positive, lasting impression. Please look at some of the work from our portfolio, and don't hesitate to contact us with any&nbsp;questions.
+      </app-section-header>
+    </section>
+    <section
+      *ngIf="{projects: dataService.portfolio$ | async } as vm"
+      class="gallery-section"
+      >
 
-    <div class="gallery" *ngIf="vm.projects.length > 1">
-      <app-gallery-item
-      *ngFor="let project of vm.projects"
-      class="container {{project.projectClass}}"
-      [project]="project"
-      ></app-gallery-item>
-    </div>
-  </section>
+      <div class="gallery" *ngIf="vm.projects.length > 1">
+        <app-gallery-item
+        *ngFor="let project of vm.projects"
+        class="container {{project.projectClass}}"
+        [project]="project"
+        ></app-gallery-item>
+      </div>
+    </section>
+    <div appParallax [ratio]="0.6" id="penguins"></div>
+  </div>
   <app-call-to-action
-    buttonUrl="/contact"
-    className="penguin"
+  buttonUrl="/contact"
+  className="penguin"
   >Like what you see? Contact us today to receive a 10% discount on your first order.
-  </app-call-to-action>
+</app-call-to-action>
 </div>

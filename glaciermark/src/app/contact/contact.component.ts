@@ -15,7 +15,7 @@ export class ContactComponent implements OnInit {
     this.seo.update({
       title: 'East Idaho Design &amp; Marketing Firm - Glacier Marketing',
       // tslint:disable-next-line: max-line-length
-      description: 'We are a marketing team with decades of experience from radio &amp; TV, print &amp; media to digital &amp; SEO website design. The Glacier team should be your top choice for all your marketing needs - we are a one stop shop marketing company. Whether you need marketing &amp; branding strategy, website design, print &amp; graphic design, our experts are here to help.',
+      description: "Contact Glacier Marketing company in Idaho Falls serving businesses across South East Idaho with print, digital, website, branding, SEO &amp; more marketing. Our team has decades of experience in all marketing channels to help your business get found and get customers. Contact Glacier Marketing firm today at 208-557-9114.",
       url: 'https://glaciermark.com/contact'
     });
   }
