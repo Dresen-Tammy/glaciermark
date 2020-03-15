@@ -1,3 +1,4 @@
+import { ScrollService } from './../services/scroll/scroll.service';
 import { Component, OnInit } from '@angular/core';
 import { SeoService } from '../services/seo/seo.service';
 
@@ -8,7 +9,10 @@ import { SeoService } from '../services/seo/seo.service';
 })
 export class HomeComponent implements OnInit {
 
-  public constructor(private seo: SeoService) {
+  public constructor(
+    private seo: SeoService,
+    private scroll: ScrollService
+    ) {
     this.seo.update({
       title: 'East Idaho Design and Marketing Firm - Glacier Marketing',
       // tslint:disable-next-line: max-line-length
@@ -18,5 +22,6 @@ export class HomeComponent implements OnInit {
   }
 
   public ngOnInit() {
+    this.scroll.scrollUp();
   }
 }

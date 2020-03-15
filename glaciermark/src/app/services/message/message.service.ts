@@ -1,8 +1,8 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Subject, Observable, throwError } from 'rxjs';
-import { Message } from '../models/message';
-import { Msg } from './data/data.service';
+import { Message } from '../../models/message';
+import { Msg } from '../data/data.service';
 import { retry, catchError, takeUntil } from 'rxjs/operators';
 
 @Injectable({

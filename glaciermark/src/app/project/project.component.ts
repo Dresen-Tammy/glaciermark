@@ -1,3 +1,4 @@
+import { ScrollService } from './../services/scroll/scroll.service';
 import { DataService } from './../services/data/data.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
@@ -27,20 +28,16 @@ export class ProjectComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private location: Location,
     private seo: SeoService,
-    public data: DataService
+    public data: DataService,
+    public scroll: ScrollService
     ) {
-
-    //   this.seo.update({
-    //   title: 'Glacier Marketing Company - Idaho Falls - Client: ' + this.customerId,
-    //   // tslint:disable-next-line: max-line-length
-    //   description: 'Check out our portfolio of print design, digital &amp; website design, marketing or branding services. We have the experience to help your business with any marketing needs - all in one team! No need to parsel out your business marketing when you can get the Glacier Marketing services from one company. Call today 208-557-9114.',
-    //   url: 'https://glaciermark.com/portfolio'
-    // });
+      this.seo.update(this.seoData);
   }
 
   public ngOnInit(): void {
     this.data.setCustomerProjects(this.customerId);
     this.data.setCurrentProject(this.projectId);
+    this.scroll.scrollUp();
     this.updateSeo();
   }
 
@@ -55,6 +52,8 @@ export class ProjectComponent implements OnInit, OnDestroy {
     this.location.replaceState('/project/' + this.customerId + '/' + newId);
     this.data.setCurrentProject(newId);
     this.projectId = newId;
+    this.scroll.scrollUpSlow();
+    this.seo.update(this.seoData);
   }
 
   public switchCustomer(newCustId: string, newProjId: string): void {

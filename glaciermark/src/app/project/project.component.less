@@ -1,10 +1,17 @@
 .header-section {
-  padding-top: 100px;
+  padding-top: 70px;
+  background-image: url('../../assets/images/glacierProject_500w.jpg');
+  background-size: cover;
+  background-position: center top;
+  margin-bottom: 40px;
 }
 
 h1 {
   font-size: 40px;
   text-align: center;
+  color: #ffffff;
+  padding-bottom: 30px;
+  text-shadow: 0px 0px 6px rgba(2, 10, 26, 0.8);
 }
 
 .image-group {
@@ -161,22 +168,32 @@ video::cue {
     }
   }
 }
-
-@media screen and (min-width: 660px) {
-  .thumbnail-section {
-    margin: 20px auto;
-    width: 650px;
-
-    .thumbnails {
-      grid-template-columns: repeat( auto-fill, minmax(200px, 1fr));
-    }
+@media screen and (min-width: 500px) {
+  .header-section {
+    background-image: url('../../assets/images/glacierProject_500w.jpg');
   }
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 660px) {
   .project-section {
     margin: 20px auto;
     max-width: 650px;
+  }
+
+  .thumbnail-section {
+    margin: 20px auto;
+    width: 650px;
+  }
+
+  .thumbnails {
+    grid-template-columns: repeat( auto-fill, minmax(200px, 1fr));
+  }
+
+}
+
+@media screen and (min-width: 800px) {
+  .header-section {
+    padding-top: 120px;
   }
 }
 
@@ -198,5 +215,12 @@ video::cue {
     .thumbnails {
       grid-template-columns: repeat( auto-fill, minmax(200px, 1fr));
     }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .header-section {
+    height: 300px;
+    padding-top: 160px;
   }
 }

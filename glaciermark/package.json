@@ -11,7 +11,7 @@
     "dev:ssr": "ng run glaciermark:serve-ssr",
     "serve:ssr": "node dist/glaciermark/server/main.js",
     "build:ssr": "ng build --prod && ng run glaciermark:server:production",
-    "prerender": "ng run glaciermark:prerender"
+    "prerender": "ng run glaciermark:prerender --routesFile Routes.txt"
   },
   "private": true,
   "dependencies": {
