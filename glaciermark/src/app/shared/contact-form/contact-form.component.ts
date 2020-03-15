@@ -1,6 +1,7 @@
+import { MessageService } from './../../services/message.service';
 
-import { Subscription, Subject } from 'rxjs';
-import { DataService, Msg } from '../../services/data/data.service';
+import { Subject } from 'rxjs';
+import { Msg } from '../../services/data/data.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BaseControlValueAccessor } from '../base-control-value-accessor';
@@ -21,9 +22,10 @@ export class ContactFormComponent extends BaseControlValueAccessor<string> imple
   public response: string = '';
   private msg: Msg;
   private destroy$: Subject<boolean> = new Subject<boolean>();
+
   public constructor(
     private formBuilder: FormBuilder,
-    private data: DataService
+    private message: MessageService
   ) {
     super();
   }
@@ -46,7 +48,7 @@ export class ContactFormComponent extends BaseControlValueAccessor<string> imple
     const date: string = new Date().toDateString();
     const {name, email, subject, message}: {name: string, email: string, subject: string, message: string} = this.contactForm.value;
     const formRequest: Message = {name, date, email, subject, message};
-    this.data.createMessage(formRequest)
+    this.message.createMessage(formRequest)
     .pipe(takeUntil(this.destroy$))
       .subscribe(
         res => {

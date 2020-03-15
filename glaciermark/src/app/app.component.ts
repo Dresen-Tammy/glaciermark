@@ -1,6 +1,7 @@
+import { takeUntil } from 'rxjs/operators';
 import { menuAnimation } from './animations';
 import { DataService } from './services/data/data.service';
-import { Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
 import { SeoService } from './services/seo/seo.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SeoConfig } from './services/seo/seo.interface';
@@ -37,7 +38,7 @@ export class AppComponent implements OnInit, OnDestroy {
   ];
   public opened: boolean = false;
   public openValue: string = 'close';
-  private subscriptions: Subscription[];
+  private destroy$: Subject<boolean> = new Subject();
 
   public constructor(
     private seo: SeoService,
@@ -74,13 +75,17 @@ export class AppComponent implements OnInit, OnDestroy {
       // initialize base Meta setup
       this.seo.initializeBaseMeta(config);
 
-      data.initialize().subscribe(() => {
-      });
+      data.initialize()
+      .subscribe(() => {},
+      takeUntil(this.destroy$));
     }
 
     public ngOnInit(): void {}
 
-    public ngOnDestroy(): void {}
+    public ngOnDestroy(): void {
+      this.destroy$.next(true);
+      this.destroy$.unsubscribe();
+    }
 
     public toggleOpen(): void {
       if (this.opened) {
