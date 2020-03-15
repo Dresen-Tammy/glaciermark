@@ -1,6 +1,8 @@
+import { DataService } from './../services/data/data.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { SeoService } from '../services/seo/seo.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-project',
@@ -9,11 +11,14 @@ import { SeoService } from '../services/seo/seo.service';
 })
 export class ProjectComponent implements OnInit {
 
-  public projectId = this.route.snapshot.paramMap.get('id');
+  public customerId = this.route.snapshot.paramMap.get('id');
+  public projectId = this.route.snapshot.paramMap.get('id2');
 
-  constructor(
+  public constructor(
     private route: ActivatedRoute,
-    private seo: SeoService
+    private location: Location,
+    private seo: SeoService,
+    public data: DataService
     ) {
       this.seo.update({
       title: 'Glacier Marketing Company - Idaho Falls - Project: ' + this.projectId,
@@ -24,6 +29,21 @@ export class ProjectComponent implements OnInit {
   }
 
   public ngOnInit() {
+    this.data.setCustomerProjects(this.customerId);
+    this.data.setCurrentProject(this.projectId);
+  }
+
+  public switchProject(newId: string): void {
+    this.location.replaceState('/project/' + this.customerId + '/' + newId);
+    this.data.setCurrentProject(newId);
+    this.projectId = newId;
+  }
+
+  public switchCustomer(newId: string): void {
+    this.location.replaceState('/project/' + newId);
+    this.data.setCustomerProjects(newId);
+    this.data.setCurrentProject();
+    this.customerId = newId;
   }
 
 }

@@ -1,8 +1,12 @@
 .hero-section {
+  background-image: url("../../assets/images/about/glacierBlueOver_500w.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 50px auto auto;
   justify-content: center;
+  width: 100%;
 }
 
 .hero-section-header {
@@ -17,7 +21,7 @@
   grid-column-end: 2;
   grid-row-start: 1;
   grid-row-end: 5;
-  height: 430px;
+  height: 100%;
   min-width: 100%;
 }
 
@@ -27,8 +31,8 @@
   font-weight: 300;
   grid-column-start: 1;
   grid-row-start: 3;
-  padding-bottom: 40px;
   line-height: 40px;
+  padding-bottom: 40px;
   text-align: center;
   text-shadow: 0px 0px 6px rgba(2, 30, 46, 0.7);
 }
@@ -43,8 +47,8 @@
   }
 
   div {
-    line-height: 1.7em;
     font-size: 14px;
+    line-height: 1.7em;
   }
 
   p {
@@ -75,9 +79,16 @@
   padding-top: 1px;
 }
 
+@media (min-width: 500px) {
+  .hero-section {
+    background-image: url("../../assets/images/about/glacierBlueOver_1000w.jpg");
+  }
+}
+
 @media (min-width: 800px) {
   .hero-section {
     grid-template-rows: 90px auto auto;
+
   }
 
   .info-section {
@@ -120,6 +131,12 @@
 
   .hero-img {
     height: auto;
+  }
+}
+
+@media (min-width: 1000px) {
+  .hero-section {
+    background-image: url("../../assets/images/about/glacierBlueOver_1500w.jpg");
   }
 }
 

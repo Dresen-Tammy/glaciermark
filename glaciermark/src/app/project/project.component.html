@@ -1,4 +1,79 @@
-<p>project works!</p>
-<p>
-  Product ID = {{ projectId }}
-</p>
+<section class="project-page">
+  <section class="header-section">
+    <h1>Projects</h1>
+  </section>
+  <section
+    class="project-section"
+    *ngIf="{
+      customer: data.currentCustomer$ | async,
+      project: data.currentProject$ | async,
+      pnProject: data.prevNextProject$ | async,
+      pnCustomer: data.prevNextCustomer$ |async } as vm"
+    >
+    <div class="image-group">
+      <img *ngIf="!vm.project.video"
+        class="main-image"
+        [src]="'../../../../assets/images/projects/'+vm.project.src+'-detail.jpg'"
+        [alt]="vm.project.projectText"
+      />
+      <video
+        *ngIf="vm.project.video"
+        controls
+      >
+        <source [src]="'../../../../assets/images/projects/'+vm.project.video+'.mp4'" type="video/mp4">
+        <track label="English Subtitles" kind="subtitles" srclang="en" [src]="'../../assets/images/projects/'+vm.project.video+'.vtt'">
+        Your browser does not support this video.
+      </video>
+        <a
+          class="left"
+          role="button"
+          name="previous project"
+          (click)="switchProject(vm.pnProject[0])"
+          >
+          <i class="material-icons">keyboard_arrow_left</i>
+        </a>
+        <a
+          class="right"
+          role="button"
+          name="next project"
+          (click)="switchProject(vm.pnProject[1])"
+          >
+          <i class="material-icons">keyboard_arrow_right</i>
+        </a>
+    </div>
+    <div class="project-text">
+      <h2>{{vm.customer.customerName}}</h2>
+      <h3>{{vm.project.projectText}}</h3>
+      <p>{{vm.customer.customerSummary}}</p>
+      <div class="client-buttons">
+        <button
+          (click)="switchCustomer(vm.pnCustomer[0])"
+          name="previous client"
+          >PREVIOUS CLIENT</button>
+        <button
+          (click)="switchCustomer(vm.pnCustomer[1])"
+          name="next Client"
+          >NEXT CLIENT</button>
+      </div>
+    </div>
+    <section class="thumbnail-section">
+      <h3>All Projects For {{vm.customer.customerId}}</h3>
+      <div class="thumbnails">
+        <a
+          (click)="switchProject(proj.projectId)"
+          *ngFor="let proj of vm.customer.projects"
+          >
+          <img
+          class="thumbnail"
+          [src]="'../../assets/images/projects/thumbnails/'+proj.src+'-thumbnail.jpg'"
+          [alt]="proj.projectText"
+          />
+          <div class="overlay">
+            <p>{{proj.projectText}}</p>
+          </div>
+        </a>
+      </div>
+    </section>
+  </section>
+</section>
+
