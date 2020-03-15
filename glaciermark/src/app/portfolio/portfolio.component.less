@@ -13,6 +13,19 @@
   position: relative;
 }
 
+#penguins {
+  background-image: url('../../assets/images/penguinJump_500w.jpg');
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 950px;
+  z-index: -1;
+}
+
 .gallery-section {
   margin-bottom: 30px;
 }
@@ -21,6 +34,11 @@
   .gallery {
     display: grid;
     grid-template-columns: 1fr 1fr;
+  }
+
+  #penguins {
+    background-image: url('../../assets/images/penguinJump_800w.jpg');
+    height: 750px;
   }
 }
 
@@ -35,6 +53,20 @@
 
   .gallery {
     grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  #penguins {
+    background-image: url('../../assets/images/penguinJump_1000w.jpg');
+    height: 1810px;
+  }
+}
+
+@media (min-width: 1000px) {
+  #penguins {
+    background-image: url('../../assets/images/penguinJump_1500w.jpg');
+    height: 1400px;
+    min-width: 100%;
+    width: auto;
   }
 }
 
@@ -55,6 +87,7 @@
   .tall-project {
     grid-row-end: span 2;
   }
+
 }
 
 @media (min-width: 1200px) {
