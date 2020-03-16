@@ -6,9 +6,7 @@
     class="project-section"
     *ngIf="{
       customer: data.currentCustomer$ | async,
-      project: data.currentProject$ | async,
-      pnProject: data.prevNextProject$ | async,
-      pnCustomer: data.prevNextCustomer$ |async } as vm"
+      project: data.currentProject$ | async} as vm"
     >
     <div class="image-group">
       <img *ngIf="!vm.project.video"
@@ -24,22 +22,6 @@
         <track label="English Subtitles" kind="subtitles" srclang="en" [src]="'../../assets/images/projects/'+vm.project.video+'.vtt'">
         Your browser does not support this video.
       </video>
-        <a
-          class="left"
-          role="button"
-          name="previous project"
-          (click)="switchProject(vm.pnProject[0])"
-          >
-          <i class="material-icons">keyboard_arrow_left</i>
-        </a>
-        <a
-          class="right"
-          role="button"
-          name="next project"
-          (click)="switchProject(vm.pnProject[1])"
-          >
-          <i class="material-icons">keyboard_arrow_right</i>
-        </a>
     </div>
     <div class="project-text">
       <h2>{{vm.customer.customerName}}</h2>
@@ -47,13 +29,13 @@
       <p>{{vm.customer.customerSummary}}</p>
       <div class="client-buttons">
         <button
-          (click)="switchCustomer(vm.pnCustomer[0], vm.pnCustomer[1])"
-          name="previous client"
-          >PREVIOUS CLIENT</button>
+          (click)="previousProject()"
+          name="previous project"
+          >PREVIOUS PROJECT</button>
         <button
-          (click)="switchCustomer(vm.pnCustomer[2], vm.pnCustomer[3])"
-          name="next Client"
-          >NEXT CLIENT</button>
+          (click)="nextProject()"
+          name="next project"
+          >NEXT PROJECT</button>
       </div>
     </div>
     <section class="thumbnail-section">
