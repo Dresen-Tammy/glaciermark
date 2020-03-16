@@ -110,15 +110,17 @@ export class DataService implements OnDestroy {
 
   public setCustomerProjects(customerId: string): void {
     this._currentCustomerId = customerId;
-    this.allCustomers$.subscribe((clients: Array<Customer>) => {
-      clients.forEach((client: Customer, index: number) => {
-        if (client.customerId === this._currentCustomerId) {
-          this.setPrevNextCustomer(index);
-          this._currentCustomerBS.next(client);
-        }
-      });
-      takeUntil(this.destroy$);
-    });
+    this.allCustomers$.pipe(
+      tap((clients: Array<Customer>) => {
+        clients.forEach((client: Customer, index: number) => {
+          if (client.customerId === this._currentCustomerId) {
+            this.setPrevNextCustomer(index);
+            this._currentCustomerBS.next(client);
+          }
+        });
+        takeUntil(this.destroy$);
+      })
+    );
   }
 
   public setCurrentProject(projectId: string = 'none'): void {
@@ -127,15 +129,17 @@ export class DataService implements OnDestroy {
       projectId = currentCustomer.projects[0].projectId;
     }
     this._currentProjectId = projectId;
-    this._currentCustomerBS.subscribe((client: Customer) => {
-      client.projects.map((project: Project) => {
-        if (this._currentProjectId === project.projectId) {
-          this._currentProjectBS.next(project);
-          this.setPrevNextProject(project);
-        }
-      });
-      takeUntil(this.destroy$);
-    });
+    this.currentCustomer$.pipe(
+      tap((client: Customer) => {
+        client.projects.map((project: Project) => {
+          if (this._currentProjectId === project.projectId) {
+            this._currentProjectBS.next(project);
+            this.setPrevNextProject(project);
+          }
+        });
+        takeUntil(this.destroy$);
+      })
+    );
   }
 
   private setPrevNextProject(project: Project): void {
