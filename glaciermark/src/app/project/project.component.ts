@@ -1,3 +1,4 @@
+import { ScrollService } from './../services/scroll/scroll.service';
 import { DataService } from './../services/data/data.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './project.component.html',
   styleUrls: ['./project.component.less']
 })
-export class ProjectComponent implements OnInit {
+export class ProjectComponent implements OnInit, OnDestroy {
 
   public customerId;
   public projectId;
@@ -19,14 +20,25 @@ export class ProjectComponent implements OnInit {
       this.getParams();
   }
 
-  public ngOnInit() {
+  public ngOnInit(): void {
     this.data.setCustomerProjects(this.customerId);
     this.data.setCurrentProject(this.projectId);
+    this.scroll.scrollUp();
+    this.updateSeo();
   }
+
+  public ngOnDestroy(): void {
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
+  }
+
+  public
 
   public switchProject(newId: string): void {
     this.data.setCurrentProject(newId);
     this.projectId = newId;
+    this.scroll.scrollUpSlow();
+    this.seo.update(this.seoData);
   }
 
   public previousProject(): void {

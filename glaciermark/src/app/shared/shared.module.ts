@@ -5,12 +5,14 @@ import { CommonModule } from '@angular/common';
 import { SectionHeaderComponent } from './section-header/section-header.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { CallToActionComponent } from './call-to-action/call-to-action.component';
+import { ParallaxDirective } from './directives/parallax.directive';
 
 @NgModule({
   declarations: [
     SectionHeaderComponent,
     ContactFormComponent,
-    CallToActionComponent
+    CallToActionComponent,
+    ParallaxDirective
   ],
   imports: [
     CommonModule,
@@ -20,7 +22,8 @@ import { CallToActionComponent } from './call-to-action/call-to-action.component
   exports: [
     SectionHeaderComponent,
     ContactFormComponent,
-    CallToActionComponent
+    CallToActionComponent,
+    ParallaxDirective
   ]
 })
 export class SharedModule { }
