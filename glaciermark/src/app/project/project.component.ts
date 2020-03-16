@@ -8,14 +8,15 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './project.component.html',
   styleUrls: ['./project.component.less']
 })
-export class ProjectComponent implements OnInit, OnDestroy {
+export class ProjectComponent implements OnInit {
 
   public customerId;
   public projectId;
 
   public constructor(
     private route: ActivatedRoute,
-    public data: DataService
+    public data: DataService,
+    public scroll: ScrollService
     ) {
       this.getParams();
   }
@@ -24,21 +25,12 @@ export class ProjectComponent implements OnInit, OnDestroy {
     this.data.setCustomerProjects(this.customerId);
     this.data.setCurrentProject(this.projectId);
     this.scroll.scrollUp();
-    this.updateSeo();
   }
-
-  public ngOnDestroy(): void {
-    this.destroy$.next(true);
-    this.destroy$.unsubscribe();
-  }
-
-  public
 
   public switchProject(newId: string): void {
     this.data.setCurrentProject(newId);
     this.projectId = newId;
     this.scroll.scrollUpSlow();
-    this.seo.update(this.seoData);
   }
 
   public previousProject(): void {
