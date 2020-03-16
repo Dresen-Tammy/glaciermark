@@ -15,26 +15,15 @@ h1 {
 }
 
 .image-group {
-  display: grid;
-  grid-template-columns: 50px 1fr 50px;
-  grid-template-rows: 1fr 50px 1fr;
   width: 100%;
   max-width: 650px;
 
   .main-image {
-    grid-column-start: 1;
-    grid-column-end: 4;
-    grid-row-start: 1;
-    grid-row-end: 4;
     width: 100%;
     max-width: 650px;
   }
 
   video {
-    grid-column-start: 1;
-    grid-column-end: 4;
-    grid-row-start: 1;
-    grid-row-end: 4;
     width: 100%;
     max-width: 650px;
   }
@@ -64,6 +53,7 @@ h1 {
 .project-text {
   margin: 20px;
   max-width: 650px;
+  text-align: center;
 
   h2 {
     color: #11457a;
@@ -89,7 +79,7 @@ h1 {
       font-size: 14px;
       font-weight: 400;
       height: 36px;
-      margin-right: 20px;
+      margin: 5px;
       padding: 5px 20px;
       text-decoration: none;
     }
@@ -103,13 +93,14 @@ video::cue {
 
 .thumbnail-section {
   margin: 20px;
+  text-align: center;
 
   a {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
     margin: 10px auto;
-    width: 200px;
+    max-width: 200px;
 
     img {
       grid-column-start: 1;
@@ -143,24 +134,23 @@ video::cue {
 }
 
 .thumbnail {
-  width: 200px;
+  width:100%;
+  max-width: 200px;
+
 }
 
-@media screen and (min-width: 450px) {
-  .project-section {
-    margin: 20px 20px;
-  }
-
+@media screen and (min-width: 300px) {
   .thumbnail-section {
     display: inline-block;
-    margin: 20px 20px;
-    width: 410px;
+    width: 100%;
+    margin: 0;
 
     .thumbnails {
       display: grid;
-      grid-gap: 10px;
-      grid-template-columns: repeat( auto-fill, minmax(200px, 200px));
+      grid-gap: 2px;
+      grid-template-columns: repeat(2, 1fr);
       margin-top: 20px;
+      width: 100%;
 
       a {
         margin: 0;
@@ -168,32 +158,47 @@ video::cue {
     }
   }
 }
-@media screen and (min-width: 500px) {
-  .header-section {
-    background-image: url('../../assets/images/glacierProject_500w.jpg');
+
+@media screen and (min-width: 400px) {
+  .thumbnail-section .thumbnails {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
-@media screen and (min-width: 660px) {
+@media screen and (min-width: 500px) {
   .project-section {
-    margin: 20px auto;
-    max-width: 650px;
+    margin: 20px 20px;
+  }
+
+  .project-text {
+    text-align: left;
+
+    .client-buttons button {
+      margin: 0 10px 0 0;
+    }
   }
 
   .thumbnail-section {
-    margin: 20px auto;
-    width: 650px;
+    text-align: left;
   }
-
-  .thumbnails {
-    grid-template-columns: repeat( auto-fill, minmax(200px, 1fr));
-  }
-
 }
 
-@media screen and (min-width: 800px) {
-  .header-section {
-    padding-top: 120px;
+@media screen and (min-width: 650px) {
+  .thumbnail-section {
+    margin: 20px auto;
+    max-width: 650px;
+
+    .thumbnails {
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 10px;
+    }
+  }
+}
+
+@media screen and (min-width: 690px) {
+  .project-section {
+    margin: 20px auto;
+    max-width: 650px;
   }
 }
 
@@ -211,9 +216,12 @@ video::cue {
   .thumbnail-section {
     margin: 20px auto;
     width: 1050px;
+    max-width: unset;
+    grid-column-end: span 2;
 
     .thumbnails {
       grid-template-columns: repeat( auto-fill, minmax(200px, 1fr));
+      width: 100%;
     }
   }
 }

@@ -1,3 +1,4 @@
+import { SeoService } from './../seo/seo.service';
 import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError, BehaviorSubject, Subject } from 'rxjs';
@@ -6,6 +7,7 @@ import { Project } from '../../models/project';
 import { Customer } from '../../models/customer';
 import { SaveAs } from 'file-saver';
 import { ServerCustomer } from 'src/app/models/server-customer';
+import { Location } from '@angular/common';
 
 export interface Msg {
   msg: string;
@@ -18,8 +20,6 @@ export class DataService implements OnDestroy {
   public readonly allCustomers$: Observable<Array<Customer>>;
   public readonly currentCustomer$: Observable<Customer>;
   public readonly currentProject$: Observable<Project>;
-  public readonly prevNextCustomer$: Observable<string[]>;
-  public readonly prevNextProject$: Observable<string[]>;
   public readonly portfolio$: Observable<Array<Project>>;
 
 
@@ -30,8 +30,6 @@ export class DataService implements OnDestroy {
   private _allCustomersBS: BehaviorSubject<Array<Customer>>;
   private _currentCustomerBS: BehaviorSubject<Customer>;
   private _currentProjectBS: BehaviorSubject<Project>;
-  private _prevNextCustomerBS: BehaviorSubject<string[]>;
-  private _prevNextProjectBS: BehaviorSubject<string[]>;
   private _portfolioBS: BehaviorSubject<Array<Project>>;
   private destroy$: Subject<boolean> = new Subject<boolean>();
 
@@ -42,7 +40,20 @@ export class DataService implements OnDestroy {
     })
   };
 
-  constructor(private http: HttpClient) {
+  private seoData = {
+    title: 'Glacier Marketing Company - Idaho Falls - Customer: ' + this._currentCustomerId,
+    description: 'Check out our portfolio of print design, digital &amp; website design,'
+    + ' marketing or branding services. We have the experience to help your business with any'
+    + ' nmarketing needs - all in one team! No need to parsel out your business marketing when'
+    + ' you can get the Glacier Marketing services from one company. Call today 208-557-9114.',
+    url: 'https://glaciermark.com/project?customer=' + this._currentCustomerId + '&project=' + this._currentProjectId
+  };
+
+  constructor(
+    private http: HttpClient,
+    private seo: SeoService,
+    private location: Location
+    ) {
     this._defaultProject = new Project();
     this._defaultProject.projectId = '-1';
     this._defaultProject.projectClass = 'default';
@@ -59,14 +70,10 @@ export class DataService implements OnDestroy {
     this._allCustomersBS = new BehaviorSubject<Array<Customer>>([this._defaultCustomer]);
     this._currentCustomerBS = new BehaviorSubject(this._defaultCustomer);
     this._currentProjectBS = new BehaviorSubject(this._defaultProject);
-    this._prevNextCustomerBS = new BehaviorSubject(['', '']);
-    this._prevNextProjectBS = new BehaviorSubject(['', '']);
     this._portfolioBS = new BehaviorSubject<Array<Project>>([this._defaultProject]);
     this.allCustomers$ = this._allCustomersBS.asObservable();
     this.currentCustomer$ = this._currentCustomerBS.asObservable();
     this.currentProject$ = this._currentProjectBS.asObservable();
-    this.prevNextCustomer$ = this._prevNextCustomerBS.asObservable();
-    this.prevNextProject$ = this._prevNextProjectBS.asObservable();
     this.portfolio$ = this._portfolioBS.asObservable();
   }
 
@@ -100,7 +107,6 @@ export class DataService implements OnDestroy {
         });
         this._allCustomersBS.next(clientsData);
         this._portfolioBS.next(projectsArray);
-        // this.getRoutesFromClients();
       },
       takeUntil(this.destroy$)
       )
@@ -113,7 +119,6 @@ export class DataService implements OnDestroy {
     this.allCustomers$.subscribe((clients: Array<Customer>) => {
       clients.forEach((client: Customer, index: number) => {
         if (client.customerId === this._currentCustomerId) {
-          this.setPrevNextCustomer(index);
           this._currentCustomerBS.next(client);
         }
       });
@@ -122,73 +127,91 @@ export class DataService implements OnDestroy {
   }
 
   public setCurrentProject(projectId: string = 'none'): void {
+    const projects = this._currentCustomerBS.getValue().projects;
+
     if (projectId === 'none') {
-      const currentCustomer = this._currentCustomerBS.getValue();
-      projectId = currentCustomer.projects[0].projectId;
+      projectId = projects[0].projectId;
+    } else if (projectId === 'last') {
+      projectId = projects[projects.length - 1].projectId;
     }
     this._currentProjectId = projectId;
-    this._currentCustomerBS.subscribe((client: Customer) => {
+    this.currentCustomer$.subscribe((client: Customer) => {
       client.projects.map((project: Project) => {
         if (this._currentProjectId === project.projectId) {
           this._currentProjectBS.next(project);
-          this.setPrevNextProject(project);
+          this.updateSeo();
+          this.updateUrl();
         }
       });
       takeUntil(this.destroy$);
     });
   }
 
-  private setPrevNextProject(project: Project): void {
-    const customerProjects: Array<Project> = this._currentCustomerBS.getValue().projects;
-    if (customerProjects !== undefined) {
-      const index: number = customerProjects.indexOf(project);
-      const nextIndex: number = this.findNextIndex(index, customerProjects.length);
-      const prevIndex: number = this.findPrevIndex(index, customerProjects.length);
-      this._prevNextProjectBS.next([customerProjects[prevIndex].projectId, customerProjects[nextIndex].projectId]);
+  public setNextProject(): void {
+    const projects = this._currentCustomerBS.getValue().projects;
+    let index = projects.indexOf(this._currentProjectBS.getValue());
+    index++;
+    if (index >= projects.length) {
+      this.setNextCustomer();
+      this.setCurrentProject();
+    } else {
+      this._currentProjectBS.next(projects[index]);
+      this._currentProjectId = projects[index].projectId;
     }
+    this.updateSeo();
+    this.updateUrl();
   }
 
-  private findPrevIndex(index: number, length: number): number {
-    let prev: number = index - 1;
-    if (prev < 0) {
-      prev = length - 1;
+  public setPreviousProject(): void {
+    const projects = this._currentCustomerBS.getValue().projects;
+    let index = projects.indexOf(this._currentProjectBS.getValue());
+    index--;
+    if (index < 0) {
+      this.setPreviousCustomer();
+      this.setCurrentProject('last');
+    } else {
+      this._currentProjectBS.next(projects[index]);
+      this._currentProjectId = projects[index].projectId;
     }
-    return prev;
+    this.updateSeo();
+    this.updateUrl();
   }
 
-  private findNextIndex(index: number, length: number): number {
-    let next: number = index + 1;
-    if (next >= length) {
-      next = 0;
+  private updateSeo(): void {
+    this.seoData.title = 'Glacier Marketing Company - Idaho Falls - Customer: '
+    + this._currentCustomerId + ' Project: '
+    + this._currentProjectBS.getValue().projectText;
+    this.seo.update(this.seoData);
+  }
+
+  private updateUrl(): void {
+    this.location.replaceState('/project/?customer=' + this._currentCustomerId + '&project=' + this._currentProjectId);
+  }
+
+  private setPreviousCustomer(): void {
+    const customers = this._allCustomersBS.getValue();
+    let index = customers.indexOf(this._currentCustomerBS.getValue());
+    index--;
+    let customerId = '';
+    if (index < 0) {
+      customerId = customers[customers.length - 1].customerId;
+    } else {
+      customerId = customers[index].customerId;
     }
-    return next;
+    this.setCustomerProjects(customerId);
   }
 
-  private setPrevNextCustomer(index: number): void {
-    this.allCustomers$.subscribe((clients: Array<Customer>) => {
-        const length = clients.length;
-        const prevIndex = this.findPrevIndex(index, length);
-        const nextIndex = this.findNextIndex(index, length);
-        const prevCustomer = clients[prevIndex].customerId;
-        const prevProject =  clients[prevIndex].projects[0].projectId;
-        const nextCustomer = clients[nextIndex].customerId;
-        const nextProject = clients[nextIndex].projects[0].projectId;
-        this._prevNextCustomerBS.next([prevCustomer, prevProject, nextCustomer, nextProject]);
-    },
-    takeUntil(this.destroy$)
-    );
-  }
-
-  public getRoutesFromClients(): void {
-    let routes = ``;
-    this._allCustomersBS.getValue().forEach(client => {
-      const clientId = client.customerId;
-      client.projects.forEach(project => {
-          routes += `/project/${clientId}/${project.projectId}\n`;
-      });
-    });
-    const file = new File([routes], '../../../../Routes.txt', {type: 'text/plain;charset=utf-8'});
-    SaveAs(file);
+  private setNextCustomer(): void {
+    const customers = this._allCustomersBS.getValue();
+    let index = customers.indexOf(this._currentCustomerBS.getValue());
+    index++;
+    let customerId = '';
+    if (index >= customers.length) {
+      customerId = customers[0].customerId;
+    } else {
+      customerId = customers[index].customerId;
+    }
+    this.setCustomerProjects(customerId);
   }
 
   private errorHandler(error): Observable<any> {
