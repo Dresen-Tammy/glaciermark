@@ -35,10 +35,12 @@ export class ProjectComponent implements OnInit {
 
   public previousProject(): void {
     this.data.setPreviousProject();
+    this.scroll.scrollUpSlow();
   }
 
   public nextProject(): void {
     this.data.setNextProject();
+    this.scroll.scrollUpSlow();
   }
 
   private getParams(): void {

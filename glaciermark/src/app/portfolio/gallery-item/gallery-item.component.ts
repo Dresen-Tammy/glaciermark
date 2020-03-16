@@ -30,7 +30,7 @@ export class GalleryItemComponent implements OnInit {
   public checkWindowWidth(): void {
     if (this.isBrowser) {
       const windowWidth = window.innerWidth;
-      if (windowWidth > 1100 ) {
+      if (windowWidth >= 1100 ) {
         this.imageType = '-large';
       } else {
         this.imageType = '-portfolio';
