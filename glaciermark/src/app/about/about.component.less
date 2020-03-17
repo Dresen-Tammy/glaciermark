@@ -7,6 +7,7 @@
   grid-template-rows: 50px auto auto;
   justify-content: center;
   width: 100%;
+  z-index: 999;
 }
 
 .hero-section-header {
@@ -40,13 +41,14 @@
 .info-section {
   background-color: #ffffff;
   padding-bottom: 30px;
+  padding-top: 20px;
 }
 
 .info {
   margin: 20px;
 
   h3 {
-    font-size: 30px;
+    font-size: 20px;
     line-height: 1.2em;
     padding-bottom: 30px;
   }
@@ -98,15 +100,14 @@
 @media (min-width: 500px) {
   .hero-img {
     height: 430px;
+
   }
 
   #snow {
     background-image: url('../../assets/images/AboutUs_800w.jpg');
     height: 3000px;
   }
-}
 
-@media (min-width: 500px) {
   .hero-section {
     background-image: url("../../assets/images/about/glacierBlueOver_1000w.jpg");
   }
@@ -116,6 +117,9 @@
   .hero-section {
     grid-template-rows: 90px auto auto;
 
+  }
+  h3 {
+    font-size: 40px;
   }
 
   .info-section {
