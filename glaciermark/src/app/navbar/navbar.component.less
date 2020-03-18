@@ -158,11 +158,14 @@ a.selected::after {
     margin: -6px 60px;
   }
   .home-nav {
-    grid-template-columns: 1px auto 550px 1px;
+    grid-template-columns: 1px 151px 1fr 550px 1px;
   }
   a.selected::after {
     left: 50% - 20px;
     top: -2px;
+  }
+  .nav-links {
+    grid-column-start: 4;
   }
 }
 
@@ -173,6 +176,10 @@ a.selected::after {
   }
   .home-nav {
     grid-template-columns: 1px auto 600px 1px;
+  }
+
+  .nav-links {
+    grid-column-start: 3;
   }
 }
 

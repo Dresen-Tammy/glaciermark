@@ -39,6 +39,7 @@ footer {
 .bottomFooter {
   display: grid;
   margin: 0 auto;
+  grid-template-columns: 20px 1fr 20px;
 
   p {
     font-size: 10px;
@@ -49,6 +50,8 @@ footer {
     align-items: center;
     display: flex;
     justify-content: space-between;
+    grid-column-start: 2;
+    padding: 5px 0;
 
     li a {
       color: #7db2ce;
@@ -127,6 +130,19 @@ h2 {
       width: 450px;
     }
   }
+
+  .contact-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  h2 {
+    grid-column-end: span 2;
+  }
+
+  .social-links {
+    top: 200px;
+  }
 }
 
 @media (min-width: 650px) {
@@ -186,6 +202,9 @@ h2 {
   .top-footer {
     grid-gap: 50px;
     grid-template-columns: auto 330px 330px auto;
+  }
+  .contact-info {
+    display: initial;
   }
 }
 
