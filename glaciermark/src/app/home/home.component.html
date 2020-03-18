@@ -78,8 +78,15 @@
       paragraphColor="paragraph-dark-blue"
       >Your brand speaks volumes in the first few seconds a customer sees it. This can be negative or positive. We have the creativity, precision, and expertise to help you make a positive, lasting impression. Please look at some of the work from our portfolio, and don't hesitate to contact us with any&nbsp;questions.
     </app-section-header>
-  </section>
+    <button class="portfolio-button" routerLink="/portfolio">PORTFOLIO</button>
+    <picture class="portfolio">
+      <source media="(min-width: 1000px)" srcset="../../assets/images/HomePortfolio_1500w.jpg">
+      <source media="(min-width: 800px)" srcset="../../assets/images/HomePortfolio_1000w.jpg">
+      <source media="(min-width: 500px)" srcset="../../assets/images/HomePortfolio_800w.jpg">
+      <img  src="../../assets/images/HomePortfolio_500w.jpg" alt="portfolio preview">
+    </picture>
 
+  </section>
   <app-call-to-action
     buttonUrl="/contact"
     class="blue-action"
