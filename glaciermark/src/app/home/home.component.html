@@ -1,6 +1,17 @@
 <div class="home-page">
+  <section class="hero-section">
+    <app-section-header
+      class="hero-section-header"
+      headerClass="home-header"
+      alt="who we are"
+      headerColor="white-close"
+      paragraphColor="paragraph-white-black-home"
+      ><span class="the">THE</span> <span class="source"> SOURCE</span><br>for all your design and marketing needs
+    </app-section-header>
+  </section>
   <section class="white-section">
     <app-section-header
+      header-class="home-header"
       class="hero-section-header"
       src="../../assets/images/about/who-we-are.png"
       alt="who we are"
@@ -67,8 +78,21 @@
       paragraphColor="paragraph-dark-blue"
       >Your brand speaks volumes in the first few seconds a customer sees it. This can be negative or positive. We have the creativity, precision, and expertise to help you make a positive, lasting impression. Please look at some of the work from our portfolio, and don't hesitate to contact us with any&nbsp;questions.
     </app-section-header>
-  </section>
+    <div class="picture-box">
+      <picture class="portfolio">
+        <source media="(min-width: 1000px)" srcset="../../assets/images/HomePortfolio_1500w.jpg">
+        <source media="(min-width: 800px)" srcset="../../assets/images/HomePortfolio_1000w.jpg">
+        <source media="(min-width: 500px)" srcset="../../assets/images/HomePortfolio_800w.jpg">
+        <img  src="../../assets/images/HomePortfolio_500w.jpg" alt="portfolio preview">
+      </picture>
+      <div class="overlay">
+        <p>view portfolio</p>
+        <button class="portfolio-button" routerLink="/portfolio">PORTFOLIO</button>
+      </div>
+    </div>
 
+
+  </section>
   <app-call-to-action
     buttonUrl="/contact"
     class="blue-action"
@@ -79,7 +103,7 @@
       class="purple-tile"
       title="EXPERIENCE DESIGN AND BRANDING"
       text="We work with you to define your story and your identity. It is who you are and how you will be remembered. The key to success is ensuring relentless consistency with every engagement the customer has with your brand."
-      buttonUrl=""
+      buttonUrl="/services"
       >
     </app-color-tiles>
     <app-color-tiles
@@ -104,11 +128,11 @@
       class="contact-header"
       src="../../assets/images/about/contactIcons.png"
       alt="contact us"
-      header="keep in touch or start a new&nbsp;conversation"
+      header="how can we help you"
       headerColor="white"
       paragraphColor="paragraph-white19"
       iconWidth="237px"
-      >Drop us a note. Whether you have questions about your current project or want to learn more about our services, we would love to hear from&nbsp;you.
+      >Whether you have questions about your current project or want to learn more about our services, we would love to hear from&nbsp;you.
     </app-section-header>
     <app-contact-form></app-contact-form>
   </section>

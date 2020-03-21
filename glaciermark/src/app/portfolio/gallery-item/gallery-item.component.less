@@ -21,6 +21,7 @@ img {
   right: 0;
   text-align: center;
   text-decoration: none;
+  transition: all .5s;
   top: 0;
   width: 100%;
 
@@ -28,15 +29,24 @@ img {
     background-color: rgba(125, 178, 206, .8);
 
     h2, h3 {
-      transform: translateX(0);
+      transform: translate(0, 0);
       transition: all .5s;
     }
+
+    h2 {
+      color: #ffffff;
+    }
+
+    h3 {
+      color: #222533;
+    }
+
   }
 }
 
 h2 {
   align-self: end;
-  color: #ffffff;
+  color: transparent;
   display: block;
   font-size: 26px;
   font-weight: 600;
@@ -45,12 +55,12 @@ h2 {
   grid-column-end: 2;
   grid-row-end: 2;
   text-transform: uppercase;
-  transform: translateX(-110%);
-  transition: all .5s;
+  transform: translate(0, -100px);
+  transition: all .3s;
 }
 
 h3 {
-  color: #222533;
+  color: transparent;
   font-size: 20px;
   font-weight: 400;
   grid-row-start: 2;
@@ -59,8 +69,8 @@ h3 {
   grid-column-end: 2;
   height: 100%;
   text-transform: lowercase;
-  transform: translateX(110%);
-  transition: all .5s;
+  transform: translate(0, 100px);
+  transition: all .3s;
 }
 
 @media (min-width: 500px) {

@@ -19,16 +19,16 @@ label {
 
 input, textarea {
   background-color: #ffffff;
+  border: 1px solid #fff;
+  border-radius: 2px;
+  color: #1a1c27;
   display: block;
-  width: 100%;
-  max-width: 100%;
+  font-size: 14px;
   margin-bottom: 25px;
   margin-top: 5px;
   padding: 10px 20px;
-  color: #1a1c27;
-  font-size: 14px;
-  border: 1px solid #fff;
-  border-radius: 4px;
+  width: 100%;
+  max-width: 100%;
 }
 
 textarea {
@@ -36,54 +36,54 @@ textarea {
 }
 
 button {
-  border: 1px solid #ffffff;
-  color: #ffffff;
-  border-radius: 4px;
-  padding: 10px 20px;
-  font-size: 15px;
-  margin-top: 15px;
-  width: 120px;
   background-color: rgb(125, 178, 206);
   background-color: rgba(125, 178, 206, 0.7);
+  border: 1px solid #ffffff;
+  border-radius: 2px;
+  color: #ffffff;
+  font-size: 15px;
+  margin-top: 15px;
+  padding: 10px 20px;
+  width: 120px;
+
   &:hover {
     background-color: #ffffff;
     color: rgb(125, 178, 206);
   }
+
   &:active {
     background-color: rgb(125, 178, 206);
     color: #ffffff;
   }
-
 }
 
 .invalid {
+  background-color: transparent;
   border: 1px solid #a1b1bc;
   color: #a1b1bc;
-  background-color: transparent;
+
   &:hover {
+    background-color: transparent;
     border: 1px solid #a1b1bc;
     color: #a1b1bc;
-    background-color: transparent;
   }
 }
+
 .invalid-feedback {
   color: #b11313;
-  margin-top: -10px;
+  display: block;
   font-size: 14px;
   font-weight: 400;
+  margin-top: -10px;
   margin-bottom: 14px;
-  display: block;
 }
 
 .contact-grid {
-
-
   margin: 20px;
 
   & .left {
-    padding: 30px;
     background-color: rgba(125, 178, 206, 0.7);
-
+    padding: 30px;
 
     & address, a, p, h1 {
       color: #ffffff;
@@ -103,22 +103,23 @@ button {
   }
 
   & .right {
-    padding: 30px;
     background-color: rgba(125, 178, 206, 0.7);
+    padding: 30px;
   }
 }
 
 @media (min-width: 800px) {
-
   .contact-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
+
   .left {
     grid-column-start: 1;
     margin: 20px;
     margin-left: 40px;
   }
+
   .right {
     grid-column-start: 2;
     margin: 20px;
@@ -129,10 +130,7 @@ button {
 @media (min-width: 1020px) {
   .contact-grid {
     grid-template-columns: 470px 470px;
-    width: 940px;
     margin: 20px auto;
+    width: 940px;
   }
-
 }
-
-

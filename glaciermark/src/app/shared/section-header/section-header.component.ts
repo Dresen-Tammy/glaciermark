@@ -15,6 +15,7 @@ export class SectionHeaderComponent implements OnInit {
   @Input() public alt: string;
   @Input() public backgroundImg: string;
   @Input() public iconWidth: string = '64px';
+  @Input() public headerClass: string;
   constructor() { }
 
   ngOnInit(): void {

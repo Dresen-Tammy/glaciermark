@@ -1,5 +1,10 @@
-.space {
-  height: 1000px;
+.hero-section {
+  background-image: url(../../assets/images/glacierHome_500w.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  padding-top: 70px;
+  padding-bottom: 30px;
 }
 
 .contact-section {
@@ -9,7 +14,103 @@
   padding-bottom: 20px;
 }
 
+.source {
+  font-size: 30px;
+}
+
+.portfolio-button {
+  background-color: #7db2ce;
+  border: 1px solid #7db2ce;
+  border-radius: 2px;
+  color: #ffffff;
+  display: block;
+  font-size: 15px;
+  height: 36px;
+  line-height: 36px;
+  margin: 5px auto 40px;
+  padding: 0 20px;
+
+  &:hover {
+    background-color: #ffffff;
+    color: #7db2c3;
+  }
+
+  &:active {
+    background-color: #7db2ce;
+    color: #ffffff;
+  }
+}
+
+picture  {
+  display: block;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 4;
+  max-width: 1500px;
+  margin: auto;
+
+  img {
+    margin-bottom: -4px;
+    width: 100%;
+    max-width: 1500px;
+  }
+}
+
+.picture-box {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 50px 1fr 50px;
+
+  .overlay {
+    background-color: rgba(3, 27, 34, 0.5);
+    border: 1px solid #ffffff;
+    border-radius: 2px;
+    grid-column-start: 2;
+    grid-row-start: 2;
+    visibility: hidden;
+
+    p {
+      color: #ffffff;
+      font-size: 20px;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    button {
+      margin-top: 30px;
+    }
+  }
+
+  &:hover .overlay{
+    visibility: visible;
+  }
+}
+
+h4 {
+  font-size: 30px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  text-align: center;
+}
+
 @media (min-width: 500px) {
+  .hero-section {
+    background-image: url(../../assets/images/glacierHome_1000w.jpg);
+  }
+
+  .picture-box {
+    grid-template-columns: 1fr 350px 1fr;
+
+    .overlay {
+      height: 165px;
+
+      p {
+        font-size: 30px;
+      }
+    }
+  }
+
   .contact-section {
     background-image: url(../../assets/images/penguinCrowdOver_800w.jpg);
   }
@@ -35,9 +136,25 @@
     flex: 1;
     width: 100%;
   }
+
+  .source {
+    font-size: 35px;
+    line-height: 2em;
+  }
+}
+
+@media (min-width: 900px) {
+  .hero-section {
+    height: 450px;
+    overflow: hidden;
+  }
 }
 
 @media (min-width: 1020px) {
+  .hero-section {
+    background-image: url(../../assets/images/glacierHome_1500w.jpg);
+  }
+
   .contact-section {
     background-image: url(../../assets/images/penguinCrowdOver_1500w.jpg);
   }
@@ -47,8 +164,13 @@
   }
 
   .information-grid {
-    max-width: 930px;
     margin: 10px auto;
+    max-width: 930px;
   }
 }
 
+@media (min-width: 1500px) {
+  picture {
+    margin-bottom: 50px;
+  }
+}

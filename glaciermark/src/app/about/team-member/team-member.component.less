@@ -7,17 +7,21 @@ img {
   display: block;
   margin: 40px auto;
 }
+
 h3 {
   color: #11457a;
   font-size: 27px;
   line-height: 30px;
   margin-bottom: 10px;
+  text-align: center;
 }
+
 h4 {
   font-size: 14px;
   font-weight: 400;
   color: #404a50;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 @media (min-width: 800px) {
@@ -25,21 +29,38 @@ h4 {
     display: flex;
     justify-content: center;
   }
+
   .team-grid {
     display: grid;
     grid-template-columns: 175px 500px;
     gap: 30px;
-
   }
+
   img {
    margin: 0;
+   margin-top: 20px;
+  }
+
+  h3 {
+    margin-top: 20px;
+    text-align: left;
+  }
+
+  h4 {
+    text-align: left;
   }
 }
-@media (min-width: 1100px) {
+
+@media (min-width: 1150px) {
   .team-grid {
     grid-template-columns: 175px auto;
   }
+
   section {
     display: block;
+  }
+
+  img, h3 {
+    margin-top: 0;
   }
 }
