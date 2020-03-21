@@ -1,8 +1,7 @@
 import { ActivatedRoute } from '@angular/router';
-import { ScrollService } from './../services/scroll/scroll.service';
+import { ViewportScroller } from '@angular/common';
 import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { SeoService } from '../services/seo/seo.service';
-import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-services',
@@ -18,7 +17,6 @@ export class ServicesPageComponent implements OnInit, AfterViewChecked {
 
   public constructor(
     private seo: SeoService,
-    private scroll: ScrollService,
     private vscroll: ViewportScroller,
     private router: ActivatedRoute
   ) {
@@ -34,7 +32,7 @@ export class ServicesPageComponent implements OnInit, AfterViewChecked {
 
   public ngOnInit() {
     if (!this.anchor) {
-      this.scroll.scrollUp();
+      this.vscroll.scrollToPosition([0, 0]);
     }
   }
 

@@ -1,4 +1,4 @@
-import { ScrollService } from './../services/scroll/scroll.service';
+import { ViewportScroller } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { SeoService } from '../services/seo/seo.service';
 
@@ -12,7 +12,7 @@ export class ContactComponent implements OnInit {
 
   public constructor(
     private seo: SeoService,
-    private scroll: ScrollService
+    private scroll: ViewportScroller
   ) {
     this.seo.update({
       title: 'East Idaho Design &amp; Marketing Firm - Glacier Marketing',
@@ -22,6 +22,6 @@ export class ContactComponent implements OnInit {
     });
   }
   public ngOnInit(): void {
-    this.scroll.scrollUp();
+    this.scroll.scrollToPosition([0, 0]);
   }
 }
