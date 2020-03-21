@@ -1,9 +1,9 @@
 <header
   class="header"
-  [id]="anchor"
   [ngStyle]="{ 'background-color':background }"
   >
-  <div class="headline">
+  <div class="headline" [id]="anchor">
+
     <h2>{{title}} </h2>
     <img
       [src]="'../../../../assets/images/offering/' + src + '.png'"
