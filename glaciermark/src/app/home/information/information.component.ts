@@ -16,13 +16,14 @@ export class InformationComponent implements OnInit {
   @Input() public title: string;
   @Input() public text: string;
   @Input() public buttonUrl: string;
-  constructor(public el: ElementRef) { }
+  @Input() public anchor: string = '';
+
+  public constructor(public el: ElementRef) { }
 
   @HostListener('window:scroll', ['$event'])
     checkScroll() {
       const componentPosition = this.el.nativeElement.offsetTop;
       const scrollPosition = window.pageYOffset + window.innerHeight;
-
 
       if (scrollPosition >= componentPosition) {
         this.riseValue = 'rise';
@@ -31,8 +32,6 @@ export class InformationComponent implements OnInit {
       }
     }
 
-  ngOnInit() {
-
-  }
+  public ngOnInit(): void {}
 
 }

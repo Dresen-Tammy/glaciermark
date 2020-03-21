@@ -8,12 +8,13 @@ import { Component, OnInit, Input, HostListener, ElementRef } from '@angular/cor
   animations: [slideUpAnimation]
 })
 export class ColorTilesComponent implements OnInit {
-  @Input() title: string;
-  @Input() text: string;
-  @Input() buttonUrl: string;
-  @Input() class: string;
+  @Input() public title: string;
+  @Input() public text: string;
+  @Input() public buttonUrl: string;
+  @Input() public class: string;
   @Input() public riseValue = 'up';
   @Input() public delay: string = '0ms';
+  @Input() public anchor: string;
 
   public constructor(private el: ElementRef) { }
 
@@ -24,7 +25,6 @@ export class ColorTilesComponent implements OnInit {
     checkScroll() {
       const componentPosition = this.el.nativeElement.offsetTop;
       const scrollPosition = window.pageYOffset + window.innerHeight;
-
 
       if (scrollPosition >= componentPosition) {
         this.riseValue = 'up';
