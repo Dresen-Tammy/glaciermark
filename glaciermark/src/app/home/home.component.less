@@ -26,7 +26,7 @@
   font-size: 15px;
   color: #ffffff;
   border: 1px solid #7db2ce;
-  border-radius: 5px;
+  border-radius: 2px;
   padding: 0 20px;
   height: 36px;
   line-height: 36px;
@@ -44,23 +44,73 @@
 }
 
 picture  {
+  display: block;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 4;
+  max-width: 1500px;
+  margin: auto;
   img {
     margin-bottom: -4px;
     width: 100%;
+    max-width: 1500px;
+  }
+}
+
+.picture-box {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 50px 1fr 50px;
+
+  .overlay {
+    background-color: rgba(3, 27, 34, 0.5);
+    border: 1px solid #ffffff;
+    border-radius: 2px;
+    grid-column-start: 2;
+    grid-row-start: 2;
+    visibility: hidden;
+
+    p {
+      color: #ffffff;
+      font-size: 20px;
+      margin-top: 20px;
+      text-align: center;
+    }
+    button {
+      margin-top: 30px;
+    }
+  }
+
+  &:hover .overlay{
+    visibility: visible;
   }
 }
 
 h4 {
-  padding-top: 20px;
-  text-align: center;
   font-size: 30px;
   padding-bottom: 20px;
+  padding-top: 20px;
+  text-align: center;
 }
 
 @media (min-width: 500px) {
   .hero-section {
     background-image: url(../../assets/images/glacierHome_1000w.jpg);
   }
+
+  .picture-box {
+    grid-template-columns: 1fr 350px 1fr;
+
+    .overlay {
+      height: 165px;
+
+      p {
+        font-size: 30px;
+      }
+    }
+  }
+
   .contact-section {
     background-image: url(../../assets/images/penguinCrowdOver_800w.jpg);
   }
@@ -93,6 +143,13 @@ h4 {
   }
 }
 
+@media (min-width: 900px) {
+  .hero-section {
+    height: 450px;
+    overflow: hidden;
+  }
+}
+
 @media (min-width: 1020px) {
   .hero-section {
     background-image: url(../../assets/images/glacierHome_1500w.jpg);
@@ -112,3 +169,8 @@ h4 {
   }
 }
 
+@media (min-width: 1500px) {
+  picture {
+    margin-bottom: 50px;
+  }
+}
