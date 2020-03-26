@@ -7,8 +7,16 @@ import { ServicesHeaderComponent } from './services-header/services-header.compo
 import { ServicesTileComponent } from './services-tile/services-tile.component';
 
 const servicesPageRoute: Routes = [
-  { path: 'services', component: ServicesPageComponent}
-]
+  { 
+    path: '',
+    children: [
+      {
+        path: '',
+        component: ServicesPageComponent
+      }
+    ]
+  } 
+];
 
 @NgModule({
   declarations: [

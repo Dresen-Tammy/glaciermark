@@ -5,8 +5,16 @@ import { CommonModule } from '@angular/common';
 import { ContactComponent } from './contact.component';
 
 const contactRoute: Routes = [
-  { path: 'contact', component: ContactComponent }
-]
+  { 
+    path: '',
+    children: [
+      {
+        path: '',
+        component: ContactComponent 
+      }
+    ]
+  }
+];
 
 @NgModule({
   declarations: [ContactComponent],
