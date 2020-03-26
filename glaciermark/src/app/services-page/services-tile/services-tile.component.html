@@ -1,8 +1,18 @@
 <section>
-  <img
-    [src]="'../../../assets/images/offering/' + src + '-300x300.jpg'"
+  <picture>
+    <source
+    [srcset]="webpsource"
+    type="image/webp"
+    >
+    <source
+      [srcset]="jpgsource"
+      type="image/jpeg"
+    >
+    <img
+    [src]="jpgsource"
     [alt]="title"
     />
+  </picture>
   <h3>{{title}}</h3>
   <p>{{text}}</p>
   <p *ngIf="text2">{{text2}}</p>

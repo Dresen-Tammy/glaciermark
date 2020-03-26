@@ -1,11 +1,15 @@
 .hero-section {
-  background-image: url("../../assets/images/services-glacier_500w.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
+  // background-image: url("../../assets/images/services-glacier_500w.jpg");
+  // background-repeat: no-repeat;
+  // background-size: cover;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 50px auto auto;
   justify-content: center;
+  img {
+    min-width: 100%;
+    height: 520px;
+  }
 }
 
 .hero-section-header {
@@ -15,7 +19,7 @@
   grid-row-end: 3;
 }
 
-.hero-img {
+.hero-image {
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 1;
@@ -43,9 +47,18 @@
   padding: 30px 50px;
 }
 
+@media (min-width: 500px) {
+  .hero-section {
+    img {
+      height: 450px;
+    }
+  }
+}
 @media (min-width: 800px) {
   .hero-section {
-    background-image: url("../../assets/images/services-glacier_1000w.jpg");
+    img {
+      height: 480px;
+    }
   }
 }
 
@@ -58,17 +71,17 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 20px;
+    grid-gap: 20px;
     padding-top: 30px;
   }
 
   .hero-section {
     grid-template-rows: 100px auto auto;
   }
-}
 
-@media (min-width: 800px) {
   .tile-section {
     gap: 30px;
+    grid-gap: 30px;
   }
 }
 
@@ -78,14 +91,14 @@
     overflow: hidden;
   }
 
-  .hero-img {
+  .hero-image {
     height: auto;
   }
 }
 
 @media (min-width: 1000px) {
   .hero-section {
-    background-image: url("../../assets/images/services-glacier_1500w.jpg");
+    // background-image: url("../../assets/images/services-glacier_1500w.jpg");
   }
 }
 
@@ -93,5 +106,9 @@
   .tile-section {
     margin: auto;
     max-width: 1100px;
+  }
+
+  .hero-section img {
+    height: auto;
   }
 }
