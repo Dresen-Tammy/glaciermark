@@ -1,14 +1,16 @@
 .hero-section {
   background-color: #ffffff;
-  background-image: url("../../assets/images/about/glacierBlueOver_500w.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 50px auto auto;
   justify-content: center;
-  width: 100%;
   z-index: 999;
+  overflow: hidden;
+
+  img {
+    min-width: 100%;
+    height: 100%;
+  }
 }
 
 .hero-section-header {
@@ -18,7 +20,7 @@
   grid-row-end: 3;
 }
 
-.hero-img {
+.hero-image {
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 1;
@@ -98,25 +100,24 @@
 }
 
 @media (min-width: 500px) {
-  .hero-img {
-    height: 430px;
-
+  .hero-image {
+    height: 450px;
   }
 
   #snow {
     height: 3000px;
-  }
-
-  .hero-section {
-    background-image: url("../../assets/images/about/glacierBlueOver_1000w.jpg");
   }
 }
 
 @media (min-width: 800px) {
   .hero-section {
     grid-template-rows: 100px auto auto;
-
   }
+
+  .hero-image {
+    height: 480px;
+  }
+
   h3 {
     font-size: 40px;
   }
@@ -146,6 +147,14 @@
   .hero-section {
     height: 450px;
     overflow: hidden;
+
+    img {
+      height: auto;
+    }
+  }
+
+  .hero-image {
+    height: auto;
   }
 
   .info-section {
@@ -162,86 +171,87 @@
       font-size: 40px;
     }
   }
-
-  .hero-img {
-    height: auto;
-  }
 }
 
 @media (min-width: 1000px) {
   #snow {
     height: 2200px;
   }
+}
+
+@media (min-width: 1150px) {
+  .team-members {
+    align-items: stretch;
+    background: #fff;
+    background: linear-gradient(180deg, #7db3ce, #7db3ce);
+    background-position: 50%;
+    background-repeat: repeat-y;
+    background-size: 3px auto;
+    column-gap: 3px;
+    display: grid;
+    grid-template-columns: 1fr 550px 550px 1fr;
+    margin: 50px 0 0 0;
+    row-gap: 0;
+    width: 100%;
+  }
+
+  app-team-member:nth-child(2n) {
+    grid-column-start: 3;
+    margin-left: 50px;
+    margin-right: 20px;
+    padding-top: 100px;
+  }
+
+  app-team-member:nth-child(2n -1) {
+    grid-column-start: 2;
+    margin-left: 20px;
+    margin-right: 50px;
+  }
+
+  .chris, .aaron {
+    margin-top: 60px;
+  }
+}
+
+@media (min-width: 1150px) {
+  .team-members {
+    align-items: stretch;
+    background: #fff;
+    background: linear-gradient(180deg, #7db3ce, #7db3ce);
+    background-position: 50%;
+    background-repeat: repeat-y;
+    background-size: 3px auto;
+    column-gap: 3px;
+    display: grid;
+    grid-template-columns: 1fr 550px 550px 1fr;
+    margin: 50px 0 0 0;
+    row-gap: 0;
+    width: 100%;
+  }
+
+  app-team-member:nth-child(2n) {
+    grid-column-start: 3;
+    margin-left: 50px;
+    margin-right: 20px;
+    padding-top: 100px;
+  }
+
+  app-team-member:nth-child(2n -1) {
+    grid-column-start: 2;
+    margin-right: 50px;
+    margin-left: 20px;
+  }
+
+  .chris, .aaron {
+    margin-top: 60px;
+  }
 
   .hero-section {
-    background-image: url("../../assets/images/about/glacierBlueOver_1500w.jpg");
-  }
-}
-
-@media (min-width: 1150px) {
-  .team-members {
-    align-items: stretch;
-    background: #fff;
-    background: linear-gradient(180deg, #7db3ce, #7db3ce);
-    background-position: 50%;
-    background-repeat: repeat-y;
-    background-size: 3px auto;
-    column-gap: 3px;
-    display: grid;
-    grid-template-columns: 1fr 550px 550px 1fr;
-    margin: 50px 0 0 0;
-    row-gap: 0;
-    width: 100%;
+    height: 450px;
+    overflow: hidden;
   }
 
-  app-team-member:nth-child(2n) {
-    grid-column-start: 3;
-    margin-left: 50px;
-    margin-right: 20px;
-    padding-top: 100px;
-  }
-
-  app-team-member:nth-child(2n -1) {
-    grid-column-start: 2;
-    margin-left: 20px;
-    margin-right: 50px;
-  }
-
-  .chris, .aaron {
-    margin-top: 60px;
-  }
-}
-
-@media (min-width: 1150px) {
-  .team-members {
-    align-items: stretch;
-    background: #fff;
-    background: linear-gradient(180deg, #7db3ce, #7db3ce);
-    background-position: 50%;
-    background-repeat: repeat-y;
-    background-size: 3px auto;
-    column-gap: 3px;
-    display: grid;
-    grid-template-columns: 1fr 550px 550px 1fr;
-    margin: 50px 0 0 0;
-    row-gap: 0;
-    width: 100%;
-  }
-
-  app-team-member:nth-child(2n) {
-    grid-column-start: 3;
-    margin-left: 50px;
-    margin-right: 20px;
-    padding-top: 100px;
-  }
-
-  app-team-member:nth-child(2n -1) {
-    grid-column-start: 2;
-    margin-right: 50px;
-    margin-left: 20px;
-  }
-
-  .chris, .aaron {
-    margin-top: 60px;
+  .hero-image img {
+      margin-top: -100px
   }
 }

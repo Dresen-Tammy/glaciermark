@@ -30,17 +30,20 @@ export class ProjectComponent implements OnInit {
   }
 
   public switchProject(newId: string): void {
+    this.data.setDefault();
     this.data.setCurrentProject(newId);
     this.projectId = newId;
     this.scrollUpAnchor();
   }
 
   public previousProject(): void {
+    this.data.setDefault();
     this.data.setPreviousProject();
     this.scrollUpAnchor();
   }
 
   public nextProject(): void {
+    this.data.setDefault();
     this.data.setNextProject();
     this.scrollUpAnchor();
   }

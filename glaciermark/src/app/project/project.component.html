@@ -9,15 +9,12 @@
       project: data.currentProject$ | async} as vm"
     >
     <div class="image-group" id="project">
-      <img *ngIf="!vm.project.video"
-        class="main-image"
-        [src]="'../../../../assets/images/projects/'+vm.project.src+'-detail.jpg'"
-        [alt]="vm.project.projectText"
-      />
-      <video
-        *ngIf="vm.project.video"
-        controls
-      >
+      <picture *ngIf="!vm.project.video">
+        <source [srcset]="'../../../../assets/images/projects/'+vm.project.src+'-detail.webp'" type="image/webp">
+        <source [srcset]="'../../../../assets/images/projects/'+vm.project.src+'-detail.jpg'" type="image/jpeg">
+        <img class="main-image" [src]="'../../../../assets/images/projects/'+vm.project.src+'-portfolio.webp'" [alt]="vm.project.projectText"/>
+      </picture>
+      <video *ngIf="vm.project.video" controls>
         <source [src]="'../../../../assets/images/projects/'+vm.project.video+'.mp4'" type="video/mp4">
         <track label="English Subtitles" kind="subtitles" srclang="en" [src]="'../../assets/images/projects/'+vm.project.video+'.vtt'">
         Your browser does not support this video.
@@ -45,11 +42,11 @@
           (click)="switchProject(proj.projectId)"
           *ngFor="let proj of vm.customer.projects"
           >
-          <img
-          class="thumbnail"
-          [src]="'../../assets/images/projects/thumbnails/'+proj.src+'-thumbnail.jpg'"
-          [alt]="proj.projectText"
-          />
+          <picture class="thumbnail">
+            <source [srcset]="'../../assets/images/projects/thumbnails/'+proj.src+'-thumbnail.webp'" type="image/webp">
+            <source [srcset]="'../../assets/images/projects/thumbnails/'+proj.src+'-thumbnail.jpg'" type="image/jpeg">
+            <img  [src]="'../../assets/images/projects/thumbnails/'+proj.src+'-thumbnail.jpg'" [alt]="vm.project.projectText"/>
+          </picture>
           <div class="overlay">
             <p>{{proj.projectText}}</p>
           </div>

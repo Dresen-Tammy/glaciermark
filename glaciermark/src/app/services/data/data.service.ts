@@ -2,7 +2,7 @@ import { SeoService } from './../seo/seo.service';
 import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError, BehaviorSubject, Subject } from 'rxjs';
-import { retry, tap, map, takeUntil } from 'rxjs/operators';
+import { retry, tap, map, takeUntil, catchError } from 'rxjs/operators';
 import { Project } from '../../models/project';
 import { Customer } from '../../models/customer';
 import { ServerCustomer } from 'src/app/models/server-customer';
@@ -24,6 +24,8 @@ export class DataService implements OnDestroy {
 
   private _currentCustomerId: string = 'loading';
   private _currentProjectId: string = 'loading';
+  private _currentProjectIndex: number = 0;
+  private _currentCustomerIndex: number = 0;
   private _defaultProject: Project;
   private _defaultCustomer: Customer;
   private _allCustomersBS: BehaviorSubject<Array<Customer>>;
@@ -93,6 +95,7 @@ export class DataService implements OnDestroy {
   public getClients(): Observable<Customer[]> {
     const clients: Observable<Array<Customer>> = this.http.get<Array<Customer>>(this.baseurl + '/clients').pipe(
       retry(1),
+      catchError(this.errorHandler),
       tap((client: any) => {
         const clientsData: Customer[] = [];
         const projectsArray: Project[] = [];
@@ -125,19 +128,20 @@ export class DataService implements OnDestroy {
     });
   }
 
-  public setCurrentProject(projectId: string = 'none'): void {
+  public setCurrentProject(projectId: string = 'first'): void {
     const projects = this._currentCustomerBS.getValue().projects;
-
-    if (projectId === 'none') {
+    if (projectId === 'first') {
       projectId = projects[0].projectId;
+      this._currentProjectIndex = 0;
     } else if (projectId === 'last') {
       projectId = projects[projects.length - 1].projectId;
     }
     this._currentProjectId = projectId;
     this.currentCustomer$.subscribe((client: Customer) => {
-      client.projects.map((project: Project) => {
+      client.projects.map((project: Project, index: number) => {
         if (this._currentProjectId === project.projectId) {
           this._currentProjectBS.next(project);
+          this._currentProjectIndex = index;
           this.updateSeo();
           this.updateUrl();
         }
@@ -145,17 +149,19 @@ export class DataService implements OnDestroy {
       takeUntil(this.destroy$);
     });
   }
+  public setDefault(): void {
+    this._currentProjectBS.next(this._defaultProject);
+  }
 
   public setNextProject(): void {
     const projects = this._currentCustomerBS.getValue().projects;
-    let index = projects.indexOf(this._currentProjectBS.getValue());
-    index++;
-    if (index >= projects.length) {
+    this._currentProjectIndex++;
+    if (this._currentProjectIndex >= projects.length) {
       this.setNextCustomer();
-      this.setCurrentProject();
+      this.setCurrentProject('first');
     } else {
-      this._currentProjectBS.next(projects[index]);
-      this._currentProjectId = projects[index].projectId;
+      this._currentProjectBS.next(projects[this._currentProjectIndex]);
+      this._currentProjectId = projects[this._currentProjectIndex].projectId;
     }
     this.updateSeo();
     this.updateUrl();
@@ -163,14 +169,13 @@ export class DataService implements OnDestroy {
 
   public setPreviousProject(): void {
     const projects = this._currentCustomerBS.getValue().projects;
-    let index = projects.indexOf(this._currentProjectBS.getValue());
-    index--;
-    if (index < 0) {
+    this._currentProjectIndex--;
+    if (this._currentProjectIndex < 0) {
       this.setPreviousCustomer();
       this.setCurrentProject('last');
     } else {
-      this._currentProjectBS.next(projects[index]);
-      this._currentProjectId = projects[index].projectId;
+      this._currentProjectBS.next(projects[this._currentProjectIndex]);
+      this._currentProjectId = projects[this._currentProjectIndex].projectId;
     }
     this.updateSeo();
     this.updateUrl();
