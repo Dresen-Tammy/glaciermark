@@ -1,9 +1,9 @@
-import { takeUntil } from 'rxjs/operators';
+import { takeUntil, startWith, map, distinctUntilChanged, filter, take, tap } from 'rxjs/operators';
 import { menuAnimation } from './animations';
 import { DataService } from './services/data/data.service';
-import { Subject } from 'rxjs';
+import { Subject, interval, of } from 'rxjs';
 import { SeoService } from './services/seo/seo.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
 import { SeoConfig } from './services/seo/seo.interface';
 
 @Component({
@@ -39,52 +39,84 @@ export class AppComponent implements OnInit, OnDestroy {
   public opened: boolean = false;
   public openValue: string = 'close';
   private destroy$: Subject<boolean> = new Subject();
+  private loaded$: Subject<boolean> = new Subject();
+  private config: SeoConfig = {
+    title: 'Glacier Marketing',
+    // tslint:disable-next-line: max-line-length
+    description: 'Glacier Marketing - an award-winning design and marketing firm. We can help you create exceptional user experiences at an affordable price.',
+    locale: 'en_US',
+    url: 'https:/glaciermark.com',
+    type: 'website',
+    msapplicationTileColor: '#000',
+    themeColor: '#fff',
+    og: {
+      site_name: 'Glacier Marketing',
+      image_url: 'https://glaciermark.com/meta/og-image.png'
+    },
+    twitter: {
+      image_url: 'https://glaciermark.com/meta/twitter-image.png',
+      summary_card: 'summary_large_image'
+    },
+    keywords: 'glacier, marketing, branding, experience design, seo/mobile, consulting, media placement, campaign management',
+    article: {
+      tags: ['marketing', 'glacier'],
+      section: 'glacier'
+    },
+    link: [
+      { rel: 'alternate', type: 'application/rss+xml', title: 'RSS', href: 'https://glacirmark.com'},
+      { rel: 'canonical', href: 'https://glaciermark.com/home'}
+    ],
+  };
 
   public constructor(
     private seo: SeoService,
-    private data: DataService
-    ) {
-      const config: SeoConfig = {
-        title: 'Glacier Marketing',
-        // tslint:disable-next-line: max-line-length
-        description: 'Glacier Marketing - an award-winning design and marketing firm. We can help you create exceptional user experiences at an affordable price.',
-        locale: 'en_US',
-        url: 'https:/glaciermark.com',
-        type: 'website',
-        msapplicationTileColor: '#000',
-        themeColor: '#fff',
-        og: {
-          site_name: 'Glacier Marketing',
-          image_url: 'https://glaciermark.com/meta/og-image.png'
-        },
-        twitter: {
-          image_url: 'https://glaciermark.com/meta/twitter-image.png',
-          summary_card: 'summary_large_image'
-        },
-        keywords: 'glacier, marketing, branding, experience design, seo/mobile, consulting, media placement, campaign management',
-        article: {
-          tags: ['marketing', 'glacier'],
-          section: 'glacier'
-        },
-        link: [
-          { rel: 'alternate', type: 'application/rss+xml', title: 'RSS', href: 'https://glacirmark.com'},
-          { rel: 'canonical', href: 'https://glaciermark.com/home'}
-        ],
-      };
+    private data: DataService,
+    private zone: NgZone
+    ) {}
 
-      // initialize base Meta setup
-      this.seo.initializeBaseMeta(config);
+    public ngOnInit(): void {
+      this.delayInit();
+      this.seo.initializeBaseMeta(this.config);
 
-      data.initialize()
-      .subscribe(() => {},
-      takeUntil(this.destroy$));
+      // this.data.initialize()
+      // .subscribe(() => {},
+      // takeUntil(this.destroy$));
     }
-
-    public ngOnInit(): void {}
 
     public ngOnDestroy(): void {
       this.destroy$.next(true);
       this.destroy$.unsubscribe();
+    }
+
+    public delayInit(): void {
+      // adapted from Aaron Frost at https://dev.to/herodevs/route-fully-rendered-detection-in-angular-2nh4
+      console.log('indelay');
+      this.zone.runOutsideAngular(() => {
+        // Check very regularly to see if the pending macrotasks have all cleared
+        interval(10)
+          .pipe(
+            startWith(0), // So that we don't initially wait
+            // Only check until done
+            takeUntil(this.loaded$),
+            // Turn the interval number into the current state of the zone
+            map(() => !this.zone.hasPendingMacrotasks),
+            // Don't emit until the zone state actually flips from `false` to `true`
+            distinctUntilChanged(),
+            // Filter out unstable event. Only emit once the state is stable again
+            filter(stateStable => stateStable === true),
+            // Complete the observable after it emits the first result
+            take(1),
+            tap(stateStable => {
+              this.zone.run(() => {
+                this.loaded$.next(true);
+                this.loaded$.complete();
+                this.data.initialize()
+                .subscribe((data) => {console.log(this.data);},
+                takeUntil(this.destroy$));
+              });
+            })
+          ).subscribe();
+    });
     }
 
     public toggleOpen(): void {
