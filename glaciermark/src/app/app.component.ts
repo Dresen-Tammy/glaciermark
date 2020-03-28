@@ -92,19 +92,13 @@ export class AppComponent implements OnInit, OnDestroy {
       // adapted from Aaron Frost at https://dev.to/herodevs/route-fully-rendered-detection-in-angular-2nh4
       console.log('indelay');
       this.zone.runOutsideAngular(() => {
-        // Check very regularly to see if the pending macrotasks have all cleared
         interval(10)
           .pipe(
-            startWith(0), // So that we don't initially wait
-            // Only check until done
+            startWith(0),
             takeUntil(this.loaded$),
-            // Turn the interval number into the current state of the zone
             map(() => !this.zone.hasPendingMacrotasks),
-            // Don't emit until the zone state actually flips from `false` to `true`
             distinctUntilChanged(),
-            // Filter out unstable event. Only emit once the state is stable again
             filter(stateStable => stateStable === true),
-            // Complete the observable after it emits the first result
             take(1),
             tap(stateStable => {
               this.zone.run(() => {
@@ -116,7 +110,7 @@ export class AppComponent implements OnInit, OnDestroy {
               });
             })
           ).subscribe();
-    });
+      });
     }
 
     public toggleOpen(): void {
