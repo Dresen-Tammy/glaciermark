@@ -79,7 +79,6 @@ export class DataService implements OnDestroy {
   }
 
   public initialize(): Observable<object> {
-    console.log('initialize');
     return this.getClients().pipe(
       map(() => {
         return {};
@@ -109,9 +108,7 @@ export class DataService implements OnDestroy {
           });
         });
         this._allCustomersBS.next(clientsData);
-        console.log('allCustomersSet', this._allCustomersBS.getValue());
         this._portfolioBS.next(projectsArray);
-        console.log('done');
       },
       takeUntil(this.destroy$)
       )
