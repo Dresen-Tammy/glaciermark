@@ -11,7 +11,6 @@ export class GalleryItemComponent implements OnInit {
 
   @Input() public project: Project;
   public imageType: string = '-portfolio';
-
   private isBrowser: boolean;
 
   @HostListener('window:resize', ['$event'])

@@ -1,6 +1,16 @@
 <section class="team-member">
   <div class="team-grid">
-    <img [src]="'../../../../../assets/images/team/' + imgUrl + '.jpg'" />
+    <picture>
+      <source
+        [srcset]="webpSrc"
+        type="image/webp"
+      >
+      <source
+        [srcset]="jpgSrc"
+        type="image/jpg"
+      >
+      <img [src]="webpSrc" [alt]="name" />
+    </picture>
     <div class="team-member-text">
       <h3>{{name}}</h3>
       <h4>{{title}}</h4>

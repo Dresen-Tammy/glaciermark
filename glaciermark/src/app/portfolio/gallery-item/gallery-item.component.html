@@ -1,15 +1,9 @@
 <div class="container">
-  <img
-    [src]="'../../../assets/images/projects/'+project.src+''+imageType+'.jpg'"
-    [alt]="project.projectText" />
-  <!-- <a
-    *ngIf="project.customerName === 'Logos'"
-    [routerLink]="logos"
-    class="overlay"
-    >
-    <h2>{{project.customerName}}</h2>
-    <h3>{{project.projectText}}</h3>
-  </a>  -->
+  <picture>
+    <source [srcset]="'../../../assets/images/projects/'+project.src+''+imageType+'.webp'" type="image/webp">
+    <source [srcset]="'../../../assets/images/projects/'+project.src+''+imageType+'.jpg'" type="image/jpeg">
+    <img [src]="'../../../assets/images/projects/'+project.src+''+imageType+'.webp'" [alt]="project.projectText" />
+  </picture>
   <a
     [routerLink]="['/project']" [queryParams]="{ customer: project.customerId, project: project.projectId}"
     class="overlay"
