@@ -8,7 +8,7 @@
       customer: data.currentCustomer$ | async,
       project: data.currentProject$ | async} as vm"
     >
-    <div class="image-group">
+    <div class="image-group" id="project">
       <img *ngIf="!vm.project.video"
         class="main-image"
         [src]="'../../../../assets/images/projects/'+vm.project.src+'-detail.jpg'"
@@ -39,7 +39,7 @@
       </div>
     </div>
     <section class="thumbnail-section">
-      <h3>All Projects For {{vm.customer.customerId}}</h3>
+      <h3>All Projects For {{vm.customer.customerName}}</h3>
       <div class="thumbnails">
         <a
           (click)="switchProject(proj.projectId)"

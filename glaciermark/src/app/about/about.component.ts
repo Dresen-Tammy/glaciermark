@@ -1,4 +1,4 @@
-import { ScrollService } from './../services/scroll/scroll.service';
+import { ViewportScroller } from '@angular/common';
 import { SeoService } from './../services/seo/seo.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -11,11 +11,12 @@ export class AboutComponent implements OnInit {
 
   public constructor(
     private seo: SeoService,
-    private scroll: ScrollService
+    private scroll: ViewportScroller
     ) {
     this.seo.update({
       title: 'About - Glaciermark.com',
-      description: "We are a marketing team with decades of experience from radio &amp; TV, print and media to digital and SEO website design. The Glacier team should be your top choice for all your marketing needs - we are a one stop shop marketing company. Whether you need marketing and branding strategy, website design, print and graphic design, our experts are here to help.",
+      // tslint:disable-next-line: max-line-length
+      description: 'We are a marketing team with decades of experience from radio &amp; TV, print and media to digital and SEO website design. The Glacier team should be your top choice for all your marketing needs - we are a one stop shop marketing company. Whether you need marketing and branding strategy, website design, print and graphic design, our experts are here to help.',
       url: 'https://glaciermark.com/about'
     });
 
@@ -36,7 +37,7 @@ export class AboutComponent implements OnInit {
 
 
   public ngOnInit() {
-    this.scroll.scrollUp();
+    this.scroll.scrollToPosition([0, 0]);
   }
 
 }

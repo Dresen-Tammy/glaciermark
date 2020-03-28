@@ -16,7 +16,7 @@
       class="gallery-section"
       >
 
-      <div class="gallery" *ngIf="vm.projects.length > 1">
+      <div class="gallery" *ngIf="vm.projects.length > 0">
         <app-gallery-item
         *ngFor="let project of vm.projects"
         class="container {{project.projectClass}}"

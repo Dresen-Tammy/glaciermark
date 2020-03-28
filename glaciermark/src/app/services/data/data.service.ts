@@ -5,7 +5,6 @@ import { Observable, throwError, BehaviorSubject, Subject } from 'rxjs';
 import { retry, tap, map, takeUntil } from 'rxjs/operators';
 import { Project } from '../../models/project';
 import { Customer } from '../../models/customer';
-import { SaveAs } from 'file-saver';
 import { ServerCustomer } from 'src/app/models/server-customer';
 import { Location } from '@angular/common';
 

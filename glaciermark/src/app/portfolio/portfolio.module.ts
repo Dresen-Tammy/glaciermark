@@ -1,4 +1,3 @@
-import { DataService } from './../services/data/data.service';
 import { SharedModule } from './../shared/shared.module';
 import { PortfolioComponent } from './portfolio.component';
 import { NgModule } from '@angular/core';
@@ -7,7 +6,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { GalleryItemComponent } from './gallery-item/gallery-item.component';
 
 const portfolioRoute: Routes = [
-  { path: 'portfolio', component: PortfolioComponent }
+  { path: '', 
+    children: [
+      {
+        path: '',
+        component: PortfolioComponent 
+      }
+    ]
+  }
 ];
 
 
@@ -18,7 +24,6 @@ const portfolioRoute: Routes = [
     SharedModule,
     RouterModule.forChild(portfolioRoute)
   ],
-  exports: [RouterModule],
-  providers: [DataService]
+  exports: [RouterModule]
 })
 export class PortfolioModule { }
