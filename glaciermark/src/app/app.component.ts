@@ -67,7 +67,7 @@ export class AppComponent implements OnInit, OnDestroy {
           section: 'glacier'
         },
         link: [
-          { rel: 'alternate', type: 'application/rss+xml', title: 'RSS', href: 'https://glacirmark.com'},
+          { rel: 'alternate', type: 'application/rss+xml', title: 'RSS', href: 'https://glaciermark.com'},
           { rel: 'canonical', href: 'https://glaciermark.com/home'}
         ],
       };
