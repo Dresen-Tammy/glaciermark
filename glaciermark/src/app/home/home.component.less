@@ -1,55 +1,18 @@
 .hero-section {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 70px auto 30px;
-  width: 100%;
-  justify-content: center;
-
-  img {
-    min-width: 100%;
-    height: 100%;
-  }
-}
-
-.hero-section-header {
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 2;
-  grid-row-end: 3;
-}
-
-.hero-image {
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 1;
-  grid-row-end: 5;
-  height: 300px;
-  min-width: 100%;
+  background-image: url(https://glaciermark.s3-us-west-1.amazonaws.com/images/glacierHome_500w.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  padding-top: 70px;
+  padding-bottom: 30px;
 }
 
 .contact-section {
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: 1fr;
+  background-image: url(https://glaciermark.s3-us-west-1.amazonaws.com/images/penguinCrowdOver_500w.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-bottom: 40px;
 }
-
-.contact-image {
-  grid-row-start: 1;
-  grid-column-start: 1;
-  height: 100%;
-  min-width: 100%;
-
-  img {
-    min-width: 100%;
-    height: 100%;
-  }
-}
-
-.contact-box {
-  grid-row-start: 1;
-  grid-column-start: 1;
-}
-
 
 .source {
   font-size: 30px;
@@ -78,7 +41,7 @@
   }
 }
 
-.portfolio  {
+picture  {
   display: block;
   grid-column-start: 1;
   grid-column-end: 4;
@@ -105,7 +68,7 @@
     border-radius: 2px;
     grid-column-start: 2;
     grid-row-start: 2;
-    visibility: visible;
+
 
     p {
       color: #ffffff;
@@ -118,10 +81,6 @@
       margin-top: 30px;
     }
   }
-
-  &:hover .overlay{
-    visibility: visible;
-  }
 }
 
 h4 {
@@ -131,14 +90,105 @@ h4 {
   text-align: center;
 }
 
-@media (min-width: 500px) {
-  .hero-section {
-    grid-template-rows: 3fr 212px 2fr;
+.contact {
+  background-color: rgba(125, 178, 206, 0.7);
+  padding: 30px;
+  text-align: center;
+  width: 350px;
+  max-width: 100%;
+  margin: 0 auto;
+  border-radius: 2px;
 
+  & address, a, p, h1 {
+    color: #ffffff;
+    font-style: normal;
+    font-weight: 300px;
+    padding-bottom: 20px;
+    text-decoration: none;
   }
 
-  .hero-image {
-    height: 380px;
+  & h1 {
+    font-size: 30px;
+  }
+
+  & p {
+    font-size: 14px;
+  }
+
+  button {
+    background-color: rgb(125, 178, 206);
+    background-color: rgba(125, 178, 206, 0.7);
+    border: 1px solid #ffffff;
+    border-radius: 2px;
+    color: #ffffff;
+    font-size: 15px;
+    margin-top: 15px;
+    padding: 10px 20px;
+    width: 150px;
+    font-weight: 300;
+
+    &:hover {
+      background-color: #ffffff;
+      color: rgb(125, 178, 206);
+    }
+
+    &:active {
+      background-color: rgb(125, 178, 206);
+      color: #ffffff;
+    }
+  }
+}
+
+.blue-action {
+  background-color: #7db2ce;
+  padding: 30px 40px;
+
+  .call-box {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .cta {
+    color: #ffffff;
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  button {
+    background-color: transparent;
+    border: 1px solid #ffffff;
+    border-radius:  2px;
+    color: #ffffff;
+    display: flex;
+    font-weight: 600;
+    height: 36px;
+    padding-left: 20px;
+    width: 150px;
+
+    &:hover {
+      background-color: #ffffff;
+      color: #7db2ce;
+    }
+
+    &:active {
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  p {
+    font-size: 15px;
+    line-height: 32px;
+  }
+
+  i {
+    font-size: 24px;
+    line-height: 32px;
+  }
+}
+
+@media (min-width: 500px) {
+  .hero-section {
+    background-image: url(https://glaciermark.s3-us-west-1.amazonaws.com/images/glacierHome_1000w.jpg);
   }
 
   .picture-box {
@@ -153,11 +203,42 @@ h4 {
     }
   }
 
+  .contact-section {
+    background-image: url(https://glaciermark.s3-us-west-1.amazonaws.com/images/penguinCrowdOver_800w.jpg);
+  }
+}
+
+@media (min-width: 600px) {
+  .blue-action {
+    .call-box {
+      gap: 30px;
+      grid-gap: 30px;
+      grid-template-columns: auto 150px;
+    }
+
+    .cta {
+      margin-bottom: 0;
+    }
+  }
 }
 
 @media (min-width: 800px) {
-  .contact-section {
+  .blue-action {
+    display: flex;
+    justify-content: center;
 
+    .call-box {
+      grid-template-columns: 550px 150px;
+      margin: 0 auto;
+    }
+
+    .cta {
+      font-size: 22px;
+    }
+  }
+
+  .contact-section {
+    background-image: url(https://glaciermark.s3-us-west-1.amazonaws.com/images/penguinCrowdOver_1300w.jpg);
   }
 
   .information-grid {
@@ -181,39 +262,31 @@ h4 {
     line-height: 2em;
   }
 
-  .hero-image {
-    height: 450px;
-  }
+  .picture-box  {
+    .overlay {
+      visibility: hidden;
+    }
 
-  .hero-section {
-    height: 450px;
-  }
-
-  .picture-box .overlay {
-    visibility: hidden;
+    &:hover .overlay{
+      visibility: visible;
+    }
   }
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 900px) {
   .hero-section {
     height: 450px;
     overflow: hidden;
-
-    img {
-      height: auto;
-      margin-top: -100px;
-    }
-  }
-
-  .hero-image {
-    height: auto;
   }
 }
 
 @media (min-width: 1020px) {
+  .hero-section {
+    background-image: url(https://glaciermark.s3-us-west-1.amazonaws.com/images/glacierHome_1500w.jpg);
+  }
 
   .contact-section {
-
+    background-image: url(https://glaciermark.s3-us-west-1.amazonaws.com/images/penguinCrowdOver_1500w.jpg);
   }
 
   app-contact-form {
@@ -229,10 +302,5 @@ h4 {
 @media (min-width: 1500px) {
   picture {
     margin-bottom: 50px;
-  }
-  .hero-section {
-    img {
-      margin-top: -150px;
-    }
   }
 }

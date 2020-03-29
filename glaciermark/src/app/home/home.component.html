@@ -1,41 +1,5 @@
 <div class="home-page">
   <section class="hero-section">
-    <picture class="hero-image">
-      <source
-        srcset="../../assets/images/glacierHomew_500w.webp"
-        type="image/webp"
-        media="(max-width: 500px)"
-      >
-      <source
-        srcset="../../assets/images/glacierHomew_500w.jpg"
-        type="image/jpeg"
-        media="(max-width: 500px)"
-      >
-      <source
-        srcset="../../assets/images/glacierHome_1000w.webp"
-        type="image/webp"
-        media="(max-width: 1000px)"
-      >
-      <source
-        srcset="../../assets/images/glacierHome_1000w.jpg"
-        type="image/jpeg"
-        media="(max-width: 1000px)"
-      >
-      <source
-        srcset="../../assets/images/glacierHome_1500w.webp"
-        type="image/webp"
-        media="(min-width: 1000px)"
-      >
-      <source
-        srcset="../../assets/images/glacierHome_1500w.jpg"
-        type="image/jpeg"
-        media="(min-width: 1000px)"
-      >
-      <img
-        src="../../assets/images/glacierHome_500w.webp"
-        alt="Learn about us"
-      >
-    </picture>
     <app-section-header
       class="hero-section-header"
       headerClass="home-header"
@@ -49,7 +13,7 @@
     <app-section-header
       header-class="home-header"
       class="hero-section-header"
-      src="../../assets/images/about/who-we-are.png"
+      src="https://glaciermark.s3-us-west-1.amazonaws.com/images/about/who-we-are.png"
       alt="who we are"
       headerColor="dark-blue"
       paragraphColor="paragraph-light-blue"
@@ -113,7 +77,7 @@
   </section>
   <section class="portfolio-section">
     <app-section-header
-      src="../../assets/images/about/creativity-precision.png"
+      src="https://glaciermark.s3-us-west-1.amazonaws.com/images/about/creativity-precision.png"
       alt="creativity and precision"
       header="creativity & precision"
       headerColor="dark-blue"
@@ -122,15 +86,10 @@
     </app-section-header>
     <div class="picture-box">
       <picture class="portfolio">
-        <source media="(max-width: 500px)" srcset="../../assets/images/HomePortfolio_500w.webp" type="image/webp">
-        <source media="(max-width: 500px)" srcset="../../assets/images/HomePortfolio_500w.jpg" type="image/jpeg">
-        <source media="(max-width: 800px)" srcset="../../assets/images/HomePortfolio_800w.webp" type="image/webp">
-        <source media="(max-width: 800px)" srcset="../../assets/images/HomePortfolio_800w.jpg" type="image/jpeg">
-        <source media="(max-width: 1000px)" srcset="../../assets/images/HomePortfolio_1000w.webp" type="image/webp">
-        <source media="(max-width: 1000px)" srcset="../../assets/images/HomePortfolio_1000w.jpg" type="image/jpeg">
-        <source media="(min-width: 1000px)" srcset="../../assets/images/HomePortfolio_1500w.webp" type="image/webp">
-        <source media="(min-width: 1000px)" srcset="../../assets/images/HomePortfolio_1500w.jpg" type="image/jpeg">
-        <img  src="../../assets/images/HomePortfolio_500w.webp" alt="portfolio preview">
+        <source media="(min-width: 1000px)" srcset="https://glaciermark.s3-us-west-1.amazonaws.com/images/HomePortfolio_1500w.jpg">
+        <source media="(min-width: 800px)" srcset="https://glaciermark.s3-us-west-1.amazonaws.com/images/HomePortfolio_1000w.jpg">
+        <source media="(min-width: 500px)" srcset="https://glaciermark.s3-us-west-1.amazonaws.com/images/HomePortfolio_800w.jpg">
+        <img  src="https://glaciermark.s3-us-west-1.amazonaws.com/images/HomePortfolio_500w.jpg" alt="portfolio preview">
       </picture>
       <div class="overlay">
         <p>view portfolio</p>
@@ -138,11 +97,17 @@
       </div>
     </div>
   </section>
-  <app-call-to-action
-    buttonUrl="/contact"
-    class="blue-action"
-    >Like what you see? Contact us today to receive a 10% discount on your first order!
-  </app-call-to-action>
+  <section class="blue-action">
+    <div class="call-box">
+      <p class="cta">Like what you see? Contact us today to receive a 10% discount on your first order!</p>
+      <button routerLink="/contact" >
+        <p>
+          GET STARTED
+        </p>
+        <i class="material-icons">keyboard_arrow_right</i>
+      </button>
+    </div>
+  </section>
   <section class="color-section">
     <app-color-tiles
       class="purple-tile"
@@ -172,31 +137,19 @@
     </app-color-tiles>
   </section>
   <section class="contact-section">
-    <picture class="contact-image">
-      <source media="(max-width: 500px)" srcset="../../assets/images/penguinCrowdOver_500w.webp" type="image/webp">
-      <source media="(max-width: 500px)" srcset="../../assets/images/penguinCrowdOver_500w.jpg" type="image/jpeg">
-      <source media="(max-width: 800px)" srcset="../../assets/images/penguinCrowdOver_800w.webp" type="image/webp">
-      <source media="(max-width: 800px)" srcset="../../assets/images/penguinCrowdOver_800w.jpg" type="image/jpeg">
-      <source media="(max-width: 1000px)" srcset="../../assets/images/penguinCrowdOver_1000w.webp" type="image/webp">
-      <source media="(max-width: 1000px)" srcset="../../assets/images/penguinCrowdOver_1000w.jpg" type="image/jpeg">          <source media="(min-width: 800px and max-width: 1000px)" srcset="../../assets/images/HomePortfolio_1000w.jpg" type="image/jpg">
-      <source media="(max-width: 1300px)" srcset="../../assets/images/penguinCrowdOver_1300w.webp" type="image/webp">
-      <source media="(max-width: 1300px" srcset="../../assets/images/penguinCrowdOver_1300w.jpg" type="image/jpeg">
-      <source media="(min-width: 1300px)" srcset="../../assets/images/penguinCrowdOver_1500w.webp" type="image/webp">
-      <source media="(min-width: 1000px)" srcset="../../assets/images/penguinCrowdOver_1500w.jpg" type="image/jpeg">
-      <img  src="../../assets/images/penguinCrowdOver_500w.webp" alt="portfolio preview">
-    </picture>
-    <div class="contact-box">
-      <app-section-header
-        class="contact-header"
-        src="../../assets/images/about/contactIcons.png"
-        alt="contact us"
-        header="how can we help you"
-        headerColor="white"
-        paragraphColor="paragraph-white19"
-        iconWidth="237px"
-        >Whether you have questions about your current project or want to learn more about our services, we would love to hear from&nbsp;you.
-      </app-section-header>
-      <app-contact-form></app-contact-form>
+    <app-section-header
+      class="contact-header"
+      src="https://glaciermark.s3-us-west-1.amazonaws.com/images/about/contactIcons.png"
+      alt="contact us"
+      header="how can we help you"
+      headerColor="white"
+      paragraphColor="paragraph-white19"
+      iconWidth="237px"
+      >Whether you have questions about your current project or want to learn more about our services, we would love to hear from&nbsp;you.
+    </app-section-header>
+    <div class="contact">
+      <p>We would love to talk to you about your next project. Reach out and we will get you started.</p>
+      <button name="Contact Us" routerLink="/contact">CONTACT US</button>
     </div>
   </section>
 </div>

@@ -1,3 +1,4 @@
+import { MainSharedModule } from './../main-shared/main-shared.module';
 import { SharedModule } from './../shared/shared.module';
 import { PortfolioComponent } from './portfolio.component';
 import { NgModule } from '@angular/core';
@@ -6,11 +7,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { GalleryItemComponent } from './gallery-item/gallery-item.component';
 
 const portfolioRoute: Routes = [
-  { path: '', 
+  { path: '',
     children: [
       {
         path: '',
-        component: PortfolioComponent 
+        component: PortfolioComponent
       }
     ]
   }
@@ -22,6 +23,7 @@ const portfolioRoute: Routes = [
   imports: [
     CommonModule,
     SharedModule,
+    MainSharedModule,
     RouterModule.forChild(portfolioRoute)
   ],
   exports: [RouterModule]

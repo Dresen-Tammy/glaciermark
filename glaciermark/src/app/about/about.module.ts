@@ -1,3 +1,4 @@
+import { MainSharedModule } from './../main-shared/main-shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from './../shared/shared.module';
@@ -6,25 +7,26 @@ import { Routes, RouterModule } from '@angular/router';
 import { TeamMemberComponent } from './team-member/team-member.component';
 
 const aboutRoute: Routes = [
-  { 
+  {
     path: '',
     children: [
       {
         path: '',
-        component: AboutComponent 
-      } 
+        component: AboutComponent
+      }
     ]
   }
 ];
 
 @NgModule({
   declarations: [
-    AboutComponent, 
+    AboutComponent,
     TeamMemberComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
+    MainSharedModule,
     RouterModule.forChild(aboutRoute)
   ],
   exports: [RouterModule]

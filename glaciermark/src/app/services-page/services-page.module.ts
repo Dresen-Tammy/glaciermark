@@ -1,3 +1,4 @@
+import { MainSharedModule } from './../main-shared/main-shared.module';
 import { SharedModule } from './../shared/shared.module';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -7,7 +8,7 @@ import { ServicesHeaderComponent } from './services-header/services-header.compo
 import { ServicesTileComponent } from './services-tile/services-tile.component';
 
 const servicesPageRoute: Routes = [
-  { 
+  {
     path: '',
     children: [
       {
@@ -15,7 +16,7 @@ const servicesPageRoute: Routes = [
         component: ServicesPageComponent
       }
     ]
-  } 
+  }
 ];
 
 @NgModule({
@@ -27,7 +28,8 @@ const servicesPageRoute: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(servicesPageRoute),
-    SharedModule
+    SharedModule,
+    MainSharedModule
   ]
 })
 export class ServicesPageModule { }

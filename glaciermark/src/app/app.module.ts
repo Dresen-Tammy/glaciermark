@@ -1,9 +1,4 @@
-import { SharedModule } from './shared/shared.module';
-// import { ProjectModule } from './project/project.module';
-// import { PortfolioModule } from './portfolio/portfolio.module';
-// import { ContactModule } from './contact/contact.module';
-// import { ServicesPageModule } from './services-page/services-page.module';
-// import { AboutModule } from './about/about.module';
+import { MainSharedModule } from './main-shared/main-shared.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -30,15 +25,10 @@ import { MatListModule } from '@angular/material/list';
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
-    // AboutModule,
-    // ServicesPageModule,
-    // PortfolioModule,
-    // ContactModule,
-    // ProjectModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    SharedModule,
+    MainSharedModule,
     MatSidenavModule,
     MatListModule
   ],
