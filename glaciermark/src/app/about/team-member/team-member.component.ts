@@ -9,6 +9,7 @@ export class TeamMemberComponent implements OnInit {
   @Input() public  imgUrl: string;
   @Input() public name: string;
   @Input() public title: string;
+  @Input() public alt: string;
   @Input() public set content(value: string) {
     this._paragraphs = value.split('PP');
   }
