@@ -1,15 +1,15 @@
 <section>
   <picture>
     <source
-    [srcset]="webpsource"
+    [srcset]="'https://glaciermark.s3-us-west-1.amazonaws.com/images/offering/' + src + '-300x300.webp'"
     type="image/webp"
     >
     <source
-      [srcset]="jpgsource"
+      [srcset]="'https://glaciermark.s3-us-west-1.amazonaws.com/images/offering/' + src + '-300x300.jpg'"
       type="image/jpeg"
     >
     <img
-    [src]="jpgsource"
+    [src]="'https://glaciermark.s3-us-west-1.amazonaws.com/images/offering/' + src + '-300x300.webp'"
     [alt]="title"
     />
   </picture>

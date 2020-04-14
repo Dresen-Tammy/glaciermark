@@ -2,14 +2,14 @@
   <div class="team-grid">
     <picture>
       <source
-        [srcset]="webpSrc"
+        [srcset]="'https://glaciermark.s3-us-west-1.amazonaws.com/images/team/' + imgUrl +'.webp'"
         type="image/webp"
       >
       <source
-        [srcset]="jpgSrc"
-        type="image/jpg"
+        [srcset]="'https://glaciermark.s3-us-west-1.amazonaws.com/images/team/' + imgUrl +'.jpg'"
+        type="image/jpeg"
       >
-      <img [src]="webpSrc" [alt]="name" />
+      <img [src]="'https://glaciermark.s3-us-west-1.amazonaws.com/images/team/' + imgUrl +'.jpg'" [alt]="alt" />
     </picture>
     <div class="team-member-text">
       <h3>{{name}}</h3>

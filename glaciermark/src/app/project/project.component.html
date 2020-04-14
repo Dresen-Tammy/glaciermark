@@ -8,12 +8,13 @@
       customer: data.currentCustomer$ | async,
       project: data.currentProject$ | async} as vm"
     >
-    <div class="image-group" id="project">
-      <picture *ngIf="!vm.project.video">
-        <source [srcset]="'../../../../assets/images/projects/'+vm.project.src+'-detail.webp'" type="image/webp">
-        <source [srcset]="'../../../../assets/images/projects/'+vm.project.src+'-detail.jpg'" type="image/jpeg">
-        <img class="main-image" [src]="'../../../../assets/images/projects/'+vm.project.src+'-portfolio.webp'" [alt]="vm.project.projectText"/>
-      </picture>
+     <div class="image-group" id="project">
+      <img *ngIf="!vm.project.video"
+        class="main-image"
+        [src]="'https://glaciermark.s3-us-west-1.amazonaws.com/images/projects/'+vm.project.src+'-detail.jpg'"
+        [srcset]="'https://glaciermark.s3-us-west-1.amazonaws.com/images/projects/'+vm.project.src+'-detail_500w.jpg 500w, https://glaciermark.s3-us-west-1.amazonaws.com/images/projects/'+vm.project.src+'-detail.jpg, 800w'"
+        [alt]="vm.project.projectText"
+      />
       <video *ngIf="vm.project.video" controls>
         <source [src]="'../../../../assets/images/projects/'+vm.project.video+'.mp4'" type="video/mp4">
         <track label="English Subtitles" kind="subtitles" srclang="en" [src]="'../../assets/images/projects/'+vm.project.video+'.vtt'">
@@ -42,11 +43,10 @@
           (click)="switchProject(proj.projectId)"
           *ngFor="let proj of vm.customer.projects"
           >
-          <picture class="thumbnail">
-            <source [srcset]="'../../assets/images/projects/thumbnails/'+proj.src+'-thumbnail.webp'" type="image/webp">
-            <source [srcset]="'../../assets/images/projects/thumbnails/'+proj.src+'-thumbnail.jpg'" type="image/jpeg">
-            <img  [src]="'../../assets/images/projects/thumbnails/'+proj.src+'-thumbnail.jpg'" [alt]="vm.project.projectText"/>
-          </picture>
+          <img class="thumbnail"
+            [src]="'https://glaciermark.s3-us-west-1.amazonaws.com/images/projects/'+proj.src+'-thumbnail.jpg'"
+            [alt]="vm.project.projectText"
+          />
           <div class="overlay">
             <p>{{proj.projectText}}</p>
           </div>

@@ -1,3 +1,4 @@
+import { MainSharedModule } from './../main-shared/main-shared.module';
 import { SharedModule } from './../shared/shared.module';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -5,12 +6,12 @@ import { CommonModule } from '@angular/common';
 import { ContactComponent } from './contact.component';
 
 const contactRoute: Routes = [
-  { 
+  {
     path: '',
     children: [
       {
         path: '',
-        component: ContactComponent 
+        component: ContactComponent
       }
     ]
   }
@@ -21,7 +22,8 @@ const contactRoute: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(contactRoute),
-    SharedModule
+    SharedModule,
+    MainSharedModule
   ],
   exports: [RouterModule]
 })

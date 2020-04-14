@@ -67,7 +67,7 @@ export class NavbarComponent implements OnInit {
 
   private stickyTrue(): void {
     this.sticky = true;
-    this.logoSrc = 'glacierBlueLogo';
+    this.logoSrc = 'glacier-marketing-blue';
   }
 
   private stickyFalse(): void {
