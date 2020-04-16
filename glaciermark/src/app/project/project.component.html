@@ -10,7 +10,8 @@
     >
      <div class="image-group" id="project">
       <img *ngIf="!vm.project.video"
-        class="main-image"
+        class="main-image {{vm.customer.customerId}}"
+        
         [src]="'https://glaciermark.s3-us-west-1.amazonaws.com/images/projects/'+vm.project.src+'-detail.jpg'"
         [srcset]="'https://glaciermark.s3-us-west-1.amazonaws.com/images/projects/'+vm.project.src+'-detail_500w.jpg 500w, https://glaciermark.s3-us-west-1.amazonaws.com/images/projects/'+vm.project.src+'-detail.jpg, 800w'"
         [alt]="vm.project.projectText"

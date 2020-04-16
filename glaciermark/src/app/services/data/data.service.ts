@@ -100,12 +100,15 @@ export class DataService implements OnDestroy {
         const clientsData: Customer[] = [];
         const projectsArray: Project[] = [];
         client.map((item: ServerCustomer) => {
-          clientsData.push(item.data);
           item.data.projects.map((project: Project) => {
             if (project.portfolio) {
-              projectsArray[project.projectId] = project;
+              projectsArray[project.portfolio - 1] = project
             }
           });
+          if (item.data.customerId === 'logos') {
+            item.data.projects.shift();
+          }
+          clientsData.push(item.data);
         });
         this._allCustomersBS.next(clientsData);
         this._portfolioBS.next(projectsArray);
