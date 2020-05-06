@@ -7,13 +7,22 @@ This is a Angular 9 project. It uses prerendered pages and lazy loading to deliv
 
 ## Installing / Getting started
 
-A quick introduction of the minimal setup you need to get a hello world up &
-running.
+Make sure you have node 10 and at least npm 6 installed
 
 ```shell
-commands here
+git clone https://github.com/Dresen-Tammy/glaciermark.git
 ```
+Enter folder glaciermark/glaciermark
 
+```shell
+cd glaciermark/glaciermark
+```
+install the dependencies
+
+```shell
+npm install
+```
+Prerender
 Here you should say what actually happens when you execute the code above.
 
 ## Developing
