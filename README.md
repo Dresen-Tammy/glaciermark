@@ -22,7 +22,12 @@ install the dependencies
 ```shell
 npm install
 ```
-Prerender
+Prerender the website
+
+```shell
+npm run prerender
+```
+
 Here you should say what actually happens when you execute the code above.
 
 ## Developing
