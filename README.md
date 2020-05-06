@@ -1,5 +1,3 @@
-![Logo of the project](./images/logo.sample.png)
-
 # Marketing Portfolio &middot; [![Build Status](https://img.shields.io/travis/npm/npm/latest.svg?style=flat-square)](https://travis-ci.org/npm/npm) [![npm](https://img.shields.io/npm/v/npm.svg?style=flat-square)](https://www.npmjs.com/package/npm) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/your/your-project/blob/master/LICENSE)
 > A prerendered Angular 9 website using Firebase cloud functions backend
 
@@ -21,14 +19,15 @@ install the dependencies
 
 ```shell
 npm install
-```
-Prerender the website
+``
+build and serve website locally
 
 ```shell
 npm run prerender
+npm run serve:ssr
 ```
 
-Here you should say what actually happens when you execute the code above.
+This will build the website and display it on localhost:4200
 
 ## Developing
 
@@ -96,20 +95,3 @@ Explain what these tests test and why.
 Give an example
 ```
 
-## Style guide
-
-Explain your code style and show how to check it.
-
-## Api Reference
-
-If the api is external, link to api documentation. If not describe your api including authentication methods as well as explaining all the endpoints with their required parameters.
-
-
-## Database
-
-Explaining what database (and version) has been used. Provide download links.
-Documents your database design and schemas, relations etc... 
-
-## Licensing
-
-State what the license is and how to find the text version of the license.
