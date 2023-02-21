@@ -38,13 +38,13 @@ export class ProjectComponent implements OnInit {
 
   public previousProject(): void {
     this.data.setDefault();
-    this.data.setPreviousProject();
+    this.data.setPreviousCustomer();
     this.scrollUpAnchor();
   }
 
   public nextProject(): void {
     this.data.setDefault();
-    this.data.setNextProject();
+    this.data.setNextCustomer();
     this.scrollUpAnchor();
   }
 
