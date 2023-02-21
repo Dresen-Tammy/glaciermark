@@ -19,12 +19,12 @@
       <div class="gallery" *ngIf="vm.projects.length > 0">
         <app-gallery-item
         *ngFor="let project of vm.projects"
-        class="container {{project.projectClass}}"
+        class="container qtr-project"
         [project]="project"
         ></app-gallery-item>
       </div>
     </section>
-    <div appParallax [ratio]="0.6" id="penguins">
+    <div class="penguin" appParallax [ratio]="0.6" id="penguins">
       <picture class="parallax-image">
         <source media="(max-width: 500px)" srcset="https://glaciermark.s3-us-west-1.amazonaws.com/images/idaho-marketing-portfolio_500w.webp" type="image/webp">
         <source media="(max-width: 500px)" srcset="https://glaciermark.s3-us-west-1.amazonaws.com/images/idaho-marketing-portfolio_500w.jpg" type="image/jpeg">
